@@ -21,6 +21,8 @@ func _physics_process(delta):
 	
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
+		
+	get_node("../Camera2D").set_position(self.position)
 	
 func set_move(var move):
 	velocity = move * SPEED

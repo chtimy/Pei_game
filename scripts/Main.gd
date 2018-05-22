@@ -22,6 +22,8 @@ func _ready():
 	var word = init_word()
 	init_enemis(word.length())
 	
+	$Camera2D.set_position($Player.position)
+	
 func init_word():
 	var word = {"name": "house", "translation" : "maison"}
 	$Password/Terminal.set_password(word)
@@ -93,7 +95,7 @@ func _input(event):
 	if (event is InputEventScreenTouch and event.pressed) || event is InputEventScreenDrag:
 		begin = $Player.position
 		# Mouse to local navigation coordinates
-		end = event.position - $Navigation2D.position
+		end = $Camera2D + event.position - $Navigation2D.position
 		$Player.destination = end
 		$Player.set_move((end - begin).normalized())
 #		update_path()

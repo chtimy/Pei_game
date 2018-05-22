@@ -53,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="238.92551"
-     inkscape:cy="104.28434"
+     inkscape:zoom="2.8"
+     inkscape:cx="145.57895"
+     inkscape:cy="128.92831"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -86,7 +86,9 @@
      id="layer1"
      transform="translate(-10.752603,-30.022784)">
     <g
-       id="g1412">
+       id="g1412"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41">
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
@@ -130,6 +132,8 @@
        width="62.744045"
        height="39.53912"
        x="15.430057"
-       y="14.528632" />
+       y="14.528632"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
   </g>
 </svg>
