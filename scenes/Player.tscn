@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13, 13 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Movables",
+"Player",
+]]
+
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+SPEED = 200
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( -32, -32 )
+frames = SubResource( 1 )
+animation = "right"
+centered = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shape" type="Area2D" parent="." index="1" groups=[
+"Player",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape" index="0"]
+
+position = Vector2( -1.90735e-06, -1.90735e-06 )
+scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( -1.90735e-06, -1.90735e-06 )
+scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="area_entered" from="Shape" to="." method="_on_Shape_area_entered"]
+
+

@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/Enemi.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Blaster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 70.0
+
+[node name="enemi" type="KinematicBody2D" groups=[
+"Enemis",
+"Movables",
+]]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+blaster_shoot_scene = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "down"
+
+[node name="view" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitorable = false
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="zona" type="CollisionShape2D" parent="view" index="0"]
+
+scale = Vector2( 25, 25 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ShootLoopTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="shape" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="zona" type="CollisionShape2D" parent="shape" index="0"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="zona" type="CollisionShape2D" parent="." index="4"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="range" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitorable = false
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="zona" type="CollisionShape2D" parent="range" index="0"]
+
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="view" to="." method="_on_view_area_entered"]
+
+[connection signal="area_exited" from="view" to="." method="_on_view_area_exited"]
+
+[connection signal="timeout" from="ShootLoopTimer" to="." method="_on_ShootLoopTimer_timeout"]
+
+[connection signal="input_event" from="shape" to="." method="_on_shape_input_event"]
+
+
