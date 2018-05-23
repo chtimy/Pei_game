@@ -18,11 +18,6 @@ func _ready():
 #		if cell.get_name() == "door":
 #			door_tile = cell.get_
 	self.door_tile = Vector2(9, 0)
-
-	var word = init_word()
-	init_enemis(word.length())
-	
-	$Camera2D.set_position($Player.position)
 	
 func init_word():
 	var word = {"name": "house", "translation" : "maison"}
@@ -95,7 +90,7 @@ func _input(event):
 	if (event is InputEventScreenTouch and event.pressed) || event is InputEventScreenDrag:
 		begin = $Player.position
 		# Mouse to local navigation coordinates
-		end = $Camera2D + event.position - $Navigation2D.position
+		end = $Navigation2D.position + ($Player.position - get_viewport().get_size() * Vector2(0.5, 0.5)) + event.position
 		$Player.destination = end
 		$Player.set_move((end - begin).normalized())
 #		update_path()
@@ -111,7 +106,7 @@ func delete_object(var object):
 	object.call_deferred("queue_free")
 
 func _on_Player_player_change_life(value):
-	$HUD/LifeBar.value = value
+	$HUD/Control/LifeBar.value = value
 
 func on_touched_enemi(var shape):
 	path.clear()
@@ -140,8 +135,25 @@ func unlock_door():
 
 
 func _on_Control_valid_password():
-	print("valid password")
 	$Password/Terminal.hide()
 	clear_enemis()
 	unfreeze()
 	unlock_door()
+	
+func start_game():
+	var word = init_word()
+	init_enemis(word.length())
+	$HUD.init(self.enemis)
+	$HUD/Control.show()
+	
+func stop_game():
+#	$Player.call_deferred("queue_free")
+	$HUD/Control.hide()
+
+func _on_Play_pressed():
+	$Menu/Control.hide()
+	start_game()
+
+func _on_Player_player_died():
+	$Menu/Control.show()
+	stop_game()

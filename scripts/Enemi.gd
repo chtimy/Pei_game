@@ -29,7 +29,7 @@ func _ready():
 	randomize()
 	
 func _physics_process(delta):
-	move_and_slide(velocity)
+	move_and_collide(velocity * delta)
 	time += 1
 	if time > 100:
 		velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * SPEED
@@ -43,7 +43,6 @@ func _on_view_area_entered(area):
 	if selectable.is_in_group("Player"):
 		self.target = selectable
 		$ShootLoopTimer.start()
-		print("shoot")
 
 func _on_view_area_exited(area):
 	var selectable = area.get_node("..")

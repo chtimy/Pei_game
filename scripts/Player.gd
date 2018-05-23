@@ -3,6 +3,7 @@ extends Node2D
 signal delete_object_from_Player
 signal player_change_life
 signal enter_in_another_area
+signal player_died
 
 var hit = 40
 var last_position = Vector2()
@@ -17,16 +18,13 @@ func _ready():
 	self.destination = self.position
 
 func _physics_process(delta):
-	move_and_slide(velocity)
+	move_and_collide(velocity*delta)
 	
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
-		
-	get_node("../Camera2D").set_position(self.position)
 	
 func set_move(var move):
 	velocity = move * SPEED
-
 
 #	var screenSize = get_viewport().get_size()
 #	var speedVector = Vector2()
@@ -40,6 +38,7 @@ func set_move(var move):
 
 func die():
 	print("dead")
+	emit_signal("player_died")
 	
 func decrease_life(var value):
 	self.life -= value
@@ -50,8 +49,7 @@ func decrease_life(var value):
 
 func _on_Shape_area_entered(area):
 	var selectable = area.get_node("..")
-	print(area)
-	if selectable.is_in_group("bullet"):
+	if selectable.is_in_group("Bullets"):
 		decrease_life(selectable.hit)
 		emit_signal("delete_object_from_Player", selectable)
 	elif selectable.is_in_group("Movables"):

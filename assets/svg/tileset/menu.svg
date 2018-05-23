@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg835"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="menu.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="484.30068"
+     inkscape:cy="740.33589"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="3200"
+     inkscape:window-height="1675"
+     inkscape:window-x="-13"
+     inkscape:window-y="-13"
+     inkscape:window-maximized="1" />
+  <defs
+     id="defs829">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient1384">
+      <stop
+         id="stop1382"
+         offset="0"
+         style="stop-color:#b649b4;stop-opacity:1;" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1418"
+       x="-0.058347466"
+       width="1.1166949"
+       y="-0.22191071"
+       height="1.4438214">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.4591384"
+         id="feGaussianBlur1420" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata832">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Calque 1">
+    <g
+       id="g1426"
+       inkscape:export-filename="C:\Users\Jérémy Riffet\Godot\pei_game\assets\svg\play_button.png"
+       inkscape:export-xdpi="81.848732"
+       inkscape:export-ydpi="81.848732">
+      <rect
+         style="opacity:1;vector-effect:none;fill:#b649b4;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect1380"
+         width="155.72618"
+         height="43.089287"
+         x="43.089287"
+         y="43"
+         ry="10.394345" />
+      <rect
+         ry="9.0246162"
+         y="45.839073"
+         x="49.810196"
+         height="37.411137"
+         width="142.28436"
+         id="rect1412"
+         style="opacity:1;vector-effect:none;fill:#b682b4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.62346429;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;filter:url(#filter1418)" />
+      <text
+         id="text1410"
+         y="77.516731"
+         x="76.466713"
+         style="font-style:normal;font-weight:normal;font-size:35.58853149px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#fffffd;fill-opacity:1;stroke:#b66eb4;stroke-width:0.44485658;stroke-opacity:1;"
+         xml:space="preserve"><tspan
+           style="fill:#fffffd;fill-opacity:1;stroke-width:0.44485658;stroke:#b66eb4;stroke-opacity:1;"
+           y="77.516731"
+           x="76.466713"
+           id="tspan1408"
+           sodipodi:role="line">PLAY</tspan></text>
+    </g>
+  </g>
+</svg>
