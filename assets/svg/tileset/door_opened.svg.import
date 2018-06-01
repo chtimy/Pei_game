@@ -7,7 +7,7 @@ path="res://.import/door_opened.svg-34865e69550582eb6d1969b81c45446e.stex"
 [deps]
 
 source_file="res://assets/svg/tileset/door_opened.svg"
-source_md5="77cedd09e2a65e766df28d8275f8a144"
+source_md5="8bc03c685d04d6aa8a7db573d2fccc74"
 
 dest_files=[ "res://.import/door_opened.svg-34865e69550582eb6d1969b81c45446e.stex" ]
 dest_md5="cc32b950ca6e8d52d1ad1bb2db57ebfc"

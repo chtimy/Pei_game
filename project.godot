@@ -20,6 +20,10 @@ window/size/width=1334
 window/size/height=750
 window/handheld/emulate_touchscreen=true
 
+[global]
+
+filtering=true
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
