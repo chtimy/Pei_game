@@ -9,7 +9,7 @@ func _ready():
 
 func init(var enemis):
 	self.size_radar = $Control/ViewportContainer.get_size()
-	self.ratio = self.size_radar.length() / get_node("../Navigation2D/TileMap").size.length()
+	self.ratio = self.size_radar.length() / get_node("../Navigation2D").cell_size.length()
 	var player_position = get_node("../Player").get_position()
 	var central_position = self.size_radar / Vector2(2,2)
 	for enemi in enemis:

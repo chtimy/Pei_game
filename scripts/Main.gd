@@ -23,7 +23,7 @@ func init_word():
 	var word = {"name": "house", "translation" : "maison"}
 	$Password/Terminal.set_password(word)
 	
-	var tile_map = $Navigation2D/TileMap
+	var tile_map = $Navigation2D
 	var area2D = Area2D.new()
 	var shape = CollisionShape2D.new()
 	var circle = CircleShape2D.new()
@@ -93,6 +93,7 @@ func _input(event):
 		end = $Navigation2D.position + ($Player.position - get_viewport().get_size() * Vector2(0.5, 0.5)) + event.position
 		$Player.destination = end
 		$Player.set_move((end - begin).normalized())
+		
 #		update_path()
 
 func shoot_bullet_from(var bullet):
@@ -142,7 +143,7 @@ func _on_Control_valid_password():
 	
 func start_game():
 	var word = init_word()
-	init_enemis(word.length())
+	init_enemis(1)
 	$HUD.init(self.enemis)
 	$HUD/Control.show()
 	

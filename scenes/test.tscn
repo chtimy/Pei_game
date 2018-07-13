@@ -44,7 +44,6 @@ func generate(var nb_steps, var offset = Vector2(0,0), var out = [], var type = 
 	if out.size() > 0:
 		# build the transitions
 		var path = get_shortest_path(out, offset, element.out)
-		print(path)
 		for tile in path:
 			get_children()[0].set_cellv(tile, 3)
 
@@ -66,11 +65,11 @@ func get_shortest_path(var out1, var offset, var out2):
 	var nodes = null
 	for solution1 in out1:
 		for solution2 in out2:
-			var dist = (solution1[0] + offset).distance_to(solution2[0])
+			var dist = (solution1[0]).distance_to(solution2[0] + offset)
 			if path_weight == -1 || dist < path_weight:
 				nodes = [solution1[0], solution2[0]]
 				path_weight = dist
-	return shortest_path(nodes[1], nodes[0] + offset)
+	return shortest_path(nodes[0], nodes[1] + offset)
 	
 func shortest_path(var start, var target):
 	print(\"start : \" , start, \" target : \", target)
@@ -105,7 +104,7 @@ func shortest_path(var start, var target):
 			inc = diff.y / abs(diff.y)
 			for i in range(0, diff_half.y, inc):
 				path.push_back(Vector2(start.x + diff.x, start.y + diff_half.y + i))
-	print(\"path : \", path)
+#	print(\"path : \", path)
 	if path.back() != target:
 		path.push_back(target)
 	return path

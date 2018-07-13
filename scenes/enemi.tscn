@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Enemi.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Blaster.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right1.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right2.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right3.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right4.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right5.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right6.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "down",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "left",
@@ -26,6 +26,11 @@ animations = [ {
 "loop": true,
 "name": "up",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -33,19 +38,26 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+radius = 10.0
+height = 29.8954
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 31.587
+
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
 radius = 70.0
 
-[node name="enemi" type="KinematicBody2D" groups=[
-"Enemis",
+[node name="enemi" type="KinematicBody2D" index="0" groups=[
 "Movables",
+"Enemis",
 ]]
 
 input_pickable = false
@@ -60,6 +72,8 @@ blaster_shoot_scene = ExtResource( 2 )
 
 frames = SubResource( 1 )
 animation = "down"
+frame = 2
+playing = true
 
 [node name="view" type="Area2D" parent="." index="1"]
 
@@ -88,6 +102,7 @@ autostart = false
 
 [node name="shape" type="Area2D" parent="." index="3"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -98,16 +113,19 @@ audio_bus_name = "Master"
 
 [node name="zona" type="CollisionShape2D" parent="shape" index="0"]
 
+position = Vector2( 1.66479, -4.04306 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="zona" type="CollisionShape2D" parent="." index="4"]
 
-shape = SubResource( 3 )
+position = Vector2( 0, -4.26165 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="range" type="Area2D" parent="." index="5"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -119,7 +137,7 @@ audio_bus_name = "Master"
 
 [node name="zona" type="CollisionShape2D" parent="range" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="view" to="." method="_on_view_area_entered"]
 

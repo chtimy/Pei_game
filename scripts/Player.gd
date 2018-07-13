@@ -19,11 +19,21 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_collide(velocity*delta)
-	
+	if velocity == Vector2(0,0):
+		$AnimatedSprite.set_animation("front")
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
 	
 func set_move(var move):
+	var vec = move.normalized()
+	if vec.angle_to(Vector2(1,0)) < PI/4.0 && vec.angle_to(Vector2(1,0)) > -PI/4.0:
+		$AnimatedSprite.set_animation("walk_right")
+	elif vec.angle_to(Vector2(0,-1)) < PI/4.0 && vec.angle_to(Vector2(0,-1)) > -PI/4.0:
+		$AnimatedSprite.set_animation("walk_up")
+	elif vec.angle_to(Vector2(0,1)) < PI/4.0 && vec.angle_to(Vector2(0,1)) > -PI/4.0:
+		$AnimatedSprite.set_animation("walk_down")
+	elif vec.angle_to(Vector2(-1,0)) < PI/4.0 && vec.angle_to(Vector2(-1,0)) > -PI/4.0:
+		$AnimatedSprite.set_animation("walk_left")
 	velocity = move * SPEED
 
 #	var screenSize = get_viewport().get_size()
@@ -48,6 +58,7 @@ func decrease_life(var value):
 	emit_signal("player_change_life", life)
 
 func _on_Shape_area_entered(area):
+	print(area.get_node(".."))
 	var selectable = area.get_node("..")
 	if selectable.is_in_group("Bullets"):
 		decrease_life(selectable.hit)
@@ -67,3 +78,14 @@ func unfreeze():
 	set_process(true)
 	set_process_input(true)
 	set_physics_process(true)
+	
+#func attack():
+#	for enemi in get_node("../Enemis").get_children():
+#		if enemi.get_node("shape/zona").
+		
+
+
+func _on_TouchScreenButton_pressed():
+#	attack()
+	print("test")
+	pass # replace with function body
