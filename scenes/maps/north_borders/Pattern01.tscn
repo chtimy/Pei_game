@@ -10,23 +10,24 @@ signal exit_area
 
 var type = 1
 var size = Vector2(8, 10)
-var exit = { Vector2(1,0) : Vector2(0,4.5),
-			Vector2(0,1) : Vector2(4.5,9),
-			Vector2(-1,0) : Vector2(9,4.5)}
+			
+var exit = { Vector2(1,0) : Vector2(1,4.5),
+			Vector2(0,-1) : Vector2(4.5,8),
+			Vector2(-1,0) : Vector2(8,4.5)}
 
 func _ready():
 	connect(\"exit_area\", get_node(\"..\"), \"on_exit_area\")
 
 func _on_Area2D_area_entered_left(area):
-	emit_signal(\"exit_area\", area, \"left\")
+	call_deferred(\"emit_signal\",\"exit_area\", area, \"left\")
 
 
 func _on_Area2D2_area_entered_right(area):
-	emit_signal(\"exit_area\", area, \"right\")
+	call_deferred(\"emit_signal\",\"exit_area\", area, \"right\")
 
 
 func _on_Area2D4_area_entered_south(area):
-	emit_signal(\"exit_area\", area, \"south\")"
+	call_deferred(\"emit_signal\",\"exit_area\", area, \"south\")"
 
 [sub_resource type="RectangleShape2D" id=2]
 

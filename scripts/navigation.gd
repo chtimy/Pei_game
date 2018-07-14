@@ -22,11 +22,36 @@ func generate(var w, var h):
 		matrix[i].resize(h)
 	for i in range(w):
 		for j in range(h):
-			var n = randi() % map.size()
-			matrix[i][j] = map[n].instance()
+			if i == 0 && j == 0 :
+				var n = randi() % maps_north_left.size()
+				matrix[i][j] = maps_north_left[n].instance()
+			elif i == w-1 && j == h-1:
+				var n = randi() % maps_south_right.size()
+				matrix[i][j] = maps_south_right[n].instance()
+			elif i == 0 && j == h-1:
+				var n = randi() % maps_south_left.size()
+				matrix[i][j] = maps_south_left[n].instance()
+			elif i == w-1 && j == 0:
+				var n = randi() % maps_north_right.size()
+				matrix[i][j] = maps_north_right[n].instance()
+			elif i == 0:
+				var n = randi() % maps_left.size()
+				matrix[i][j] = maps_left[n].instance()
+			elif j == 0:
+				var n = randi() % maps_north.size()
+				matrix[i][j] = maps_north[n].instance()
+			elif i == w-1:
+				var n = randi() % maps_right.size()
+				matrix[i][j] = maps_right[n].instance()
+			elif j == h-1:
+				var n = randi() % maps_south.size()
+				matrix[i][j] = maps_south[n].instance()
+			else:
+				var n = randi() % maps_center.size()
+				matrix[i][j] = maps_center[n].instance()
 
 func _ready():
-	generate(2, 2)
+	generate(3,3)
 	self.current_map_id = Vector2(0,0)
 	add_child(matrix[0][0])
 
@@ -35,10 +60,13 @@ func change_map(var T):
 	self.current_map_id += T
 	print(self.current_map_id)
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
-	print(self.matrix[self.current_map_id.x][self.current_map_id.y].exit[Vector2(1,0)])
+	print("T : " ,T)
+	print(self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
+	print(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
 
 func on_exit_area(var area, var direction):
+	print(area.get_groups(), " " , direction)
 	if direction == "right":
 		if area.is_in_group("Player"):
 			print("right")
@@ -50,8 +78,8 @@ func on_exit_area(var area, var direction):
 	elif direction == "south":
 		if area.is_in_group("Player"):
 			print("south")
-			change_map(Vector2(0,-1))
+			change_map(Vector2(0,1))
 	elif direction == "north":
 		if area.is_in_group("Player"):
 			print("north")
-			change_map(Vector2(0,1))
+			change_map(Vector2(0,-1))

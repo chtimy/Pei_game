@@ -10,26 +10,27 @@ signal exit_area
 
 var type = 1
 var size = Vector2(8, 10)
-var exit = {Vector2(-1,0) : Vector2(9,4.5),
-			Vector2(0,-1) : Vector2(4.5,1)}
+			
+var exit = {Vector2(-1,0) : Vector2(8,4.5),
+			Vector2(0,1) : Vector2(4.5,2)}
 
 func _ready():
 	connect(\"exit_area\", get_node(\"..\"), \"on_exit_area\")
 
 
 func _on_Area2D2_area_entered_right(area):
-	emit_signal(\"exit_area\", area, \"right\")
+	call_deferred(\"emit_signal\", \"exit_area\", area, \"right\")
 
 
 func _on_Area2D3_area_entered_north(area):
-	emit_signal(\"exit_area\", area, \"north\")"
+	call_deferred(\"emit_signal\", \"exit_area\", area, \"north\")"
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.528, 58.484 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64.0407, 16.4776 )
@@ -129,7 +130,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="north_exit" index="0"]
 
 position = Vector2( 319.893, 89.6998 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [connection signal="area_entered" from="right_exit" to="." method="_on_Area2D2_area_entered_right"]
 
