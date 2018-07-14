@@ -4,12 +4,33 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Node2D
+script/source = "extends \"res://scripts/map.gd\"
+
+signal exit_area
 
 
 var type = 1
 var size = Vector2(10,8)
-var out = [ [ Vector2(0,3),Vector2(0,4) ],[ Vector2(4,8),Vector2(5,8) ],[ Vector2(10,4), Vector2(10,5) ], [ Vector2(4,1), Vector2(5,1) ] ]"
+var out = [ [ Vector2(0,3),Vector2(0,4) ],[ Vector2(4,8),Vector2(5,8) ],[ Vector2(10,4), Vector2(10,5) ], [ Vector2(4,1), Vector2(5,1) ] ]
+
+func _ready():
+	connect(\"exit_area\", get_node(\"..\"), \"on_exit_area\")
+
+func _on_Area2D_area_entered_left(area):
+	emit_signal(\"exit_area\", area, \"left\")
+
+
+func _on_Area2D2_area_entered_right(area):
+	emit_signal(\"exit_area\", area, \"right\")
+
+
+func _on_Area2D3_area_entered_north(area):
+	emit_signal(\"exit_area\", area, \"north\")
+
+
+func _on_Area2D4_area_entered_south(area):
+	emit_signal(\"exit_area\", area, \"south\")
+"
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -21,7 +42,7 @@ extents = Vector2( 20, 63.385 )
 custom_solver_bias = 0.0
 extents = Vector2( 62.6132, 23.3638 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = SubResource( 1 )
 
@@ -72,7 +93,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="Area2D" type="Area2D" parent="." index="2" groups=[
+"exit_left",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -87,7 +110,9 @@ audio_bus_name = "Master"
 position = Vector2( 24.8889, 256.204 )
 shape = SubResource( 2 )
 
-[node name="Area2D2" type="Area2D" parent="." index="3"]
+[node name="Area2D2" type="Area2D" parent="." index="3" groups=[
+"exit_right",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -102,7 +127,9 @@ audio_bus_name = "Master"
 position = Vector2( 680.567, 322.589 )
 shape = SubResource( 2 )
 
-[node name="Area2D3" type="Area2D" parent="." index="4"]
+[node name="Area2D3" type="Area2D" parent="." index="4" groups=[
+"exit_north",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -117,7 +144,9 @@ audio_bus_name = "Master"
 position = Vector2( 320.089, 65.36 )
 shape = SubResource( 3 )
 
-[node name="Area2D4" type="Area2D" parent="." index="5"]
+[node name="Area2D4" type="Area2D" parent="." index="5" groups=[
+"exit_south",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -131,5 +160,13 @@ audio_bus_name = "Master"
 
 position = Vector2( 322.305, 558.435 )
 shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered_left"]
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_Area2D2_area_entered_right"]
+
+[connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered_north"]
+
+[connection signal="area_entered" from="Area2D4" to="." method="_on_Area2D4_area_entered_south"]
 
 

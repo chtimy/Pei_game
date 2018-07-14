@@ -7,7 +7,10 @@ path="res://.import/wall.svg-a615966390aaf748db60aaf2dd370b1e.stex"
 [deps]
 
 source_file="res://assets/svg/tileset/wall.svg"
+source_md5="b0924247267df78a20cd7ca30ad74057"
+
 dest_files=[ "res://.import/wall.svg-a615966390aaf748db60aaf2dd370b1e.stex" ]
+dest_md5="cc2e79ca27dd06c885e18b00e1409895"
 
 [params]
 

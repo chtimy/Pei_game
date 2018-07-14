@@ -4,13 +4,13 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Node2D
+script/source = "extends \"res://scripts/map.gd\"
 
 var type = 1
 var size = Vector2(8, 10)
 var out = [ [ Vector2(4,1), Vector2(5,1) ], [ Vector2(4,9), Vector2(5,9) ],[ Vector2(0,4), Vector2(0,5) ],[ Vector2(9,4),Vector2(9,5) ] ]"
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = SubResource( 1 )
 

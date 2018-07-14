@@ -55,7 +55,7 @@ func init_enemis(var nb):
 		enemi.add_to_group("Movables")
 		var word = $Password/Terminal.word.translation
 		enemi.set_clue({"letter" : word[i], "position" : i})
-		add_child_below_node($Player, enemi)
+		get_node("Navigation2D").matrix[get_node("Navigation2D").current_map_id.x][get_node("Navigation2D").current_map_id.y].add_child(enemi)
 		enemi.set_position(Vector2(200 + i * 100, 300))
 		self.enemis.push_back(enemi)
 

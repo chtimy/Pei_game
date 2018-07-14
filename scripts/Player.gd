@@ -68,6 +68,14 @@ func _on_Shape_area_entered(area):
 #		var dir = (self.last_position - self.position).normalized
 		
 		area.get_node("..").enter_in_another_area($Shape)
+	elif selectable.is_in_group("exit_right"):
+		emit_signal("exit_area_right")
+	elif selectable.is_in_group("exit_left"):
+		emit_signal("exit_area_left")
+	elif selectable.is_in_group("exit_north"):
+		emit_signal("exit_area_north")
+	elif selectable.is_in_group("exit_south"):
+		emit_signal("exit_area_south")
 		
 func freeze():
 	set_process(false)
