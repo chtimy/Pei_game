@@ -1,0 +1,191 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/TileSets/kitchen.res" type="TileSet" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://scripts/map.gd\"
+
+signal exit_area
+
+var type = 1
+var size = Vector2(8, 10)
+var exit = { Vector2(1,0) : Vector2(0,4.5),
+			Vector2(0,1) : Vector2(4.5,9),
+			Vector2(-1,0) : Vector2(9,4.5),
+			Vector2(0,-1) : Vector2(4.5,1)}
+
+func _ready():
+	connect(\"exit_area\", get_node(\"..\"), \"on_exit_area\")
+
+func _on_Area2D_area_entered_left(area):
+	emit_signal(\"exit_area\", area, \"left\")
+
+
+func _on_Area2D2_area_entered_right(area):
+	emit_signal(\"exit_area\", area, \"right\")
+
+
+func _on_Area2D3_area_entered_north(area):
+	emit_signal(\"exit_area\", area, \"north\")
+
+
+func _on_Area2D4_area_entered_south(area):
+	emit_signal(\"exit_area\", area, \"south\")"
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.528, 58.484 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13.2699, 58.4839 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 62.9547, 12.8717 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 64.0407, 16.4776 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = SubResource( 1 )
+
+[node name="layer_01" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 2
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 131073, 1073741825, 0, 131074, 1073741825, 0, 131075, 1073741825, 0, 131076, 1073741825, 0, 131077, 1073741825, 0, 131078, 1073741825, 0, 131079, 1073741825, 0, 131080, 536870914, 0, 196609, 1073741825, 0, 196610, 1073741825, 0, 196611, 1073741825, 0, 196612, 1073741825, 0, 196613, 1073741825, 0, 196614, 1073741825, 0, 196615, 1073741825, 0, 196616, 536870915, 0, 262145, 1073741825, 0, 262146, 1073741825, 0, 262147, 1610612741, 0, 262150, 1073741825, 0, 262151, 536870914, 0, 262152, 536870916, 0, 327681, 1073741825, 0, 327682, 1073741825, 0, 327683, 1610612740, 0, 327686, 1073741825, 0, 327687, 536870914, 0, 327688, 536870914, 0, 393217, 1073741825, 0, 393218, 1073741825, 0, 393219, 1073741825, 0, 393220, 1073741825, 0, 393221, 1073741825, 0, 393222, 1073741825, 0, 393223, 536870914, 0, 393224, 536870914, 0, 458753, 1073741825, 0, 458754, 1073741825, 0, 458755, 1073741825, 0, 458756, 1073741825, 0, 458757, 1073741825, 0, 458758, 1073741825, 0, 458759, 536870914, 0, 458760, 536870915, 0, 524289, 5, 0, 524290, 5, 0, 524291, 5, 0, 524292, 5, 0, 524293, 5, 0, 524294, 5, 0, 524295, 5, 0, 524296, 536870915, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Transform", "Visibility", "Z Index" ]
+
+[node name="layer_02" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 2
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 1, -1610612724, 0, 2, -1610612724, 0, 3, -1610612724, 0, 6, -1610612724, 0, 7, -1610612724, 0, 8, -1610612724, 0, 65536, 13, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 1073741832, 0, 65545, 536870925, 0, 131072, 13, 0, 131073, -2147483633, 0, 131074, 9, 0, 131075, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, -1610612721, 0, 131081, 536870925, 0, 196608, 13, 0, 196609, -2147483633, 0, 196612, 1073741839, 0, 196613, 1073741839, 0, 196615, -1610612721, 0, 196617, 536870925, 0, 262147, -1610612721, 0, 262148, 1610612746, 0, 262149, -1073741814, 0, 262150, -2147483633, 0, 327683, -1610612721, 0, 327684, 536870922, 0, 327685, -2147483638, 0, 327686, -2147483633, 0, 393216, 13, 0, 393217, -2147483633, 0, 393219, -1610612721, 0, 393220, 536870920, 0, 393221, 536870920, 0, 393222, -2147483633, 0, 393223, -1610612721, 0, 393225, 536870925, 0, 458752, 13, 0, 458753, -2147483633, 0, 458756, 15, 0, 458757, 15, 0, 458759, -1610612721, 0, 458761, 536870925, 0, 524288, 13, 0, 524289, 1073741839, 0, 524290, 1073741839, 0, 524291, 1073741839, 0, 524293, 1073741839, 0, 524294, 1073741839, 0, 524295, -1610612721, 0, 524297, 536870925, 0, 589824, 14, 0, 589825, -536870905, 0, 589826, -536870905, 0, 589827, -536870905, 0, 589830, -536870905, 0, 589831, -536870905, 0, 589832, -536870905, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="layer_03" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 2
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 131073, 536870930, 0, 131074, 536870930, 0, 131075, 536870930, 0, 131078, 536870930, 0, 131079, 536870930, 0, 131080, 536870930, 0, 458756, 536870930, 0, 458757, 536870930, 0 )
+_sections_unfolded = [ "Cell", "Collision" ]
+
+[node name="right_exit" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_exit" index="0"]
+
+position = Vector2( 614.952, 319.286 )
+shape = SubResource( 2 )
+
+[node name="left_exit" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_exit" index="0"]
+
+position = Vector2( 30.1367, 317.657 )
+shape = SubResource( 3 )
+
+[node name="south_exit" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="south_exit" index="0"]
+
+position = Vector2( 320.101, 607.622 )
+shape = SubResource( 4 )
+
+[node name="north_exit" type="Area2D" parent="." index="6"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="north_exit" index="0"]
+
+position = Vector2( 319.893, 89.6998 )
+shape = SubResource( 5 )
+
+[connection signal="area_entered" from="right_exit" to="." method="_on_Area2D2_area_entered_right"]
+
+[connection signal="area_entered" from="left_exit" to="." method="_on_Area2D_area_entered_left"]
+
+[connection signal="area_entered" from="south_exit" to="." method="_on_Area2D4_area_entered_south"]
+
+[connection signal="area_entered" from="north_exit" to="." method="_on_Area2D3_area_entered_north"]
+
+

@@ -23,6 +23,9 @@ func _physics_process(delta):
 		$AnimatedSprite.set_animation("front")
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
+		
+func stop():
+	velocity = Vector2(0,0)
 	
 func set_move(var move):
 	var vec = move.normalized()

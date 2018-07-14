@@ -158,3 +158,8 @@ func _on_Play_pressed():
 func _on_Player_player_died():
 	$Menu/Control.show()
 	stop_game()
+
+
+func _on_Navigation2D_change_player_position(var position):
+	$Player.position = position;
+	$Player.stop()

@@ -1,11 +1,9 @@
 extends Node2D
 
+var areas = []
+
 func pause():
-	self.set_visible(false)
-	set_process(false)
-	set_process_input(false)
-	set_physics_process(false)
-	set_block_signals(true)
+	pass
 	
 func play():
-	self.set_visible(true)
+	pass
