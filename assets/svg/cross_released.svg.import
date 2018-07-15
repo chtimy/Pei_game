@@ -7,10 +7,7 @@ path="res://.import/cross_released.svg-451de467b6a8a4f4d3f51622fb6509cf.stex"
 [deps]
 
 source_file="res://assets/svg/cross_released.svg"
-source_md5="cd8b5a03240df754db7bc399db0d3c57"
-
 dest_files=[ "res://.import/cross_released.svg-451de467b6a8a4f4d3f51622fb6509cf.stex" ]
-dest_md5="6c6408def8b04c3a398d35ee532d401b"
 
 [params]
 

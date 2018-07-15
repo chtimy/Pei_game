@@ -7,10 +7,7 @@ path="res://.import/wall.png-c59d26085fff0540152f216b54aab83f.stex"
 [deps]
 
 source_file="res://assets/svg/tileset/wall.png"
-source_md5="a9691e338b3ef669e3ef9f68c26db02f"
-
 dest_files=[ "res://.import/wall.png-c59d26085fff0540152f216b54aab83f.stex" ]
-dest_md5="dacd0d76c9cbbf151761eba10304e506"
 
 [params]
 
