@@ -23,6 +23,9 @@ func _physics_process(delta):
 		$AnimatedSprite.set_animation("front")
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
+		
+func stop():
+	velocity = Vector2(0,0)
 	
 func set_move(var move):
 	var vec = move.normalized()
@@ -58,7 +61,6 @@ func decrease_life(var value):
 	emit_signal("player_change_life", life)
 
 func _on_Shape_area_entered(area):
-	print(area.get_node(".."))
 	var selectable = area.get_node("..")
 	if selectable.is_in_group("Bullets"):
 		decrease_life(selectable.hit)
@@ -66,16 +68,7 @@ func _on_Shape_area_entered(area):
 	elif selectable.is_in_group("Movables"):
 		emit_signal("enter_in_another_area", area)
 #		var dir = (self.last_position - self.position).normalized
-		
 		area.get_node("..").enter_in_another_area($Shape)
-	elif selectable.is_in_group("exit_right"):
-		emit_signal("exit_area_right")
-	elif selectable.is_in_group("exit_left"):
-		emit_signal("exit_area_left")
-	elif selectable.is_in_group("exit_north"):
-		emit_signal("exit_area_north")
-	elif selectable.is_in_group("exit_south"):
-		emit_signal("exit_area_south")
 		
 func freeze():
 	set_process(false)

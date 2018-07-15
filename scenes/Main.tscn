@@ -87,10 +87,6 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 
 ENEMI_TEXTURE = ExtResource( 5 )
 
-[node name="Control" parent="HUD" index="0"]
-
-visible = false
-
 [node name="TouchScreenButton" type="TouchScreenButton" parent="HUD" index="1"]
 
 position = Vector2( 1320.61, 734.363 )
@@ -271,11 +267,9 @@ _sections_unfolded = [ "Textures" ]
 
 [node name="Menu" parent="." index="4" instance=ExtResource( 11 )]
 
-[node name="Control" parent="Menu" index="0"]
-
-visible = false
-
 [node name="Enemis" type="Node2D" parent="." index="5"]
+
+[connection signal="change_player_position" from="Navigation2D" to="." method="_on_Navigation2D_change_player_position"]
 
 [connection signal="pressed" from="HUD/TouchScreenButton" to="Player" method="_on_TouchScreenButton_pressed"]
 
