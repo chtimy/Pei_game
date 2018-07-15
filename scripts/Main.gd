@@ -24,26 +24,11 @@ func init_word():
 	$Password/Terminal.set_password(word)
 	
 	var tile_map = $Navigation2D
-	var area2D = Area2D.new()
 	var shape = CollisionShape2D.new()
 	var circle = CircleShape2D.new()
 	circle.set_radius(100)
 	shape.set_shape(circle)
-	area2D.add_child(shape)
-	var position = Vector2(11, 0) * tile_map.cell_size + Vector2(tile_map.cell_size.x/2, 0)
-	area2D.set_position(position)
-	add_child(area2D)
-	area2D.connect("area_entered", self, "enter_password_zona")
-	area2D = Area2D.new()
-	shape = CollisionShape2D.new()
-	var square = RectangleShape2D.new()
-	square.set_extents(Vector2(64, 64))
-	shape.set_shape(square)
-	area2D.add_child(shape)
-	position = Vector2(11, 0) * 64 + Vector2(32, 0)
-	area2D.set_position(position)
-	add_child(area2D)
-	area2D.connect("input_event", self, "enter_password")
+	
 
 	return word.translation
 	
@@ -65,11 +50,16 @@ func update_path():
 	path.invert()
 	set_process(true)
 	
-func enter_password_zona(var shape):
+func on_enter_zone_terminal(var shape):
 	if shape.get_node("..").name == "Player":
 		self.mode = PASSWORD_ZONA
+		
+func on_exit_zone_terminal(var shape):
+	if shape.get_node("..").name == "Player":
+		self.mode = NORMAL_MODE
 
 func enter_password(viewport, event, shape_idx):
+	print(event)
 	if event is InputEventScreenTouch && event.pressed && self.mode == PASSWORD_ZONA:
 		freeze()
 		$Password/Terminal.show()

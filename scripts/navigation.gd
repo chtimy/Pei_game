@@ -12,6 +12,7 @@ var maps_south_right = [load("res://scenes/maps/south_right_borders/Pattern01.ts
 var maps_south_left = [load("res://scenes/maps/south_left_borders/Pattern01.tscn")]
 var maps_north_right = [load("res://scenes/maps/north_right_borders/Pattern01.tscn")]
 var maps_north_left = [load("res://scenes/maps/north_left_borders/Pattern01.tscn")]
+var maps_north_left_exit = [load("res://scenes/maps/north_left_borders/exit/Pattern01.tscn")]
 var matrix = []
 var current_map_id
 
@@ -23,8 +24,8 @@ func generate(var w, var h):
 	for i in range(w):
 		for j in range(h):
 			if i == 0 && j == 0 :
-				var n = randi() % maps_north_left.size()
-				matrix[i][j] = maps_north_left[n].instance()
+				var n = randi() % maps_north_left_exit.size()
+				matrix[i][j] = maps_north_left_exit[n].instance()
 			elif i == w-1 && j == h-1:
 				var n = randi() % maps_south_right.size()
 				matrix[i][j] = maps_south_right[n].instance()

@@ -41,7 +41,7 @@ use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -86,10 +86,6 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 [node name="HUD" parent="." index="2" instance=ExtResource( 4 )]
 
 ENEMI_TEXTURE = ExtResource( 5 )
-
-[node name="Control" parent="HUD" index="0"]
-
-visible = false
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="HUD" index="1"]
 
@@ -270,10 +266,6 @@ expand = true
 _sections_unfolded = [ "Textures" ]
 
 [node name="Menu" parent="." index="4" instance=ExtResource( 11 )]
-
-[node name="Control" parent="Menu" index="0"]
-
-visible = false
 
 [node name="Enemis" type="Node2D" parent="." index="5"]
 
