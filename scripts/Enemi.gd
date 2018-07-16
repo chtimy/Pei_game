@@ -14,8 +14,6 @@ var time = 0
 var life = 100
 var SPEED = 50
 
-var clue = {"letter" : "", "position" : -1}
-
 var velocity = Vector2(0,0)
 
 func set_clue(var clue):
@@ -95,17 +93,13 @@ func die():
 	emit_signal("drop_clue", self.clue)
 	emit_signal("enemi_die", self)
 
-func _on_shape_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch and event.pressed:
-		var collisions = $range.get_overlapping_areas()
-		for collision in collisions:
-			if collision.get_node("..").is_in_group("Player"):
-				self.life -= collision.get_node("..").hit
-				if self.life < 50:
-					die()
-				$ShootLoopTimer.stop()
-				$ShootLoopTimer.start()
-				emit_signal("touched_from_enemi", $shape)
+func take_damages(var damages):
+	self.life -= damages
+	if self.life < 50:
+		die()
+	$ShootLoopTimer.stop()
+	$ShootLoopTimer.start()
+	emit_signal("touched_from_enemi", $shape)
 
 func enter_in_another_area(var shape):
 	var dir = -(shape.get_node("..").position - self.position).normalized()

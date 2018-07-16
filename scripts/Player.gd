@@ -10,6 +10,7 @@ var last_position = Vector2()
 export (int) var SPEED
 var life = 75
 var destination = Vector2()
+var direction = Vector2(1, 0)
 
 var velocity = Vector2()
 
@@ -19,6 +20,15 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_collide(velocity*delta)
+	self.direction = velocity.normalized()
+	if direction.angle_to(Vector2(1,0)) <= PI/2.0:
+		direction = Vector2(1,0)
+	if direction.angle_to(Vector2(-1,0)) <= PI/2.0:
+		direction = Vector2(-1,0)
+	if direction.angle_to(Vector2(0,1)) <= PI/2.0:
+		direction = Vector2(0,1)
+	if direction.angle_to(Vector2(0,-1)) <= PI/2.0:
+		direction = Vector2(0,-1)
 	if velocity == Vector2(0,0):
 		$AnimatedSprite.set_animation("front")
 	if self.position.distance_to(self.destination) < 5:
@@ -80,13 +90,25 @@ func unfreeze():
 	set_process_input(true)
 	set_physics_process(true)
 	
-#func attack():
-#	for enemi in get_node("../Enemis").get_children():
-#		if enemi.get_node("shape/zona").
+func attack():
+	if self.direction == Vector2(1,0):
+		for area in $attack_right.get_overlapping_areas():
+			if area.get_node("..").is_in_group("Enemis"):
+				area.get_node("..").take_damages(self.hit)
+	if self.direction == Vector2(-1,0):
+		for area in $attack_left.get_overlapping_areas():
+			if area.get_node("..").is_in_group("Enemis"):
+				area.get_node("..").take_damages(self.hit)
+	if self.direction == Vector2(0,1):
+		for area in $attack_up.get_overlapping_areas():
+			if area.get_node("..").is_in_group("Enemis"):
+				area.get_node("..").take_damages(self.hit)
+	if self.direction == Vector2(0,-1):
+		for area in $attack_down.get_overlapping_areas():
+			if area.get_node("..").is_in_group("Enemis"):
+				area.get_node("..").take_damages(self.hit)
 		
 
 
 func _on_TouchScreenButton_pressed():
-#	attack()
-	print("test")
-	pass # replace with function body
+	attack()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/TileSets/kitchen.res" type="TileSet" id=1]
 
@@ -9,6 +9,7 @@ script/source = "extends \"res://scripts/map.gd\"
 signal exit_area
 signal enter_zone_terminal
 signal exit_zone_terminal
+signal click_on_terminal
 
 var type = 1
 var size = Vector2(10,8)
@@ -20,7 +21,11 @@ func _ready():
 	connect(\"exit_area\", get_node(\"..\"), \"on_exit_area\")
 	connect(\"enter_zone_terminal\", get_node(\"../..\"), \"on_enter_zone_terminal\")
 	connect(\"exit_zone_terminal\", get_node(\"../..\"), \"on_exit_zone_terminal\")
+	connect(\"click_on_terminal\", get_node(\"../..\"), \"on_click_on_terminal\")
 
+func unlock_door():
+	$layer_01.set_cellv(Vector2(4,1), -1)
+	$layer_01.set_cellv(Vector2(3,1), 17)
 
 func _on_Area2D2_area_entered_right(area):
 	call_deferred(\"emit_signal\", \"exit_area\", area, \"right\")
@@ -38,6 +43,12 @@ func _on_Terminal_area_entered(area):
 func _on_Terminal_area_exited(area):
 	if area.get_node(\"..\").is_in_group(\"Player\"):
 		emit_signal(\"exit_zone_terminal\", area)
+
+
+func _on_Terminal_action_input_event(viewport, event, shape_idx):
+	print(event)
+	if event is InputEventScreenTouch && event.pressed:
+		emit_signal(\"click_on_terminal\")
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -55,7 +66,12 @@ extents = Vector2( 62.6132, 23.3638 )
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.6497, 29.9907 )
+
+[node name="Node2D" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 
@@ -156,6 +172,21 @@ position = Vector2( 351.176, 160.052 )
 scale = Vector2( 4.9429, 4.9429 )
 shape = SubResource( 4 )
 
+[node name="Terminal_action" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terminal_action" index="0"]
+
+position = Vector2( 352.165, 95.6102 )
+shape = SubResource( 5 )
+
 [connection signal="area_entered" from="Area2D2" to="." method="_on_Area2D2_area_entered_right"]
 
 [connection signal="area_entered" from="Area2D4" to="." method="_on_Area2D4_area_entered_south"]
@@ -163,5 +194,7 @@ shape = SubResource( 4 )
 [connection signal="area_entered" from="Terminal" to="." method="_on_Terminal_area_entered"]
 
 [connection signal="area_exited" from="Terminal" to="." method="_on_Terminal_area_exited"]
+
+[connection signal="input_event" from="Terminal_action" to="." method="_on_Terminal_action_input_event"]
 
 

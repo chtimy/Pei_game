@@ -1,23 +1,21 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/navigation.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=5]
-[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Terminal.gd" type="Script" id=7]
-[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=9]
-[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=10]
-[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scripts/Terminal.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=8]
+[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 80
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFontData" id=2]
@@ -38,7 +36,7 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 size = 50
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="Main" type="Node2D" index="0"]
@@ -87,22 +85,6 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 
 ENEMI_TEXTURE = ExtResource( 5 )
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD" index="1"]
-
-position = Vector2( 1320.61, 734.363 )
-rotation = -3.14159
-scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 6 )
-pressed = null
-bitmask = null
-shape = null
-shape_centered = true
-shape_visible = true
-passby_press = false
-action = ""
-visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
-
 [node name="Password" type="CanvasLayer" parent="." index="3"]
 
 layer = 1
@@ -124,8 +106,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 7 )
-USED_FONT = ExtResource( 8 )
+script = ExtResource( 6 )
+USED_FONT = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="Password/Terminal" index="0"]
 
@@ -260,18 +242,14 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[node name="Menu" parent="." index="4" instance=ExtResource( 11 )]
-
-[node name="Enemis" type="Node2D" parent="." index="5"]
+[node name="Enemis" type="Node2D" parent="." index="4"]
 
 [connection signal="change_player_position" from="Navigation2D" to="." method="_on_Navigation2D_change_player_position"]
-
-[connection signal="pressed" from="HUD/TouchScreenButton" to="Player" method="_on_TouchScreenButton_pressed"]
 
 [connection signal="close_terminal" from="Password/Terminal" to="." method="_on_Control_close_terminal"]
 
@@ -281,8 +259,5 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="pressed" from="Password/Terminal/ExitButton" to="Password/Terminal" method="_on_ExitButton_pressed"]
 
-[connection signal="pressed" from="Menu/Control/Play" to="." method="_on_Play_pressed"]
-
 
 [editable path="HUD"]
-[editable path="Menu"]

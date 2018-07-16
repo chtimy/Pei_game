@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/svg/radar.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=3]
 
 [sub_resource type="Gradient" id=1]
 
@@ -23,7 +24,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -101,5 +107,39 @@ position = Vector2( 1248, 672 )
 frames = SubResource( 3 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="1"]
+
+position = Vector2( 1189.18, 607.622 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="." index="2"]
+
+position = Vector2( 178.014, 557.572 )
+scale = Vector2( 17.1389, 17.1389 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 4 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="pressed" from="TouchScreenButton2" to="." method="_on_TouchScreenButtonMove_pressed"]
+
+[connection signal="released" from="TouchScreenButton2" to="." method="_on_TouchScreenButtonMove_released"]
 
 

@@ -12,55 +12,30 @@ enum {NORMAL_MODE = 0, PASSWORD_ZONA = 1}
 var mode = NORMAL_MODE
 
 func _ready():
-#	var cells = $Navigation2D/TileMap.get_used_cells()
-#	print(cells)
-#	for cell in cells:
-#		if cell.get_name() == "door":
-#			door_tile = cell.get_
-	self.door_tile = Vector2(9, 0)
+	pass
 	
 func init_word():
 	var word = {"name": "house", "translation" : "maison"}
 	$Password/Terminal.set_password(word)
-	
-	var tile_map = $Navigation2D
-	var shape = CollisionShape2D.new()
-	var circle = CircleShape2D.new()
-	circle.set_radius(100)
-	shape.set_shape(circle)
-	
-
 	return word.translation
-	
-func init_enemis(var nb):
-	var ENEMI_SCENE = load("res://scenes/enemi.tscn")
-	for i in range(nb):
-		var enemi = ENEMI_SCENE.instance()
-		enemi.add_to_group("Enemis")
-		enemi.add_to_group("Movables")
-		var word = $Password/Terminal.word.translation
-		enemi.set_clue({"letter" : word[i], "position" : i})
-		get_node("Navigation2D").matrix[get_node("Navigation2D").current_map_id.x][get_node("Navigation2D").current_map_id.y].add_child(enemi)
-		enemi.set_position(Vector2(200 + i * 100, 300))
-		self.enemis.push_back(enemi)
 
-func update_path():
-	var p = $Navigation2D.get_simple_path(begin, end, true)
-	path = Array(p) # PoolVector2Array too complex to use, convert to regular array
-	path.invert()
-	set_process(true)
+#func update_path():
+#	var p = $Navigation2D.get_simple_path(begin, end, true)
+#	path = Array(p) # PoolVector2Array too complex to use, convert to regular array
+#	path.invert()
+#	set_process(true)
 	
 func on_enter_zone_terminal(var shape):
 	if shape.get_node("..").name == "Player":
+		print("change")
 		self.mode = PASSWORD_ZONA
 		
 func on_exit_zone_terminal(var shape):
 	if shape.get_node("..").name == "Player":
 		self.mode = NORMAL_MODE
 
-func enter_password(viewport, event, shape_idx):
-	print(event)
-	if event is InputEventScreenTouch && event.pressed && self.mode == PASSWORD_ZONA:
+func on_click_on_terminal():
+	if self.mode == PASSWORD_ZONA:
 		freeze()
 		$Password/Terminal.show()
 		
@@ -110,20 +85,9 @@ func _on_Player_enter_in_another_area(var shape):
 func _on_Control_close_terminal():
 	$Password/Terminal.hide()
 	unfreeze()
-	
-func clear_enemis():
-	var nb_enemis = self.enemis.size()
-	for i in range(nb_enemis):
-		delete_object(self.enemis[nb_enemis - i - 1])
-	for node in get_children():
-		if node.is_in_group("Bullets"):
-			call_deferred("remove_child", node)
-			node.call_deferred("queue_free")
 			
 func unlock_door():
-	$Navigation2D/TileMap.set_cellv(self.door_tile, -1)
-	$Navigation2D/TileMap.set_cellv(self.door_tile, 4)
-
+	$Navigation2D.get_children()[0].unlock_door()
 
 func _on_Control_valid_password():
 	$Password/Terminal.hide()
@@ -133,7 +97,8 @@ func _on_Control_valid_password():
 	
 func start_game():
 	var word = init_word()
-	init_enemis(1)
+	$Navigation2D.generate(word.length()/2, word.length()/2 + 1, word)
+#	$Navigation2D.init_enemis(word.length(), word)
 	$HUD.init(self.enemis)
 	$HUD/Control.show()
 	
@@ -141,14 +106,9 @@ func stop_game():
 #	$Player.call_deferred("queue_free")
 	$HUD/Control.hide()
 
-func _on_Play_pressed():
-	$Menu/Control.hide()
-	start_game()
-
 func _on_Player_player_died():
 	$Menu/Control.show()
 	stop_game()
-
 
 func _on_Navigation2D_change_player_position(var position):
 	$Player.position = position;

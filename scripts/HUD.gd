@@ -29,3 +29,9 @@ func _process(var delta):
 		var sprite = children[i]
 		sprite.set_position((enemis[i].position - player_position) * self.ratio)
 		sprite.modulate.a = 1 - (sprite.position.length() / self.size_radar.length() * 2)
+
+func _on_TouchScreenButtonMove_pressed():
+	
+
+func _on_TouchScreenButtonMove_released():
+	self.mode = STOP

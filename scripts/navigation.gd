@@ -16,7 +16,12 @@ var maps_north_left_exit = [load("res://scenes/maps/north_left_borders/exit/Patt
 var matrix = []
 var current_map_id
 
-func generate(var w, var h):
+func generate(var w, var h, var word):
+	var alea = []
+	for i in range(w):
+		for j in range(h):
+			alea.push_back(Vector2(i, j))
+	alea = Tools.randomize_array(alea)
 	matrix.resize(w)
 	for i in range(w):
 		matrix[i] = []
@@ -50,21 +55,23 @@ func generate(var w, var h):
 			else:
 				var n = randi() % maps_center.size()
 				matrix[i][j] = maps_center[n].instance()
+	self.current_map_id = Vector2(0,0)
+	# distribute the letters
+	for i in range(word.length()):
+		matrix[alea[i].x][alea[i].y].init(word[i], i)
+		print(alea[i])
+	
+	add_child(matrix[0][0])
 
 func _ready():
-	generate(3,3)
-	self.current_map_id = Vector2(0,0)
-	add_child(matrix[0][0])
+	pass
 
 func change_map(var T):
 	remove_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	self.current_map_id += T
-	print(self.current_map_id)
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
-	print("T : " ,T)
-	print(self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
-	print(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
+		
 
 func on_exit_area(var area, var direction):
 	print(area.get_groups(), " " , direction)
