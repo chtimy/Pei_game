@@ -2,7 +2,6 @@ extends Node2D
 
 signal shoot_toward
 signal touched_from_enemi
-signal drop_clue
 signal enemi_die
 
 export (PackedScene) var blaster_shoot_scene
@@ -20,10 +19,9 @@ func set_clue(var clue):
 	self.clue = clue
 
 func _ready():
-	self.connect("shoot_toward", get_node(".."), "shoot_bullet_from")
-	self.connect("touched_from_enemi", get_node(".."), "on_touched_enemi")
-	self.connect("drop_clue", get_node("../Password/Terminal"), "active_letter")
-	self.connect("enemi_die", get_node(".."), "delete_object")
+	self.connect("shoot_toward", get_node("../../.."), "shoot_bullet_from")
+	self.connect("touched_from_enemi", get_node("../../.."), "on_touched_enemi")
+	self.connect("enemi_die", get_node("../../.."), "delete_object")
 	randomize()
 	
 func _physics_process(delta):
@@ -49,34 +47,35 @@ func _on_view_area_exited(area):
 		$ShootLoopTimer.stop()
 
 func shoot_on():
-	var bullet = blaster_shoot_scene.instance()
-	bullet.add_to_group("Bullets")
-	bullet.direction = Vector2(1, 0)
-	bullet.target = "Player"
-	bullet.hit = 5
-	bullet.position = self.position
-	emit_signal("shoot_toward", bullet)
-	bullet = blaster_shoot_scene.instance()
-	bullet.add_to_group("Bullets")
-	bullet.direction = Vector2(-1, 0)
-	bullet.target = "Player"
-	bullet.hit = 5
-	bullet.position = self.position
-	emit_signal("shoot_toward", bullet)
-	bullet = blaster_shoot_scene.instance()
-	bullet.add_to_group("Bullets")
-	bullet.direction = Vector2(0, 1)
-	bullet.target = "Player"
-	bullet.hit = 5
-	bullet.position = self.position
-	emit_signal("shoot_toward", bullet)
-	bullet = blaster_shoot_scene.instance()
-	bullet.add_to_group("Bullets")
-	bullet.direction = Vector2(0, -1)
-	bullet.target = "Player"
-	bullet.hit = 5
-	bullet.position = self.position
-	emit_signal("shoot_toward", bullet)
+	pass
+#	var bullet = blaster_shoot_scene.instance()
+#	bullet.add_to_group("Bullets")
+#	bullet.direction = Vector2(1, 0)
+#	bullet.target = "Player"
+#	bullet.hit = 5
+#	bullet.position = self.position
+#	emit_signal("shoot_toward", bullet)
+#	bullet = blaster_shoot_scene.instance()
+#	bullet.add_to_group("Bullets")
+#	bullet.direction = Vector2(-1, 0)
+#	bullet.target = "Player"
+#	bullet.hit = 5
+#	bullet.position = self.position
+#	emit_signal("shoot_toward", bullet)
+#	bullet = blaster_shoot_scene.instance()
+#	bullet.add_to_group("Bullets")
+#	bullet.direction = Vector2(0, 1)
+#	bullet.target = "Player"
+#	bullet.hit = 5
+#	bullet.position = self.position
+#	emit_signal("shoot_toward", bullet)
+#	bullet = blaster_shoot_scene.instance()
+#	bullet.add_to_group("Bullets")
+#	bullet.direction = Vector2(0, -1)
+#	bullet.target = "Player"
+#	bullet.hit = 5
+#	bullet.position = self.position
+#	emit_signal("shoot_toward", bullet)
 		
 func _on_ShootLoopTimer_timeout():
 	shoot_on()
@@ -90,16 +89,16 @@ func _on_ShootLoopTimer_timeout():
 #	time += 1
 	
 func die():
-	emit_signal("drop_clue", self.clue)
 	emit_signal("enemi_die", self)
 
 func take_damages(var damages):
 	self.life -= damages
-	if self.life < 50:
+	print("take damages : ", self.life)
+	if self.life < 0:
 		die()
 	$ShootLoopTimer.stop()
 	$ShootLoopTimer.start()
-	emit_signal("touched_from_enemi", $shape)
+#	emit_signal("touched_from_enemi", $shape)
 
 func enter_in_another_area(var shape):
 	var dir = -(shape.get_node("..").position - self.position).normalized()

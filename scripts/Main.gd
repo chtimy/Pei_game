@@ -51,13 +51,13 @@ func unfreeze():
 		enemi.unfreeze()
 	$Player.unfreeze()
 
-func _input(event):
-	if (event is InputEventScreenTouch and event.pressed) || event is InputEventScreenDrag:
-		begin = $Player.position
-		# Mouse to local navigation coordinates
-		end = $Navigation2D.position + ($Player.position - get_viewport().get_size() * Vector2(0.5, 0.5)) + event.position
-		$Player.destination = end
-		$Player.set_move((end - begin).normalized())
+#func _input(event):
+#	if (event is InputEventScreenTouch and event.pressed) || event is InputEventScreenDrag:
+#		begin = $Player.position
+#		# Mouse to local navigation coordinates
+#		end = $Navigation2D.position + ($Player.position - get_viewport().get_size() * Vector2(0.5, 0.5)) + event.position
+#		$Player.destination = end
+#		$Player.set_move((end - begin).normalized(), 1.0)
 		
 #		update_path()
 
@@ -66,6 +66,7 @@ func shoot_bullet_from(var bullet):
 	bullet.set_process(true)
 	
 func delete_object(var object):
+	print("delete object")
 	call_deferred("remove_child", object)
 	if object.is_in_group("Enemis"):
 		self.enemis.remove(self.enemis.find(object))
@@ -94,6 +95,9 @@ func _on_Control_valid_password():
 	clear_enemis()
 	unfreeze()
 	unlock_door()
+	
+func clear_enemis():
+	pass
 	
 func start_game():
 	var word = init_word()

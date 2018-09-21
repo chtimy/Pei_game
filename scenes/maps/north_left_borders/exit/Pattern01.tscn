@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/TileSets/kitchen.res" type="TileSet" id=1]
 
@@ -71,7 +71,12 @@ radius = 10.0
 custom_solver_bias = 0.0
 extents = Vector2( 30.6497, 29.9907 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 62.7101, 31.6527 )
+
+[node name="Node2D" type="Node2D"]
 
 script = SubResource( 1 )
 
@@ -186,6 +191,21 @@ audio_bus_name = "Master"
 
 position = Vector2( 352.165, 95.6102 )
 shape = SubResource( 5 )
+
+[node name="door" type="Area2D" parent="." index="6"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door" index="0"]
+
+position = Vector2( 256.187, 56.4502 )
+shape = SubResource( 6 )
 
 [connection signal="area_entered" from="Area2D2" to="." method="_on_Area2D2_area_entered_right"]
 

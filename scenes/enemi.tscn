@@ -55,7 +55,7 @@ height = 31.587
 custom_solver_bias = 0.0
 radius = 70.0
 
-[node name="enemi" type="KinematicBody2D" index="0" groups=[
+[node name="enemi" type="KinematicBody2D" groups=[
 "Movables",
 "Enemis",
 ]]
@@ -72,7 +72,6 @@ blaster_shoot_scene = ExtResource( 2 )
 
 frames = SubResource( 1 )
 animation = "down"
-frame = 2
 playing = true
 
 [node name="view" type="Area2D" parent="." index="1"]

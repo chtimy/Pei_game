@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/svg/radar.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+
+flags = 4
+gradient = SubResource( 1 )
+width = 100
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 175.0
+
+[node name="HUD" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 1 )
+ENEMI_TEXTURE = null
+
+[node name="Control" type="Control" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="LifeBar" type="TextureProgress" parent="Control" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 1102.0
+margin_right = 1272.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = true
+texture_under = null
+texture_over = null
+texture_progress = SubResource( 2 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = true
+_sections_unfolded = [ "Radial Fill", "Textures" ]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+
+[node name="radar" type="AnimatedSprite" parent="Control/ViewportContainer" index="0"]
+
+position = Vector2( 1248, 672 )
+frames = SubResource( 3 )
+animation = "default"
+_sections_unfolded = [ "Transform" ]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="1"]
+
+position = Vector2( 1189.18, 607.622 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="." index="2"]
+
+position = Vector2( 211.418, 549.221 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 4 )
+shape_centered = false
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="pressed" from="TouchScreenButton2" to="." method="_on_TouchScreenButtonMove_pressed"]
+
+[connection signal="released" from="TouchScreenButton2" to="." method="_on_TouchScreenButtonMove_released"]
+
+

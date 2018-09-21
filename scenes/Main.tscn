@@ -39,7 +39,7 @@ use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -247,9 +247,13 @@ texture_pressed = ExtResource( 9 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[node name="Enemis" type="Node2D" parent="." index="4"]
-
 [connection signal="change_player_position" from="Navigation2D" to="." method="_on_Navigation2D_change_player_position"]
+
+[connection signal="attack_button" from="HUD" to="Player" method="_on_HUD_attack_button"]
+
+[connection signal="moving_stick" from="HUD" to="Player" method="set_move"]
+
+[connection signal="stop_moving_stick" from="HUD" to="Player" method="stop"]
 
 [connection signal="close_terminal" from="Password/Terminal" to="." method="_on_Control_close_terminal"]
 

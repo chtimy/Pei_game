@@ -20,24 +20,34 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_collide(velocity*delta)
-	self.direction = velocity.normalized()
-	if direction.angle_to(Vector2(1,0)) <= PI/2.0:
-		direction = Vector2(1,0)
-	if direction.angle_to(Vector2(-1,0)) <= PI/2.0:
-		direction = Vector2(-1,0)
-	if direction.angle_to(Vector2(0,1)) <= PI/2.0:
-		direction = Vector2(0,1)
-	if direction.angle_to(Vector2(0,-1)) <= PI/2.0:
-		direction = Vector2(0,-1)
-	if velocity == Vector2(0,0):
-		$AnimatedSprite.set_animation("front")
+	
+	if(velocity != Vector2(0,0)):
+		self.direction = velocity.normalized()
+		if direction.angle_to(Vector2(1,0)) <= PI/4.0 && direction.angle_to(Vector2(1,0)) >= -PI/4.0:
+			direction = Vector2(1,0)
+		if direction.angle_to(Vector2(-1,0)) <= PI/4.0 && direction.angle_to(Vector2(-1,0)) >= -PI/4.0:
+			direction = Vector2(-1,0)
+		if direction.angle_to(Vector2(0,1)) <= PI/4.0 && direction.angle_to(Vector2(0,1)) >= -PI/4.0:
+			direction = Vector2(0,1)
+		if direction.angle_to(Vector2(0,-1)) <= PI/4.0 && direction.angle_to(Vector2(0,-1)) >= -PI/4.0:
+			direction = Vector2(0,-1)
+
 	if self.position.distance_to(self.destination) < 5:
 		velocity = Vector2(0,0)
 		
 func stop():
 	velocity = Vector2(0,0)
+	if self.direction == Vector2(1,0):
+		$AnimatedSprite.set_animation("wait_right")
+	elif self.direction == Vector2(0,-1):
+		$AnimatedSprite.set_animation("wait_back")
+	elif self.direction == Vector2(0,1):
+		$AnimatedSprite.set_animation("wait_front")
+	elif self.direction == Vector2(-1,0):
+		$AnimatedSprite.set_animation("wait_left")
 	
-func set_move(var move):
+func set_move(var move, var factor_speed):
+	factor_speed = clamp(factor_speed, 0.0, 1.0)
 	var vec = move.normalized()
 	if vec.angle_to(Vector2(1,0)) < PI/4.0 && vec.angle_to(Vector2(1,0)) > -PI/4.0:
 		$AnimatedSprite.set_animation("walk_right")
@@ -47,7 +57,7 @@ func set_move(var move):
 		$AnimatedSprite.set_animation("walk_down")
 	elif vec.angle_to(Vector2(-1,0)) < PI/4.0 && vec.angle_to(Vector2(-1,0)) > -PI/4.0:
 		$AnimatedSprite.set_animation("walk_left")
-	velocity = move * SPEED
+	velocity = move * SPEED * factor_speed
 
 #	var screenSize = get_viewport().get_size()
 #	var speedVector = Vector2()
@@ -91,24 +101,43 @@ func unfreeze():
 	set_physics_process(true)
 	
 func attack():
+	print(self.direction)
 	if self.direction == Vector2(1,0):
+		$AnimatedSprite.set_animation("attack_right")
 		for area in $attack_right.get_overlapping_areas():
+			print(area.get_node("..").get_groups())
 			if area.get_node("..").is_in_group("Enemis"):
 				area.get_node("..").take_damages(self.hit)
 	if self.direction == Vector2(-1,0):
+		$AnimatedSprite.set_animation("attack_left")
 		for area in $attack_left.get_overlapping_areas():
+			print(area.get_node("..").get_groups())
 			if area.get_node("..").is_in_group("Enemis"):
 				area.get_node("..").take_damages(self.hit)
 	if self.direction == Vector2(0,1):
-		for area in $attack_up.get_overlapping_areas():
+		$AnimatedSprite.set_animation("attack_front")
+		for area in $attack_down.get_overlapping_areas():
+			print(area.get_node("..").get_groups())
 			if area.get_node("..").is_in_group("Enemis"):
 				area.get_node("..").take_damages(self.hit)
 	if self.direction == Vector2(0,-1):
-		for area in $attack_down.get_overlapping_areas():
+		$AnimatedSprite.set_animation("attack_back")
+		for area in $attack_up.get_overlapping_areas():
+			print(area.get_node("..").get_groups())
 			if area.get_node("..").is_in_group("Enemis"):
 				area.get_node("..").take_damages(self.hit)
-		
 
 
-func _on_TouchScreenButton_pressed():
+func _on_HUD_attack_button():
 	attack()
+
+func _on_AnimatedSprite_animation_finished():
+	var name_animation = $AnimatedSprite.animation
+	var regex = RegEx.new()
+	regex.compile("_[a-z]*")
+	var result1 = regex.search(name_animation)
+	regex.compile("[a-z]*_")
+	var result2 = regex.search(name_animation)
+	if result1 && result2:
+		if result2.get_string() == "attack_":
+			$AnimatedSprite.play("wait"+result1.get_string())

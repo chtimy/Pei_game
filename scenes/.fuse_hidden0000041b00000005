@@ -1,0 +1,263 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://scripts/navigation.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=5]
+[ext_resource path="res://scripts/Terminal.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=8]
+[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFontData" id=2]
+
+hinting = 2
+font_path = "res://assets/fonts/PixelSplitter-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 2 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="Main" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Navigation2D" type="Navigation2D" parent="." index="0"]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 352, 192 )
+SPEED = 500
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="3"]
+
+scale = Vector2( 21, 12 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Smoothing", "Transform", "Visibility", "Z Index" ]
+
+[node name="HUD" parent="." index="2" instance=ExtResource( 4 )]
+
+ENEMI_TEXTURE = ExtResource( 5 )
+
+[node name="Password" type="CanvasLayer" parent="." index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Terminal" type="Control" parent="Password" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 6 )
+USED_FONT = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="Password/Terminal" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.128601, 0.382813, 0, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Password/Terminal" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 480.0
+margin_right = 1334.0
+margin_bottom = 576.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="Name" type="Label" parent="Password/Terminal" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 256.0
+margin_right = 1334.0
+margin_bottom = 416.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "HOUSE"
+align = 1
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "custom_colors", "custom_fonts" ]
+
+[node name="Password" type="Label" parent="Password/Terminal" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_right = 1334.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Password"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Hint", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="AcceptPassword" type="Button" parent="Password/Terminal" index="4"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -379.0
+margin_top = -142.0
+margin_right = 421.0
+margin_bottom = -46.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Enter the password"
+flat = true
+align = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Textures", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="ExitButton" type="TextureButton" parent="Password/Terminal" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1184.0
+margin_top = 64.0
+margin_right = 1280.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+expand = true
+_sections_unfolded = [ "Textures" ]
+
+[node name="Enemis" type="Node2D" parent="." index="4"]
+
+[connection signal="change_player_position" from="Navigation2D" to="." method="_on_Navigation2D_change_player_position"]
+
+[connection signal="close_terminal" from="Password/Terminal" to="." method="_on_Control_close_terminal"]
+
+[connection signal="valid_password" from="Password/Terminal" to="." method="_on_Control_valid_password"]
+
+[connection signal="button_up" from="Password/Terminal/AcceptPassword" to="Password/Terminal" method="_on_AcceptPassword_button_up"]
+
+[connection signal="pressed" from="Password/Terminal/ExitButton" to="Password/Terminal" method="_on_ExitButton_pressed"]
+
+
+[editable path="HUD"]
