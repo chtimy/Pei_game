@@ -31,10 +31,15 @@ vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 ) ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31.9742, 32 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
@@ -45,25 +50,13 @@ extents = Vector2( 32, 32 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
-
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
-[node name="door" type="Sprite" parent="." index="0"]
+[node name="door" type="StaticBody2D" parent="." index="0"]
 
 position = Vector2( 64, 32 )
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Area2D" type="StaticBody2D" parent="door" index="0"]
-
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -72,7 +65,14 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="door" index="0"]
+
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door" index="1"]
 
 shape = SubResource( 1 )
 
@@ -166,14 +166,9 @@ position = Vector2( 96, 96 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="wall02" type="Sprite" parent="." index="8"]
+[node name="wall02" type="StaticBody2D" parent="." index="8"]
 
 position = Vector2( 96, 224 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
-
-[node name="Area2D" type="StaticBody2D" parent="wall02" index="0"]
-
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -183,9 +178,14 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall02/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="wall02" index="0"]
 
-shape = SubResource( 4 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall02" index="1"]
+
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="wall03" type="Sprite" parent="." index="9"]
@@ -194,14 +194,9 @@ position = Vector2( 96, 288 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="wall04" type="Sprite" parent="." index="10"]
+[node name="wall04" type="StaticBody2D" parent="." index="10"]
 
 position = Vector2( 160, 96 )
-texture = ExtResource( 11 )
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Area2D" type="StaticBody2D" parent="wall04" index="0"]
-
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -211,18 +206,18 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall04/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="wall04" index="0"]
 
-shape = SubResource( 5 )
-
-[node name="wall05" type="Sprite" parent="." index="11"]
-
-position = Vector2( 96, 160 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="Area2D" type="StaticBody2D" parent="wall05" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall04" index="1"]
 
+shape = SubResource( 4 )
+
+[node name="wall05" type="StaticBody2D" parent="." index="11"]
+
+position = Vector2( 96, 160 )
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -232,18 +227,46 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall05/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="wall05" index="0"]
 
-shape = SubResource( 5 )
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="wall06" type="Sprite" parent="." index="12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall05" index="1"]
+
+shape = SubResource( 4 )
+
+[node name="wall06" type="StaticBody2D" parent="." index="12"]
 
 position = Vector2( 160, 160 )
+input_pickable = true
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sprite" type="Sprite" parent="wall06" index="0"]
+
 texture = ExtResource( 13 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="Area2D" type="StaticBody2D" parent="wall06" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall06" index="1"]
 
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="wall07" type="StaticBody2D" parent="." index="13"]
+
+position = Vector2( 160, 160 )
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -256,50 +279,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall06/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="wall07" index="0"]
 
-shape = SubResource( 6 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="wall07" type="Sprite" parent="." index="13"]
-
-position = Vector2( 160, 160 )
 texture = ExtResource( 14 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="Area2D" type="StaticBody2D" parent="wall07" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall07" index="1"]
 
-input_pickable = true
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall07/Area2D" index="0"]
-
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall08" type="Sprite" parent="." index="14"]
+[node name="wall08" type="StaticBody2D" parent="." index="14"]
 
 position = Vector2( 160, 224 )
-texture = ExtResource( 15 )
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Area2D" type="StaticBody2D" parent="wall08" index="0"]
-
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -312,9 +307,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall08/Area2D" index="0"]
+[node name="sprite" type="Sprite" parent="wall08" index="0"]
 
-shape = SubResource( 6 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall08" index="1"]
+
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -327,16 +327,9 @@ texture = ExtResource( 16 )
 centered = false
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="password" type="Sprite" parent="." index="16"]
+[node name="password" type="StaticBody2D" parent="." index="16"]
 
 position = Vector2( 160, 32 )
-texture = ExtResource( 17 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="password" index="0"]
-
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -345,9 +338,16 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="password/StaticBody2D" index="0"]
+[node name="sprite" type="Sprite" parent="password" index="0"]
 
-shape = SubResource( 7 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="password" index="1"]
+
+shape = SubResource( 6 )
 
 [node name="opened_door" type="Sprite" parent="." index="17"]
 

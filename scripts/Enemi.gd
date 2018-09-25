@@ -6,8 +6,7 @@ signal enemi_died_sig
 
 export (PackedScene) var blaster_shoot_scene
 
-var last_position
-var target
+var target = {"target": null, "position" : Vector2(0,0), "is_visible" : false}
 var direction = Vector2()
 var time = 0
 var life = 100
@@ -23,8 +22,10 @@ func _ready():
 	self.connect("touched_from_enemi", get_tree().root.get_node("Game"), "on_touched_enemi")
 	self.connect("enemi_died_sig", get_node(".."), "enemi_killed")
 	randomize()
+	$ShootLoopTimer.one_shot = true
 	
-func _physics_process(delta):
+	
+func _process(delta):
 	move_and_collide(velocity * delta)
 	time += 1
 	if time > 100:
@@ -37,17 +38,29 @@ func set_move(var move):
 func _on_view_area_entered(area):
 	var selectable = area.get_node("..")
 	if selectable.is_in_group("Player"):
-		self.target = selectable
+		self.target.object = selectable
+		self.target.last_position = target.position
+		self.target.is_visible = true
 		$ShootLoopTimer.start()
+		set_process(false)
 
 func _on_view_area_exited(area):
 	var selectable = area.get_node("..")
 	if selectable.is_in_group("Player"):
-		target = null
-		$ShootLoopTimer.stop()
+		self.target.is_visible = false
+		set_process(true)
 
-func shoot_on():
-	pass
+func attack_on():
+	var vec = (self.target.last_position - self.position).normalized()
+	var angle = vec.angle_to(Vector2(1,0))
+	if angle > 0 && angle <= PI/2.0:
+		print("quart top right")
+	elif angle > PI/2.0 && angle <= PI:
+		print("quart top left")
+	elif angle < 0 && angle >= -PI/2.0:
+		print("quart down right")
+	elif angle < -PI/2.0 && angle > -PI:
+		print("quart down left")
 #	var bullet = blaster_shoot_scene.instance()
 #	bullet.add_to_group("Bullets")
 #	bullet.direction = Vector2(1, 0)
@@ -78,15 +91,10 @@ func shoot_on():
 #	emit_signal("shoot_toward", bullet)
 		
 func _on_ShootLoopTimer_timeout():
-	shoot_on()
-	
-#func _process(delta):
-#	self.last_position = self.position
-#	self.position += direction
-#	if time % 200 == 0:
-#		direction = Vector2(rand_range(-1,1), rand_range(-1,1))
-#		time = 0
-#	time += 1
+	self.target.last_position = self.target.object.position
+	attack_on()
+	if self.target.is_visible:
+		$ShootLoopTimer.start()
 	
 func die():
 	emit_signal("enemi_died_sig", self)
@@ -108,11 +116,9 @@ func enter_in_another_area(var shape):
 func freeze():
 	set_process(false)
 	set_process_input(false)
-	set_physics_process(false)
 	set_block_signals(true)
 	
 func unfreeze():
 	set_process(true)
 	set_process_input(true)
-	set_physics_process(true)
 	set_block_signals(false)

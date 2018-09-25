@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 signal delete_object_from_Player
 signal player_change_life
@@ -18,8 +18,9 @@ func _ready():
 	self.velocity = Vector2(0,0)
 	self.destination = self.position
 
-func _physics_process(delta):
-	move_and_collide(velocity*delta)
+func _process(delta):
+#	move_and_collide(velocity*delta)
+	move_and_slide(velocity)
 	
 	if(velocity != Vector2(0,0)):
 		self.direction = velocity.normalized()
@@ -138,3 +139,8 @@ func _on_AnimatedSprite_animation_finished():
 	if result1 && result2:
 		if result2.get_string() == "attack_":
 			$AnimatedSprite.play("wait"+result1.get_string())
+
+
+func collision(area):
+	print(area)
+	print("collision")
