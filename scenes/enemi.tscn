@@ -14,12 +14,12 @@
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "left",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "right",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -56,8 +56,8 @@ custom_solver_bias = 0.0
 radius = 70.0
 
 [node name="enemi" type="KinematicBody2D" groups=[
-"Movables",
 "Enemis",
+"Movables",
 ]]
 
 input_pickable = false

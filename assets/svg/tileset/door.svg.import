@@ -7,7 +7,10 @@ path="res://.import/door.svg-c4e7fff7cbe63d429b65f04e02489b0e.stex"
 [deps]
 
 source_file="res://assets/svg/tileset/door.svg"
+source_md5="fe5da9a62a3f6f1253dab2d4659e3b78"
+
 dest_files=[ "res://.import/door.svg-c4e7fff7cbe63d429b65f04e02489b0e.stex" ]
+dest_md5="9b22b9a1c815b643501614df1296b732"
 
 [params]
 

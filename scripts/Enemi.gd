@@ -2,7 +2,7 @@ extends Node2D
 
 signal shoot_toward
 signal touched_from_enemi
-signal enemi_die
+signal enemi_died_sig
 
 export (PackedScene) var blaster_shoot_scene
 
@@ -19,9 +19,9 @@ func set_clue(var clue):
 	self.clue = clue
 
 func _ready():
-	self.connect("shoot_toward", get_node("../../.."), "shoot_bullet_from")
-	self.connect("touched_from_enemi", get_node("../../.."), "on_touched_enemi")
-	self.connect("enemi_die", get_node("../../.."), "delete_object")
+	self.connect("shoot_toward", get_tree().root.get_node("Game"), "shoot_bullet_from")
+	self.connect("touched_from_enemi", get_tree().root.get_node("Game"), "on_touched_enemi")
+	self.connect("enemi_died_sig", get_node(".."), "enemi_killed")
 	randomize()
 	
 func _physics_process(delta):
@@ -89,7 +89,7 @@ func _on_ShootLoopTimer_timeout():
 #	time += 1
 	
 func die():
-	emit_signal("enemi_die", self)
+	emit_signal("enemi_died_sig", self)
 
 func take_damages(var damages):
 	self.life -= damages

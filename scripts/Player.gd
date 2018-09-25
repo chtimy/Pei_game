@@ -128,9 +128,6 @@ func attack():
 				area.get_node("..").take_damages(self.hit)
 
 
-func _on_HUD_attack_button():
-	attack()
-
 func _on_AnimatedSprite_animation_finished():
 	var name_animation = $AnimatedSprite.animation
 	var regex = RegEx.new()

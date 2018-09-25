@@ -1,6 +1,11 @@
-extends Navigation2D
+extends Node2D
 
 signal change_player_position
+signal show_terminal_sig
+signal stop_level_sig
+
+enum {NORMAL_MODE = 0, PASSWORD_ZONA = 1}
+var mode = NORMAL_MODE
 
 var cell_size = Vector2(64,64)
 var maps_center = [load("res://scenes/maps/center/Pattern01.tscn"), load("res://scenes/maps/center/Pattern02.tscn")]
@@ -63,15 +68,14 @@ func generate(var w, var h, var word):
 	
 	add_child(matrix[0][0])
 
-func _ready():
-	pass
-
 func change_map(var T):
 	remove_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	self.current_map_id += T
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
-		
+
+func unlock_door():
+	get_children()[0].unlock_door()
 
 func on_exit_area(var area, var direction):
 	print(area.get_groups(), " " , direction)

@@ -7,7 +7,10 @@ path="res://.import/ground.png-9a55a06b8e6eff4c398c8a7c9f7d072b.stex"
 [deps]
 
 source_file="res://assets/svg/tileset/ground.png"
+source_md5="bcdfcc86be18a5b7a85befd99d373ba5"
+
 dest_files=[ "res://.import/ground.png-9a55a06b8e6eff4c398c8a7c9f7d072b.stex" ]
+dest_md5="ac38d8c67f1a7efd33d660953a447994"
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://scripts/navigation.gd" type="Script" id=2]
+[ext_resource path="res://scenes/process.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=5]
@@ -20,7 +20,6 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFontData" id=2]
 
-hinting = 2
 font_path = "res://assets/fonts/PixelSplitter-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=3]
@@ -44,17 +43,18 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Navigation2D" type="Navigation2D" parent="." index="0"]
+[node name="Game" type="Node2D" parent="." index="0"]
 
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Player" parent="Game" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 352, 192 )
+position = Vector2( 373.318, 236.105 )
+z_index = 1
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 SPEED = 500
 
-[node name="Camera2D" type="Camera2D" parent="Player" index="3"]
+[node name="Camera2D" type="Camera2D" parent="Game/Player" index="3"]
 
 scale = Vector2( 21, 12 )
 anchor_mode = 1
@@ -81,11 +81,11 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
-[node name="HUD" parent="." index="2" instance=ExtResource( 4 )]
+[node name="HUD" parent="." index="1" instance=ExtResource( 4 )]
 
 ENEMI_TEXTURE = ExtResource( 5 )
 
-[node name="Password" type="CanvasLayer" parent="." index="3"]
+[node name="Password" type="CanvasLayer" parent="." index="2"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -247,13 +247,11 @@ texture_pressed = ExtResource( 9 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[connection signal="change_player_position" from="Navigation2D" to="." method="_on_Navigation2D_change_player_position"]
+[connection signal="attack_button" from="HUD" to="." method="_on_HUD_attack_button"]
 
-[connection signal="attack_button" from="HUD" to="Player" method="_on_HUD_attack_button"]
+[connection signal="moving_stick" from="HUD" to="Game/Player" method="set_move"]
 
-[connection signal="moving_stick" from="HUD" to="Player" method="set_move"]
-
-[connection signal="stop_moving_stick" from="HUD" to="Player" method="stop"]
+[connection signal="stop_moving_stick" from="HUD" to="Game/Player" method="stop"]
 
 [connection signal="close_terminal" from="Password/Terminal" to="." method="_on_Control_close_terminal"]
 

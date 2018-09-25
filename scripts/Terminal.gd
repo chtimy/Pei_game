@@ -39,7 +39,6 @@ func active_letter(var clue):
 	line_edit.add_color_override("font_color", Color(1, 1, 0))
 	line_edit.editable = false
 
-
 func wrong_password():
 	$AcceptPassword.add_color_override("font_color", Color(1,0,0))
 	$AcceptPassword.add_color_override("font_color_pressed", Color(1,0,0))
@@ -53,9 +52,13 @@ func _on_ExitButton_pressed():
 
 func on_text_changed(var s):
 	if s.length():
+		var index = -1
 		var children = $HBoxContainer.get_children()
 		for i in children.size():
 			if $HBoxContainer.get_focus_owner() == children[i]:
-				if i + 1 < children.size():
-					children[i+1].grab_focus()
-					break
+				index = i + 1
+		if index > -1:
+			while index < children.size() && !children[index].editable:
+				index+=1
+			if index < children.size():
+				children[index].grab_focus()
