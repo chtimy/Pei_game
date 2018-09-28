@@ -8,22 +8,6 @@ var ratio
 
 var touching_moving_stick = false
 
-func _ready():
-	pass
-
-func init():
-#	self.size_radar = $Control/ViewportContainer.get_size()
-#	self.ratio = self.size_radar.length() / get_node("../Game").cell_size.length()
-#	var player_position = get_node("../Game/Player").get_position()
-#	var central_position = self.size_radar / Vector2(2,2)
-#	for enemi in enemis:
-#		var sprite = Sprite.new()
-#		sprite.set_texture(ENEMI_TEXTURE)
-#		var vec = enemi.position - player_position
-#		sprite.set_position(central_position + vec * self.ratio)
-#		$Control/ViewportContainer/radar.add_child(sprite)
-	set_process(true)
-
 func _process(var delta):
 #	var enemis = get_node("..").enemis
 #	var player_position = get_node("../Game/Player").get_position()
@@ -37,6 +21,8 @@ func _process(var delta):
 		emit_signal("moving_stick", 
 				(get_viewport().get_mouse_position() - $TouchScreenButton2.position).normalized(),
 				get_viewport().get_mouse_position().distance_to($TouchScreenButton2.position) / float($TouchScreenButton2.get_shape().radius))
+			
+	
 
 func _on_TouchScreenButtonMove_pressed():
 	touching_moving_stick = true

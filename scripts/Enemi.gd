@@ -1,16 +1,14 @@
-extends Node2D
+extends "res://scripts/movable.gd"
 
 signal shoot_toward
 signal touched_from_enemi
 signal enemi_died_sig
 
 export (PackedScene) var blaster_shoot_scene
-
+export (int) var range_attack
 var target = {"target": null, "position" : Vector2(0,0), "is_visible" : false}
 var direction = Vector2()
 var time = 0
-var life = 100
-var SPEED = 50
 
 var velocity = Vector2(0,0)
 
@@ -18,9 +16,9 @@ func set_clue(var clue):
 	self.clue = clue
 
 func _ready():
-	self.connect("shoot_toward", get_tree().root.get_node("Game"), "shoot_bullet_from")
 	self.connect("touched_from_enemi", get_tree().root.get_node("Game"), "on_touched_enemi")
 	self.connect("enemi_died_sig", get_node(".."), "enemi_killed")
+	
 	randomize()
 	$ShootLoopTimer.one_shot = true
 	
@@ -39,7 +37,7 @@ func _on_view_area_entered(area):
 	var selectable = area.get_node("..")
 	if selectable.is_in_group("Player"):
 		self.target.object = selectable
-		self.target.last_position = target.position
+		self.target.position = selectable.position + selectable.get_node("Collision").position + selectable.get_node("Collision").shape.extents/2.0
 		self.target.is_visible = true
 		$ShootLoopTimer.start()
 		set_process(false)
@@ -51,44 +49,17 @@ func _on_view_area_exited(area):
 		set_process(true)
 
 func attack_on():
-	var vec = (self.target.last_position - self.position).normalized()
-	var angle = vec.angle_to(Vector2(1,0))
-	if angle > 0 && angle <= PI/2.0:
-		print("quart top right")
-	elif angle > PI/2.0 && angle <= PI:
-		print("quart top left")
-	elif angle < 0 && angle >= -PI/2.0:
-		print("quart down right")
-	elif angle < -PI/2.0 && angle > -PI:
-		print("quart down left")
-#	var bullet = blaster_shoot_scene.instance()
-#	bullet.add_to_group("Bullets")
-#	bullet.direction = Vector2(1, 0)
-#	bullet.target = "Player"
-#	bullet.hit = 5
-#	bullet.position = self.position
-#	emit_signal("shoot_toward", bullet)
-#	bullet = blaster_shoot_scene.instance()
-#	bullet.add_to_group("Bullets")
-#	bullet.direction = Vector2(-1, 0)
-#	bullet.target = "Player"
-#	bullet.hit = 5
-#	bullet.position = self.position
-#	emit_signal("shoot_toward", bullet)
-#	bullet = blaster_shoot_scene.instance()
-#	bullet.add_to_group("Bullets")
-#	bullet.direction = Vector2(0, 1)
-#	bullet.target = "Player"
-#	bullet.hit = 5
-#	bullet.position = self.position
-#	emit_signal("shoot_toward", bullet)
-#	bullet = blaster_shoot_scene.instance()
-#	bullet.add_to_group("Bullets")
-#	bullet.direction = Vector2(0, -1)
-#	bullet.target = "Player"
-#	bullet.hit = 5
-#	bullet.position = self.position
-#	emit_signal("shoot_toward", bullet)
+	var old_vec = (self.target.position - self.position).normalized()
+	var direction = Tools.get_direction(old_vec)
+#	play_animation(direction, "attack")
+	var new_vec = (self.target.object.position - self.position).normalized()
+	var direction2 = Tools.get_direction(new_vec)
+	if(direction == direction2):
+		self.target.object.take_damages(self.hit)
+	
+	var object = self.target.object
+	self.target.position = object.position + object.get_node("Collision").position + object.get_node("Collision").shape.extents/2.0
+
 		
 func _on_ShootLoopTimer_timeout():
 	self.target.last_position = self.target.object.position
@@ -99,14 +70,18 @@ func _on_ShootLoopTimer_timeout():
 func die():
 	emit_signal("enemi_died_sig", self)
 
-func take_damages(var damages):
-	self.life -= damages
-	print("take damages : ", self.life)
-	if self.life < 0:
-		die()
+func take_damages(var value):
+	#animation touché
+	decrease_life(value)
 	$ShootLoopTimer.stop()
 	$ShootLoopTimer.start()
 #	emit_signal("touched_from_enemi", $shape)
+
+func decrease_life(var value):
+	self.life -= value
+	if self.life <= 0:
+		self.life = 0
+		die()
 
 func enter_in_another_area(var shape):
 	var dir = -(shape.get_node("..").position - self.position).normalized()

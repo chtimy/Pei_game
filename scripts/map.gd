@@ -29,7 +29,7 @@ func _ready():
 	#top signals
 	connect("stop_level_sig", get_node("../.."), "stop_level")
 	connect("show_terminal_sig", get_node("../.."), "show_terminal")
-	connect("change_map_sig", get_node(".."), "change_map")
+	connect("change_map_sig", get_node(".."), "on_change_map")
 	connect("find_letter_sig", get_node("../.."), "find_letter")
 	#down signals
 	for child in get_children():
@@ -49,16 +49,18 @@ func _ready():
 		elif child.get_name() == "Door":
 			child.connect("area_entered", self, "enter_area", ["door"])
 	
-func init(var letter, var letter_position):
+func init_chest(var letter, var letter_position):
+	init_clue(letter, letter_position)
+	
+func init():
 	var nb_enemis = randi() % 3
 	for i in range(nb_enemis):
 		var enemi = ENEMI_SCENE.instance()
 		enemi.add_to_group("Enemis")
 		enemi.add_to_group("Movables")
 		add_child(enemi)
-		enemi.set_position(Vector2(200 + i * 100, 300))
+		enemi.set_position($Position_spawners.get_children()[i].position)
 		self.enemis.push_back(enemi)
-	init_clue(letter, letter_position)
 		
 func init_clue(var letter, var letter_position):
 	self.letter = letter

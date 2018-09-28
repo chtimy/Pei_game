@@ -9,7 +9,7 @@ script/source = "extends \"res://scripts/map.gd\"
 
 func _init():
 	self.size = Vector2(8, 10)
-	self.exit = {Vector2(1,0) : Vector2(1,4.5),
+	self.exit = {Vector2(1,0) : Vector2(1.5,4.5),
 				Vector2(0,-1) : Vector2(4.5,8),
 				Vector2(-1,0) : Vector2(8,4.5),
 				Vector2(0,1) : Vector2(4.5,2)}
@@ -88,5 +88,23 @@ _sections_unfolded = [ "Cell", "Collision" ]
 
 visible = false
 position = Vector2( 156.705, 330.702 )
+
+[node name="Position_spawners" type="Node2D" parent="." index="4"]
+
+[node name="Position2D" type="Position2D" parent="Position_spawners" index="0"]
+
+position = Vector2( 147.519, 217.766 )
+
+[node name="Position2D2" type="Position2D" parent="Position_spawners" index="1"]
+
+position = Vector2( 471.196, 199.934 )
+
+[node name="Position2D3" type="Position2D" parent="Position_spawners" index="2"]
+
+position = Vector2( 153.463, 520.369 )
+
+[node name="Position2D4" type="Position2D" parent="Position_spawners" index="3"]
+
+position = Vector2( 492.27, 520.369 )
 
 

@@ -61,17 +61,28 @@ func generate(var w, var h, var word):
 				matrix[i][j].open_exit(RIGHT)
 				matrix[i][j].open_exit(UP)
 				matrix[i][j].open_exit(DOWN)
-				
+			matrix[i][j].init()
 	self.current_map_id = Vector2(0,0)
 	# distribute the letters
 	for i in range(word.length()):
-		matrix[alea[i].x][alea[i].y].init(word[i], i)
-		print(alea[i])
+		matrix[alea[i].x][alea[i].y].init_chest(word[i], i)
 	
 	add_child(matrix[0][0])
 
+func on_change_map(var T):
+	call_deferred("change_map", T)
+
 func change_map(var T):
+	print("change map : ", T)
 	remove_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
+	print(current_map_id)
 	self.current_map_id += T
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
+	print(cell_size)
+	print(self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
 	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
+
+func clear_map():
+	var map = $Map
+	call_deferred("remove_child", map)
+	map.call_deferred("queue_free")

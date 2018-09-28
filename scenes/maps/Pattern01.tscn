@@ -11,13 +11,13 @@ func _init():
 	self.size = Vector2(10,8)
 	self.exit = {Vector2(0,-1) : Vector2(4.5,7),
 			Vector2(-1,0) : Vector2(9,4.5),
-			Vector2(1,0) : Vector2(2,3.5),
+			Vector2(1,0) : Vector2(1.5,3.5),
 			Vector2(0,1) : Vector2(4.5,2)}
 	self.exit_positions = [{\"position\" : Vector2(0,3), \"extend\" : [Vector2(0,1)]}, {\"position\" : Vector2(4, 0), \"extend\" :  [Vector2(0,1), Vector2(1,0), Vector2(1,1)]}, {\"position\" : Vector2(10, 4), \"extend\" :  [Vector2(0,1)]}, {\"position\" : Vector2(4, 8), \"extend\" : [Vector2(1,0)]}]
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 
@@ -72,5 +72,23 @@ __meta__ = {
 
 visible = false
 position = Vector2( 361.856, 303.822 )
+
+[node name="Position_spawners" type="Node2D" parent="." index="3"]
+
+[node name="Position2D" type="Position2D" parent="Position_spawners" index="0"]
+
+position = Vector2( 224.819, 255.542 )
+
+[node name="Position2D2" type="Position2D" parent="Position_spawners" index="1"]
+
+position = Vector2( 291.63, 370.634 )
+
+[node name="Position2D3" type="Position2D" parent="Position_spawners" index="2"]
+
+position = Vector2( 409.648, 236.035 )
+
+[node name="Position2D4" type="Position2D" parent="Position_spawners" index="3"]
+
+position = Vector2( 497.43, 408.673 )
 
 

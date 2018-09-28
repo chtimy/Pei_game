@@ -62,3 +62,11 @@ func on_text_changed(var s):
 				index+=1
 			if index < children.size():
 				children[index].grab_focus()
+				
+func clear():
+	word = null
+	$Name.set_text("")
+	while $HBoxContainer.get_child_count() > 0:
+		var child = $HBoxContainer.get_child(0)
+		$HBoxContainer.remove_child(child)
+		child.queue_free()

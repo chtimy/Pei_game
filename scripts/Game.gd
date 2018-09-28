@@ -6,5 +6,5 @@ export (PackedScene) var gamePackedScene
 func _on_Play_button_up():
 	remove_child($Menu)
 	var game = gamePackedScene.instance()
-	game.start_level()
 	add_child(game)
+	game.start_level()

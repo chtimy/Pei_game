@@ -4,12 +4,16 @@
 [ext_resource path="res://scenes/Main.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=3]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 gamePackedScene = ExtResource( 2 )
 
 [node name="Menu" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="ColorRect" parent="Menu/Control" index="0"]
+
+_sections_unfolded = [ "Focus", "Grow Direction", "Rect" ]
 
 [connection signal="button_up" from="Menu/Control/Play" to="." method="_on_Play_button_up"]
 

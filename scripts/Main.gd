@@ -1,68 +1,82 @@
 extends Node2D
 
+signal end_level
+
 var begin = Vector2()
 var end = Vector2()
 var path = []
 
 func _ready():
-	pass
+	randomize()
+	$Password/Terminal.connect("close_terminal", self, "exit_terminal")
+	$Score/Score.connect("next_level", self, "start_level")
 
 ################INIT###############
 func init_word():
-	var word = {"name": "house", "translation" : "maison"}
+	var index = randi()%States.words[States.stage-1].size()
+	var word = States.words[States.stage-1][index]
 	$Password/Terminal.set_password(word)
 	return word.translation
 	
 ################TERMINAL#################
 func exit_terminal():
 	$Password/Terminal.hide()
+	$HUD/Control.show()
 	unfreeze()
 
 func show_terminal():
+	$HUD/Control.hide()
 	$Password/Terminal.show()
 	freeze()
 
 ################GAME#################		
 func freeze():
 	set_process_input(false)
-#	$Game.freeze()
+#	$Level.freeze()
 
 func unfreeze():
 	set_process_input(true)
-	$Game/Player.unfreeze()
+	$Level/Player.unfreeze()
 
 func start_level():
 	#generate the level map
 	var word = init_word()
 	#generate the word for the level
-	$Game.generate(word.length()/2, word.length()/2 + 1, word)
-#	$Game/Map.init_enemis(word.length(), word)	
+	$Level.generate(word.length()/2, word.length()/2 + 1, word)
 	#init the HUD
-	$HUD.init()
+	$HUD.set_process(true)
 	$HUD/Control.show()
 	
 func stop_level(var win):
-#	if win:
-#
-#	else win:
-		
-	call_deferred("remove_child", $HUD)
-	$Game.call_deferred("remove_child", $Game/Player)
-	for child in $Game/Map.get_children():
-		$Game/Map.call_deferred("remove_child", child)
+	var found_word = $Password/Terminal.word
+	
+	$Password/Terminal.clear()
+	$Level.clear_map()
+	
+	$Score/Score.show()
+	
+	var index = States.words[States.stage-1].find(found_word)
+	if index != -1:
+		States.words[States.stage-1].remove(index)
+		States.used_words[States.stage-1].push_back(found_word)
+	States.level += 1
 
 ################SIGNALS##################
 func _on_Control_valid_password():
 	$Password/Terminal.hide()
 	unfreeze()
-	$Game/Map.unlock_door()
+	$Level/Map.unlock_door()
 
 func change_player_position(var position):
-	$Game/Player.position = position;
-	$Game/Player.stop()
+	$Level/Player.position = position;
+	$Level/Cat.update_position()
+	$Level/Player.stop()
 
 func _on_HUD_attack_button():
-	$Game/Player.attack()
+	$Level/Player.attack_on()
 
 func find_letter(var letter, var letter_position):
 	$Password/Terminal.active_letter({"letter" : letter, "position" : letter_position})
+	
+func change_HUD_life(var value):
+	get_node("HUD/Control/LifeBar").value = value

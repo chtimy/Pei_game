@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Tools="*res://scripts/Tools.gd"
+States="*res://scripts/states.gd"
 
 [display]
 
