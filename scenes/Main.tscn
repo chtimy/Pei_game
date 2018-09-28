@@ -1,27 +1,29 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/process.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Terminal.gd" type="Script" id=7]
-[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=9]
-[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=10]
-[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Password_layout.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Terminal.gd" type="Script" id=8]
+[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=10]
+[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=11]
+[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 80
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFontData" id=2]
 
+hinting = 2
 font_path = "res://assets/fonts/PixelSplitter-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=3]
@@ -37,10 +39,10 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 size = 50
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -49,7 +51,13 @@ _sections_unfolded = [ "Transform" ]
 
 script = ExtResource( 2 )
 
-[node name="Player" parent="Level" index="0" instance=ExtResource( 3 )]
+[node name="Cat" parent="Level" index="0" instance=ExtResource( 3 )]
+
+z_index = 1
+_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+SPEED = 100
+
+[node name="Player" parent="Level" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 373.318, 236.105 )
 z_index = 1
@@ -82,12 +90,6 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
-[node name="Cat" parent="Level" index="1" instance=ExtResource( 4 )]
-
-z_index = 1
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
-SPEED = 100
-
 [node name="HUD" parent="." index="1" instance=ExtResource( 5 )]
 
 ENEMI_TEXTURE = ExtResource( 6 )
@@ -99,6 +101,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 7 )
 
 [node name="Terminal" type="Control" parent="Password" index="0"]
 
@@ -113,8 +116,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 7 )
-USED_FONT = ExtResource( 8 )
+script = ExtResource( 8 )
+USED_FONT = ExtResource( 9 )
 
 [node name="ColorRect" type="ColorRect" parent="Password/Terminal" index="0"]
 
@@ -249,12 +252,12 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
 expand = true
 _sections_unfolded = [ "Textures" ]
 
-[node name="Score" parent="." index="3" instance=ExtResource( 11 )]
+[node name="Score" parent="." index="3" instance=ExtResource( 12 )]
 
 [connection signal="attack_button" from="HUD" to="." method="_on_HUD_attack_button"]
 
