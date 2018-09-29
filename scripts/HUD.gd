@@ -38,3 +38,9 @@ func _on_TouchScreenButton_pressed():
 func hide():
 	$Control.hide()
 	$TouchScreenButton.hide()
+	$TouchScreenButton2.hide()
+	
+func show():
+	$Control.show()
+	$TouchScreenButton.show()
+	$TouchScreenButton2.show()

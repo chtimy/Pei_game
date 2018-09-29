@@ -30,7 +30,7 @@ func show_terminal():
 	$Password.show()
 	freeze()
 
-################GAME#################		
+################GAME#################
 func freeze():
 	set_process_input(false)
 #	$Level.freeze()
@@ -46,19 +46,19 @@ func start_level():
 	$Level.generate(word.length()/2, word.length()/2 + 1, word)
 	#init the HUD
 	$HUD.set_process(true)
-	$HUD/Control.show()
+	$HUD.show()
 	
 	$Level/Player.set_position($Level/Map/Player_initial_position.position)
 	
 func stop_level(var win):
 	var found_word = $Password/Terminal.word
-	
+
 	$Password/Terminal.clear()
 	$Level.clear_map()
-	
+
 	$Score/Score.init(found_word)
-	$Score/Score.show()
-	
+	$Score.show()
+
 	var index = States.words[States.stage-1].find(found_word)
 	if index != -1:
 		States.words[States.stage-1].remove(index)
@@ -68,6 +68,9 @@ func stop_level(var win):
 ################SIGNALS##################
 func valid_password():
 	$Password/Terminal.hide()
+
+func _on_Control_valid_password():
+	exit_terminal()
 	unfreeze()
 	$Level/Map.unlock_door()
 

@@ -1,13 +1,15 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/process.gd" type="Script" id=2]
+[ext_resource path="res://scripts/process.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Terminal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=8]
+
+
 
 [node name="Main" type="Node2D"]
 

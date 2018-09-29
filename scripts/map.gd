@@ -61,11 +61,11 @@ func init():
 		add_child(enemi)
 		enemi.set_position($Position_spawners.get_children()[i].position)
 		self.enemis.push_back(enemi)
-		
+
 func init_clue(var letter, var letter_position):
 	self.letter = letter
 	self.letter_position = letter_position
-	
+
 func enemi_killed(var enemi):
 	var id = enemis.find(enemi)
 	if id != -1:
@@ -73,7 +73,7 @@ func enemi_killed(var enemi):
 	enemi.call_deferred("queue_free")
 	if enemis.size() == 0:
 		finish_room()
-		
+
 func finish_room():
 	print("finish room")
 	show_chest()
@@ -83,7 +83,7 @@ func show_chest():
 	if chest:
 		chest.show()
 		chest.get_node("Area2D").connect("area_entered", self, "touch_chest")
-		
+
 func touch_chest(var area):
 	var chest = find_node("Chest")
 	print("chest", area)
@@ -100,7 +100,7 @@ func play():
 func unlock_door():
 	$layer_01.set_cellv(door_position.position + door_position.extend, -1)
 	$layer_01.set_cellv(door_position.position, 17)
-		
+
 func enter_area(var area, var direction):
 	if direction == "right":
 		if area.is_in_group("Player"):
@@ -126,18 +126,17 @@ func enter_area(var area, var direction):
 		if area.is_in_group("Player"):
 			print("terminal")
 			self.mode = PASSWORD_ZONA
-			
+
 ##########################SIGNALS############################""
-			
 func _on_Terminal_action_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch && event.pressed:
 		if self.mode == PASSWORD_ZONA:
 			emit_signal("show_terminal_sig")
-		
+
 func on_exit_zone_terminal(var shape):
 	if shape.get_node("..").name == "Player":
 		self.mode = NORMAL_MODE
-		
+
 ###########################"MODIFY MAP#############################
 func open_exit(var direction):
 	var layer = $layer_01
