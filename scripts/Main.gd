@@ -9,6 +9,7 @@ var path = []
 func _ready():
 	randomize()
 	$Password/Terminal.connect("close_terminal", self, "exit_terminal")
+	$Password/Terminal.connect("valid_password", self, "valid_password")
 	$Score/Score.connect("next_level", self, "start_level")
 
 ################INIT###############
@@ -20,13 +21,13 @@ func init_word():
 	
 ################TERMINAL#################
 func exit_terminal():
-	$Password/Terminal.hide()
-	$HUD/Control.show()
+	$Password.hide()
+	$HUD.show()
 	unfreeze()
 
 func show_terminal():
-	$HUD/Control.hide()
-	$Password/Terminal.show()
+	$HUD.hide()
+	$Password.show()
 	freeze()
 
 ################GAME#################		
@@ -47,12 +48,15 @@ func start_level():
 	$HUD.set_process(true)
 	$HUD/Control.show()
 	
+	$Level/Player.set_position($Level/Map/Player_initial_position.position)
+	
 func stop_level(var win):
 	var found_word = $Password/Terminal.word
 	
 	$Password/Terminal.clear()
 	$Level.clear_map()
 	
+	$Score/Score.init(found_word)
 	$Score/Score.show()
 	
 	var index = States.words[States.stage-1].find(found_word)
@@ -62,7 +66,7 @@ func stop_level(var win):
 	States.level += 1
 
 ################SIGNALS##################
-func _on_Control_valid_password():
+func valid_password():
 	$Password/Terminal.hide()
 	unfreeze()
 	$Level/Map.unlock_door()

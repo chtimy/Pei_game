@@ -1,6 +1,7 @@
 extends Control
 
-signal next_level
+func hide():
+	$Score.hide()
 	
-func _on_Button_continue_game():
-	emit_signal("next_level")
+func show():
+	$Score.show()

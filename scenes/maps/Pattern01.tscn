@@ -17,7 +17,7 @@ func _init():
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D" index="0"]
+[node name="Map" type="Node2D"]
 
 script = SubResource( 1 )
 
@@ -90,5 +90,9 @@ position = Vector2( 409.648, 236.035 )
 [node name="Position2D4" type="Position2D" parent="Position_spawners" index="3"]
 
 position = Vector2( 497.43, 408.673 )
+
+[node name="Player_initial_position" type="Position2D" parent="." index="4"]
+
+position = Vector2( 391.117, 316.502 )
 
 

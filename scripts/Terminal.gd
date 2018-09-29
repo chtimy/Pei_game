@@ -5,6 +5,8 @@ export (DynamicFontData) var USED_FONT
 signal valid_password
 signal close_terminal
 
+var SIZE_FONT = 60
+
 var word
 
 func set_password(var word):
@@ -15,7 +17,13 @@ func set_password(var word):
 		line_edit.set_align(LineEdit.ALIGN_CENTER)
 		var font = DynamicFont.new()
 		font.font_data = USED_FONT
-		font.size = 60
+		print(word.translation, word.translation.length())
+		if word.translation.length() > 6 && word.translation.length() < 10:
+			font.size = SIZE_FONT - 10
+		elif word.translation.length() > 10 && word.translation.length() < 14:
+			font.size = SIZE_FONT - 20
+		else:
+			font.size = SIZE_FONT
 		font.use_mipmaps = true
 		font.use_filter = true
 		line_edit.add_font_override("font", font)

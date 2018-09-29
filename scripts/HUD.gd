@@ -34,3 +34,7 @@ func _on_TouchScreenButtonMove_released():
 
 func _on_TouchScreenButton_pressed():
 	call_deferred("emit_signal", "attack_button")
+	
+func hide():
+	$Control.hide()
+	$TouchScreenButton.hide()

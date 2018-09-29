@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/process.gd" type="Script" id=2]
@@ -6,39 +6,8 @@
 [ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Terminal.gd" type="Script" id=7]
-[ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/svg/cross_released.svg" type="Texture" id=9]
-[ext_resource path="res://assets/svg/cross.svg" type="Texture" id=10]
-[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=11]
-
-[sub_resource type="DynamicFont" id=1]
-
-size = 80
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
-
-[sub_resource type="DynamicFontData" id=2]
-
-font_path = "res://assets/fonts/PixelSplitter-Bold.ttf"
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 100
-use_mipmaps = true
-use_filter = true
-font_data = SubResource( 2 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=4]
-
-size = 50
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+[ext_resource path="res://scenes/Terminal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 
@@ -92,169 +61,9 @@ SPEED = 100
 
 ENEMI_TEXTURE = ExtResource( 6 )
 
-[node name="Password" type="CanvasLayer" parent="." index="2"]
+[node name="Password" parent="." index="2" instance=ExtResource( 7 )]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="Terminal" type="Control" parent="Password" index="0"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 7 )
-USED_FONT = ExtResource( 8 )
-
-[node name="ColorRect" type="ColorRect" parent="Password/Terminal" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.128601, 0.382813, 0, 1 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Password/Terminal" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 480.0
-margin_right = 1334.0
-margin_bottom = 576.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 1
-
-[node name="Name" type="Label" parent="Password/Terminal" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 256.0
-margin_right = 1334.0
-margin_bottom = 416.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "HOUSE"
-align = 1
-valign = 1
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "custom_colors", "custom_fonts" ]
-
-[node name="Password" type="Label" parent="Password/Terminal" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 64.0
-margin_right = 1334.0
-margin_bottom = 181.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Password"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Hint", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="AcceptPassword" type="Button" parent="Password/Terminal" index="4"]
-
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -379.0
-margin_top = -142.0
-margin_right = 421.0
-margin_bottom = -46.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Enter the password"
-flat = true
-align = 1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Textures", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="ExitButton" type="TextureButton" parent="Password/Terminal" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1184.0
-margin_top = 64.0
-margin_right = 1280.0
-margin_bottom = 160.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-expand = true
-_sections_unfolded = [ "Textures" ]
-
-[node name="Score" parent="." index="3" instance=ExtResource( 11 )]
+[node name="Score" parent="." index="3" instance=ExtResource( 8 )]
 
 [connection signal="attack_button" from="HUD" to="." method="_on_HUD_attack_button"]
 
@@ -262,13 +71,4 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="stop_moving_stick" from="HUD" to="Level/Player" method="stop"]
 
-[connection signal="close_terminal" from="Password/Terminal" to="." method="_on_Control_close_terminal"]
 
-[connection signal="valid_password" from="Password/Terminal" to="." method="_on_Control_valid_password"]
-
-[connection signal="button_up" from="Password/Terminal/AcceptPassword" to="Password/Terminal" method="_on_AcceptPassword_button_up"]
-
-[connection signal="pressed" from="Password/Terminal/ExitButton" to="Password/Terminal" method="_on_ExitButton_pressed"]
-
-
-[editable path="HUD"]

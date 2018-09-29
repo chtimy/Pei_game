@@ -29,7 +29,7 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 175.0
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
