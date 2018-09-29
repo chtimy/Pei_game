@@ -17,10 +17,9 @@ func set_password(var word):
 		line_edit.set_align(LineEdit.ALIGN_CENTER)
 		var font = DynamicFont.new()
 		font.font_data = USED_FONT
-		print(word.translation, word.translation.length())
-		if word.translation.length() > 6 && word.translation.length() < 10:
+		if word.translation.length() > 6 && word.translation.length() <= 8:
 			font.size = SIZE_FONT - 10
-		elif word.translation.length() > 10 && word.translation.length() < 14:
+		elif word.translation.length() > 8:
 			font.size = SIZE_FONT - 20
 		else:
 			font.size = SIZE_FONT

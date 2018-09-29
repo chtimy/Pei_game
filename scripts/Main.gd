@@ -44,6 +44,7 @@ func start_level():
 	var word = init_word()
 	#generate the word for the level
 	$Level.generate(word.length()/2, word.length()/2 + 1, word)
+	$Level/Cat.update_position()
 	#init the HUD
 	$HUD.set_process(true)
 	$HUD.show()
@@ -67,9 +68,6 @@ func stop_level(var win):
 
 ################SIGNALS##################
 func valid_password():
-	$Password/Terminal.hide()
-
-func _on_Control_valid_password():
 	exit_terminal()
 	unfreeze()
 	$Level/Map.unlock_door()

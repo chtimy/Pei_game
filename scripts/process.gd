@@ -73,13 +73,9 @@ func on_change_map(var T):
 	call_deferred("change_map", T)
 
 func change_map(var T):
-	print("change map : ", T)
 	remove_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
-	print(current_map_id)
 	self.current_map_id += T
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
-	print(cell_size)
-	print(self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
 	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
 
 func clear_map():

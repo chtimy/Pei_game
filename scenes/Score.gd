@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 func hide():
 	$Score.hide()
