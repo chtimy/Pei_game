@@ -5,7 +5,7 @@ enum {RIGHT = 2, LEFT = 0, UP = 1, DOWN = 3}
 signal change_player_position
 
 var cell_size = Vector2(64,64)
-var maps = [load("res://scenes/maps/Pattern01.tscn"), load("res://scenes/maps/Pattern02.tscn")]
+var maps = [load("res://scenes/maps/Pattern01.tscn")]#, load("res://scenes/maps/Pattern02.tscn")]
 var matrix = []
 var current_map_id
 

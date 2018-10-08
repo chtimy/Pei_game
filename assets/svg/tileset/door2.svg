@@ -15,10 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="door.svg"
-   inkscape:export-filename="C:\Users\Jérémy Riffet\Godot\pei_game\assets\svg\tileset\door.png"
-   inkscape:export-xdpi="41.098694"
-   inkscape:export-ydpi="41.098694">
+   sodipodi:docname="door2.svg"
+   inkscape:export-filename="C:\Users\Jérémy Riffet\Godot\pei_game\assets\svg\tileset\door2.png"
+   inkscape:export-xdpi="41.360111"
+   inkscape:export-ydpi="41.360111">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -30,7 +30,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
      inkscape:cx="195.00738"
-     inkscape:cy="204.25046"
+     inkscape:cy="161.39332"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
