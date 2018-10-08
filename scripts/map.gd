@@ -99,7 +99,7 @@ func play():
 	
 func unlock_door():
 	$layer_01.set_cellv(door_position.position + door_position.extend, -1)
-	$layer_01.set_cellv(door_position.position, 21)
+	$layer_01.set_cellv(door_position.position, 18)
 
 func enter_area(var area, var direction):
 	if direction == "right":
@@ -179,7 +179,7 @@ func get_exit_extents(var direction):
 func put_door():
 	var layer = $layer_01
 	var cell_size = layer.cell_size
-	layer.set_cellv(door_position.position, 20)
+	layer.set_cellv(door_position.position, 0)
 	layer.set_cellv(door_position.position + door_position.extend, -1)
 	var area = Area2D.new()
 	area.set_name("Door")
@@ -191,7 +191,7 @@ func put_door():
 	add_child(area)
 	
 func put_terminal():
-	var layer = $layer_01
+	var layer = $layer_02
 	var cell_size = layer.cell_size
 	layer.set_cellv(terminal_position, 17)
 	#area clicked terminal

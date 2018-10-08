@@ -17,9 +17,9 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [  ],
 "loop": true,
-"name": "down",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -29,12 +29,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "left",
+"name": "up",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "up",
+"name": "down",
 "speed": 5.0
 } ]
 
@@ -75,7 +75,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 frames = SubResource( 2 )
 animation = "down"
-frame = 1
+frame = 5
 playing = true
 __meta__ = {
 "_edit_lock_": true

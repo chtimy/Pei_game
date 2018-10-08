@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/TileSets/kitchen.res" type="TileSet" id=1]
 [ext_resource path="res://scenes/Chest.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/object/terminal_v2.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 
@@ -49,7 +48,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="layer02" type="TileMap" parent="." index="1"]
+[node name="layer_02" type="TileMap" parent="." index="1"]
 
 z_index = 2
 mode = 0
@@ -97,10 +96,5 @@ position = Vector2( 497.43, 408.673 )
 [node name="Player_initial_position" type="Position2D" parent="." index="4"]
 
 position = Vector2( 391.117, 316.502 )
-
-[node name="Sprite" type="Sprite" parent="." index="5"]
-
-position = Vector2( 352, 96 )
-texture = ExtResource( 3 )
 
 
