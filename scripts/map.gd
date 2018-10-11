@@ -144,7 +144,9 @@ func open_exit(var direction):
 	var exit_position = exit_positions[direction].position
 	layer.set_cellv(exit_position, -1)
 	for dir_vec in exit_positions[direction].extend:
-		$layer_01.set_cellv(exit_position + dir_vec, -1)
+		layer.set_cellv(exit_position + dir_vec, -1)
+	layer.set_cellv(exit_position, exit_positions[direction].door, exit_positions[direction].flip_x, exit_positions[direction].flip_y, exit_positions[direction].transpose)
+	
 	var area = Area2D.new()
 	var name = get_exit_name(direction)
 	area.set_name(name)

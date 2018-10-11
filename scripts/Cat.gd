@@ -7,20 +7,19 @@ var CLOSE_DISTANCE_SCALE = 0.2
 
 func _ready():
 	self.player = get_node("../Player")
-	self.SPEED = self.player.SPEED
-	self.position = self.player.position + Tools.get_direction_value(self.player.direction)
+	self.position = self.player.position + self.player.direction_vec
 	
 func update_position():
-	var offset = self.player.position + (self.player.get_node("Trigger/CollisionShape2D").position + self.player.get_node("Trigger/CollisionShape2D").shape.extents/2.0) - Tools.get_direction_value(self.player.direction) * SPEED * CLOSE_DISTANCE_SCALE
+	var offset = self.player.position + (self.player.get_node("Trigger/CollisionShape2D").position + self.player.get_node("Trigger/CollisionShape2D").shape.extents/2.0) - self.player.direction_vec * SPEED * CLOSE_DISTANCE_SCALE
 	self.position = offset
 
 func _process(delta):
-	var offset = self.player.position + (self.player.get_node("Trigger/CollisionShape2D").position + self.player.get_node("Trigger/CollisionShape2D").shape.extents/2.0) - Tools.get_direction_value(self.player.direction) * SPEED * CLOSE_DISTANCE_SCALE
+	var offset = self.player.position + (self.player.get_node("Trigger/CollisionShape2D").position + self.player.get_node("Trigger/CollisionShape2D").shape.extents/2.0) - self.player.direction_vec * SPEED * CLOSE_DISTANCE_SCALE
 	if self.position.distance_to(offset) < bias:
 		stop()
 	else:
 		var move = (offset - self.position).normalized()
-		var velocity = move * SPEED
+		var velocity = move * self.player.SPEED * self.player.factor_speed
 		move_and_slide(velocity)
 
 		#which direction is the player

@@ -7,7 +7,7 @@ signal enemi_died_sig
 export (PackedScene) var blaster_shoot_scene
 export (int) var range_attack
 var target = {"target": null, "position" : Vector2(0,0), "is_visible" : false}
-var direction = Vector2()
+var direction = Tools.VEC_LEFT
 var time = 0
 
 var velocity = Vector2(0,0)
@@ -29,6 +29,10 @@ func _process(delta):
 	if time > 100:
 		velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * SPEED
 		time = 0
+	if(velocity != Vector2(0,0)):
+		self.direction = Tools.get_direction(velocity.normalized())
+		play_animation(self.direction, "walk", $AnimatedSprite)
+		
 	
 func set_move(var move):
 	velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * SPEED
@@ -40,6 +44,8 @@ func _on_view_area_entered(area):
 		self.target.position = selectable.position + selectable.get_node("Collision").position + selectable.get_node("Collision").shape.extents/2.0
 		self.target.is_visible = true
 		$ShootLoopTimer.start()
+		self.direction = Tools.get_direction((self.target.position - self.position).normalized())
+		play_animation(self.direction, "prepare_attack", $AnimatedSprite)
 		set_process(false)
 
 func _on_view_area_exited(area):
@@ -49,16 +55,20 @@ func _on_view_area_exited(area):
 		set_process(true)
 
 func attack_on():
-	var old_vec = (self.target.position - self.position).normalized()
-	var direction = Tools.get_direction(old_vec)
-#	play_animation(direction, "attack")
+	#on joue l"animation d'attaque
+	play_animation(self.direction, "attack", $AnimatedSprite)
+	#calcul si le joueur est toujours dans la zone d'attaque de l'ennemi
+	var old_vec = Tools.close_ref_vec((self.target.position - self.position).normalized(),4)
+	print("old vec : ", old_vec)
 	var new_vec = (self.target.object.position - self.position).normalized()
-	var direction2 = Tools.get_direction(new_vec)
-	if(direction == direction2):
+	print("new_vec : ", new_vec)
+	if old_vec.angle_to(new_vec) <= PI/4.0:
 		self.target.object.take_damages(self.hit)
-	
+	#MAJ nouvelle position du joueur
 	var object = self.target.object
 	self.target.position = object.position + object.get_node("Collision").position + object.get_node("Collision").shape.extents/2.0
+	
+	self.direction = Tools.get_direction((self.target.position - self.position).normalized())
 
 		
 func _on_ShootLoopTimer_timeout():
@@ -97,3 +107,11 @@ func unfreeze():
 	set_process(true)
 	set_process_input(true)
 	set_block_signals(false)
+
+func _on_AnimatedSprite_animation_finished():
+	var name_animation = $AnimatedSprite.animation
+	var regex = RegEx.new()
+	regex.compile("[a-z]*")
+	var result = regex.search(name_animation)
+	if result && result.get_string() == "attack":
+		play_animation(direction, "prepare_attack", $AnimatedSprite)
