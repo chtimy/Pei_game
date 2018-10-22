@@ -1,31 +1,91 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Cat.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="VisualScript" id=1]
+
+data = {
+"base_type": "ShaderMaterial",
+"functions": [  ],
+"signals": [  ],
+"variables": [  ]
+}
+
+[sub_resource type="Shader" id=2]
+
+code = ""
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+shader = SubResource( 2 )
+script = SubResource( 1 )
+
+[sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "walk",
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "wait_left",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
 [node name="Cat" type="KinematicBody2D" index="0"]
 
+material = SubResource( 3 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Transform", "collision" ]
 hit = null
 SPEED = null
 life = null
@@ -33,15 +93,15 @@ life = null
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
-animation = "walk"
+frames = SubResource( 4 )
+animation = "walk_right"
 frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="Collision" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 

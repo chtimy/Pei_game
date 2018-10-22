@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/TileSets/tiles_images/main_door.png" type="Texture" id=1]
 [ext_resource path="res://assets/TileSets/tiles_images/floor01.png" type="Texture" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://assets/TileSets/tiles_images/furniture.png" type="Texture" id=24]
 [ext_resource path="res://assets/TileSets/tiles_images/furniture2.png" type="Texture" id=25]
 [ext_resource path="res://assets/TileSets/tiles_images/furniture3.png" type="Texture" id=26]
+[ext_resource path="res://assets/TileSets/tiles_images/furniture_3.png" type="Texture" id=27]
+[ext_resource path="res://assets/TileSets/tiles_images/flaque_eau.png" type="Texture" id=28]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -35,17 +37,17 @@ extents = Vector2( 64, 32 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 31.9742, 32 )
+extents = Vector2( 15.7152, 32.0881 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 6.0929 )
+extents = Vector2( 31.9742, 32 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 32, 6.0929 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
@@ -55,22 +57,32 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 62.9528 )
+extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.496, 29.056 )
+extents = Vector2( 10, 62.9528 )
 
 [sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30.6346, 28.8109 )
+extents = Vector2( 15.496, 29.056 )
 
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
+extents = Vector2( 30.6346, 28.8109 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
 extents = Vector2( 22.0521, 49.1315 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.4117, 22.2345 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -157,7 +169,30 @@ position = Vector2( 96, 96 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="wall02" type="Sprite" parent="." index="8"]
+[node name="StaticBody2D" type="StaticBody2D" parent="wall" index="0"]
+
+position = Vector2( 0, 1.42696 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D" index="0"]
+
+position = Vector2( 15.4588, -1.18914 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="wall_without_collision" type="Sprite" parent="." index="8"]
+
+position = Vector2( 384, 256 )
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="wall02" type="Sprite" parent="." index="9"]
 
 position = Vector2( 96, 224 )
 texture = ExtResource( 9 )
@@ -176,10 +211,10 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall02/wall02" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall_down" type="Sprite" parent="." index="9"]
+[node name="wall_down" type="Sprite" parent="." index="10"]
 
 position = Vector2( 224, 224 )
 z_index = 2
@@ -200,16 +235,16 @@ _sections_unfolded = [ "Collision", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_down/wall_down" index="0"]
 
 position = Vector2( 0, 25.831 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall03" type="Sprite" parent="." index="10"]
+[node name="wall03" type="Sprite" parent="." index="11"]
 
 position = Vector2( 96, 288 )
 texture = ExtResource( 11 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="wall04" type="Sprite" parent="." index="11"]
+[node name="wall04" type="Sprite" parent="." index="12"]
 
 position = Vector2( 160, 96 )
 texture = ExtResource( 12 )
@@ -228,9 +263,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall04/wall04" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
-[node name="wall05" type="Sprite" parent="." index="12"]
+[node name="wall05" type="Sprite" parent="." index="13"]
 
 position = Vector2( 96, 160 )
 texture = ExtResource( 13 )
@@ -249,9 +284,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall05/wall05" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
-[node name="wall06" type="Sprite" parent="." index="13"]
+[node name="wall06" type="Sprite" parent="." index="14"]
 
 position = Vector2( 160, 160 )
 texture = ExtResource( 14 )
@@ -273,13 +308,13 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall06/wall06" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall07" type="Sprite" parent="." index="14"]
+[node name="wall07" type="Sprite" parent="." index="15"]
 
 position = Vector2( 160, 160 )
 texture = ExtResource( 15 )
@@ -301,13 +336,13 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall07/wall07" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall08" type="Sprite" parent="." index="15"]
+[node name="wall08" type="Sprite" parent="." index="16"]
 
 position = Vector2( 160, 224 )
 texture = ExtResource( 16 )
@@ -329,20 +364,20 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall08/wall08" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall10" type="Sprite" parent="." index="16"]
+[node name="wall10" type="Sprite" parent="." index="17"]
 
 position = Vector2( 128, 256 )
 texture = ExtResource( 17 )
 centered = false
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="password" type="StaticBody2D" parent="." index="17"]
+[node name="password" type="StaticBody2D" parent="." index="18"]
 
 position = Vector2( 160, 32 )
 input_pickable = false
@@ -360,26 +395,26 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="opened_main_door" type="Sprite" parent="." index="18"]
+[node name="opened_main_door" type="Sprite" parent="." index="19"]
 
 position = Vector2( 256, 32 )
 texture = ExtResource( 19 )
 _sections_unfolded = [ "Region" ]
 
-[node name="door" type="Sprite" parent="." index="19"]
+[node name="door" type="Sprite" parent="." index="20"]
 
 position = Vector2( 256, 96 )
 texture = ExtResource( 20 )
 _sections_unfolded = [ "Region", "Transform" ]
 
-[node name="shadow" type="Sprite" parent="." index="20"]
+[node name="shadow" type="Sprite" parent="." index="21"]
 
 position = Vector2( 64, 320 )
 texture = ExtResource( 21 )
 centered = false
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
-[node name="door_side" type="Sprite" parent="." index="21"]
+[node name="door_side" type="Sprite" parent="." index="22"]
 
 position = Vector2( 288, 192 )
 texture = ExtResource( 22 )
@@ -398,16 +433,16 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_side/StaticBody2D" index="0"]
 
 position = Vector2( 6.58655, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="ground6" type="Sprite" parent="." index="22"]
+[node name="ground6" type="Sprite" parent="." index="23"]
 
 position = Vector2( 352, 32 )
 texture = ExtResource( 23 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="furniture" type="Sprite" parent="." index="23"]
+[node name="furniture" type="Sprite" parent="." index="24"]
 
 position = Vector2( 352, 96 )
 texture = ExtResource( 24 )
@@ -426,9 +461,9 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture/StaticBody2D" index="0"]
 
 position = Vector2( 0.524475, -2.7972 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
-[node name="furniture2" type="Sprite" parent="." index="24"]
+[node name="furniture2" type="Sprite" parent="." index="25"]
 
 position = Vector2( 352, 160 )
 texture = ExtResource( 25 )
@@ -447,9 +482,9 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture2/StaticBody2D" index="0"]
 
 position = Vector2( 1.57776, -2.9978 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
-[node name="furniture3" type="Sprite" parent="." index="25"]
+[node name="furniture3" type="Sprite" parent="." index="26"]
 
 position = Vector2( 416, 50 )
 texture = ExtResource( 26 )
@@ -468,6 +503,33 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture3/StaticBody2D" index="0"]
 
 position = Vector2( -0.174164, -0.661903 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
+
+[node name="table" type="Sprite" parent="." index="27"]
+
+position = Vector2( 224, 288 )
+texture = ExtResource( 27 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="table" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="table/StaticBody2D" index="0"]
+
+position = Vector2( -0.50415, -9.91031 )
+shape = SubResource( 11 )
+
+[node name="flaque_eau" type="Sprite" parent="." index="28"]
+
+position = Vector2( 160, 288 )
+texture = ExtResource( 28 )
+_sections_unfolded = [ "Transform" ]
 
 

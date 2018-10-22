@@ -28,7 +28,7 @@ func test():
 	play(\"nothing\")
 "
 
-[node name="attack_effects" type="AnimatedSprite"]
+[node name="attack_effects" type="AnimatedSprite" index="0"]
 
 frames = SubResource( 1 )
 animation = "normal"

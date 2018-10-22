@@ -1,112 +1,101 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/characters/pei/attack/attack_back.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/pei/wait_back.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_3.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/pei/walk/walk_front1.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/pei/walk/walk_front2.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/pei/walk/walk_front3.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/pei/walk/walk_front4.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/pei/walk/walk_front5.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/pei/walk/walk_front6.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/pei/walk/walk_front7.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/pei/walk/walk_front8.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/pei/wait_left.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/pei/attack/attack_left.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/pei/attack/attack_right.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/pei/wait_right.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/pei/walk/walk_left1.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/pei/walk/walk_left2.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/pei/walk/walk_left3.png" type="Texture" id=22]
-[ext_resource path="res://assets/characters/pei/walk/walk_left4.png" type="Texture" id=23]
-[ext_resource path="res://assets/characters/pei/walk/walk_left5.png" type="Texture" id=24]
-[ext_resource path="res://assets/characters/pei/walk/walk_left6.png" type="Texture" id=25]
-[ext_resource path="res://assets/characters/pei/walk/walk_back1.png" type="Texture" id=26]
-[ext_resource path="res://assets/characters/pei/walk/walk_back2.png" type="Texture" id=27]
-[ext_resource path="res://assets/characters/pei/walk/walk_back3.png" type="Texture" id=28]
-[ext_resource path="res://assets/characters/pei/walk/walk_back4.png" type="Texture" id=29]
-[ext_resource path="res://assets/characters/pei/walk/walk_right1.png" type="Texture" id=30]
-[ext_resource path="res://assets/characters/pei/walk/walk_right2.png" type="Texture" id=31]
-[ext_resource path="res://assets/characters/pei/walk/walk_right3.png" type="Texture" id=32]
-[ext_resource path="res://assets/characters/pei/walk/walk_right4.png" type="Texture" id=33]
-[ext_resource path="res://assets/characters/pei/walk/walk_right5.png" type="Texture" id=34]
-[ext_resource path="res://assets/characters/pei/walk/walk_right6.png" type="Texture" id=35]
-[ext_resource path="res://assets/characters/pei/attack/attack_front.png" type="Texture" id=36]
-[ext_resource path="res://assets/characters/pei/pei.png" type="Texture" id=37]
-[ext_resource path="res://scenes/attack_effects.tscn" type="PackedScene" id=38]
+[ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/sprite_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/sprite_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=26]
+[ext_resource path="res://scenes/attack_effects.tscn" type="PackedScene" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "attack_back",
+"name": "wait_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "wait_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "attack_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "wait_right",
+"name": "wait_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "attack_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "wait_back",
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walk_front",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9.69221, 6.09245 )
+extents = Vector2( 9.69221, 9.03726 )
 
 [sub_resource type="CircleShape2D" id=3]
 
@@ -116,9 +105,9 @@ radius = 70.0
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9.70213, 6.08179 )
+extents = Vector2( 9.70213, 9.14191 )
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "Movables",
 "Player",
 ]]
@@ -134,18 +123,25 @@ SPEED = 200
 life = 100
 range_attack = 100
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="shadow" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, 24.3598 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
 frames = SubResource( 1 )
 animation = "wait_front"
-frame = 3
 playing = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="Trigger" type="Area2D" parent="." index="1" groups=[
+[node name="Trigger" type="Area2D" parent="." index="2" groups=[
 "Player",
 ]]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -157,12 +153,13 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Pickable" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" index="0"]
 
-position = Vector2( -0.427526, 20.5316 )
+position = Vector2( 0, 37.968 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="View" type="Area2D" parent="." index="2"]
+[node name="View" type="Area2D" parent="." index="3"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -183,14 +180,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+[node name="Collision" type="CollisionShape2D" parent="." index="4"]
 
-position = Vector2( -0.4478, 20.5776 )
+visible = false
+position = Vector2( 0, 38.0414 )
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="attack_effects" parent="." index="4" instance=ExtResource( 38 )]
+[node name="attack_effects" parent="." index="5" instance=ExtResource( 27 )]
 
+position = Vector2( 32, 0 )
 animation = "nothing"
 frame = 0
 

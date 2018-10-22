@@ -86,10 +86,12 @@ func show_chest():
 
 func touch_chest(var area):
 	var chest = find_node("Chest")
-	print("chest", area)
 	chest.hide()
 	call_deferred("queue_free", chest)
-	emit_signal("find_letter_sig", self.letter, self.letter_position)
+	if(self.letter):
+		emit_signal("find_letter_sig", self.letter, self.letter_position)
+	#else:
+		#emit_signal("find_treasure", self.treasure)
 
 func pause():
 	pass

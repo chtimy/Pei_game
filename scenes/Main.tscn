@@ -53,8 +53,9 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 
 [node name="Cat" parent="Level" index="1" instance=ExtResource( 4 )]
 
+scale = Vector2( 1.2, 1.2 )
 z_index = 4
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index", "collision" ]
 SPEED = 100
 
 [node name="HUD" parent="." index="1" instance=ExtResource( 5 )]
