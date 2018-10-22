@@ -5,6 +5,8 @@ signal stop_level_sig
 signal change_map_sig
 signal find_letter_sig
 
+var layers
+
 enum {NORMAL_MODE = 0, PASSWORD_ZONA = 1}
 var mode = NORMAL_MODE
 
@@ -24,6 +26,7 @@ var letter_position = null
 var door = null
 
 var ENEMI_SCENE = load("res://scenes/enemi.tscn")
+
 
 func _ready():
 	#top signals
@@ -100,8 +103,9 @@ func play():
 	pass
 	
 func unlock_door():
-	$layer_01.set_cellv(door_position.position + door_position.extend, -1)
-	$layer_01.set_cellv(door_position.position, 18)
+	var layer = self.layers[0]
+	layer.set_cellv(door_position.position + door_position.extend, -1)
+	layer.set_cellv(door_position.position, self.layers[0].tile_set.find_tile_by_name("opened_main_door"))
 
 func enter_area(var area, var direction):
 	if direction == "right":
@@ -141,9 +145,9 @@ func on_exit_zone_terminal(var shape):
 
 ###########################"MODIFY MAP#############################
 func open_exit(var direction):
-	var layer = $layer_01
-	var cell_size = layer.cell_size
 	var exit_position = exit_positions[direction].position
+	var layer = get_node(exit_positions[direction].layer)
+	var cell_size = layer.cell_size
 	layer.set_cellv(exit_position, -1)
 	for dir_vec in exit_positions[direction].extend:
 		layer.set_cellv(exit_position + dir_vec, -1)
@@ -154,8 +158,16 @@ func open_exit(var direction):
 	area.set_name(name)
 	var zona = CollisionShape2D.new()
 	zona.shape = RectangleShape2D.new()
-	zona.shape.extents = get_exit_extents(direction)
-	zona.set_position(exit_position * cell_size + get_exit_extents(direction))
+	if exit_positions[direction].layer == "layer_01":
+		zona.shape.extents = get_exit_extents(direction, layer.cell_size)
+		zona.set_position(exit_position * cell_size + zona.shape.extents)
+	else:
+		var size = get_exit_extents(direction, layer.cell_size)
+		size.y = size.y/2.0
+		zona.shape.extents = size
+		var position = exit_position * cell_size + get_exit_extents(direction, layer.cell_size)
+		position.y = position.y + zona.shape.extents.y
+		zona.set_position(exit_position * cell_size + get_exit_extents(direction, layer.cell_size))
 	area.add_child(zona)
 	add_child(area)
 
@@ -169,8 +181,7 @@ func get_exit_name(var direction):
 	elif direction == LEFT:
 		return "left_exit"
 		
-func get_exit_extents(var direction):
-	var cell_size = $layer_01.cell_size
+func get_exit_extents(var direction, var cell_size):
 	if direction == UP:
 		return Vector2(cell_size.x, cell_size.y / 2)
 	elif direction == DOWN:
@@ -181,9 +192,9 @@ func get_exit_extents(var direction):
 		return Vector2(cell_size.x / 2, cell_size.y)
 	
 func put_door():
-	var layer = $layer_01
+	var layer = self.layers[0]
 	var cell_size = layer.cell_size
-	layer.set_cellv(door_position.position, 0)
+	layer.set_cellv(door_position.position, layer.tile_set.find_tile_by_name("main_door"))
 	layer.set_cellv(door_position.position + door_position.extend, -1)
 	var area = Area2D.new()
 	area.set_name("Door")
@@ -195,9 +206,9 @@ func put_door():
 	add_child(area)
 	
 func put_terminal():
-	var layer = $layer_02
+	var layer = self.layers[3]
 	var cell_size = layer.cell_size
-	layer.set_cellv(terminal_position, 17)
+	layer.set_cellv(terminal_position, layer.tile_set.find_tile_by_name("terminal"))
 	#area clicked terminal
 	var area = Area2D.new()
 	area.set_name("Terminal_action")

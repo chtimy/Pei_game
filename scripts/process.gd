@@ -26,6 +26,7 @@ func generate(var w, var h, var word):
 		for j in range(h):
 			var n = randi() % maps.size()
 			matrix[i][j] = maps[n].instance()
+			matrix[i][j].layers = [matrix[i][j].get_node("layer_01"), matrix[i][j].get_node("layer_02"), matrix[i][j].get_node("layer_03"), matrix[i][j].get_node("layer_04")]
 			if i == 0 && j == 0 :#north-west
 				matrix[i][j].open_exit(DOWN)
 				matrix[i][j].open_exit(RIGHT)

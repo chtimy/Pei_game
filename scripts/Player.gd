@@ -15,6 +15,7 @@ var factor_speed = 0.0
 func _ready():
 	self.velocity = Vector2(0,0)
 	connect("hud_life_player_change_sig", get_node("../.."), "change_HUD_life")
+	get_node("AnimatedSprite").connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
 
 func _process(delta):
 	move_and_slide(velocity)

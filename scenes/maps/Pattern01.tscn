@@ -13,17 +13,17 @@ func _init():
 			Vector2(-1,0) : Vector2(9,4.5),
 			Vector2(1,0) : Vector2(1.5,3.5),
 			Vector2(0,1) : Vector2(4.5,2)}
-	self.exit_positions = [{\"position\" : Vector2(0,3), \"extend\" : [Vector2(0,1)], \"door\" : 21, \"flip_x\" : true, \"flip_y\" : false, \"transpose\" : false}, 
-	  					   {\"position\" : Vector2(4, 1), \"extend\" :  [Vector2(0,-1), Vector2(1,0), Vector2(1,-1)], \"door\" : 19, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
-						   {\"position\" : Vector2(12, 4), \"extend\" :  [Vector2(0,1)], \"door\" : 21, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
-						   {\"position\" : Vector2(4, 8), \"extend\" : [Vector2(1,0)], \"door\" : 19, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}]
+	self.exit_positions = [{\"position\" : Vector2(0,3), \"extend\" : [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : true, \"flip_y\" : false, \"transpose\" : false}, 
+	  					   {\"position\" : Vector2(4, 1), \"extend\" :  [Vector2(0,-1), Vector2(1,0), Vector2(1,-1)], \"layer\" : \"layer_01\", \"door\" : 7, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
+						   {\"position\" : Vector2(12, 4), \"extend\" :  [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
+						   {\"position\" : Vector2(4, 8), \"extend\" : [Vector2(1,0)], \"layer\" : \"layer_02\",\"door\" : 7, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}]
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
 [node name="Map" type="Node2D" index="0"]
 
-position = Vector2( 288, 128 )
 script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="layer_01" type="TileMap" parent="." index="0"]
 
@@ -43,7 +43,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 1, -1610612729, 0, 2, -1610612729, 0, 3, -1610612729, 0, 4, -1610612729, 0, 5, -1610612729, 0, 6, -1610612729, 0, 7, -1610612729, 0, 8, -1610612729, 0, 9, -1610612729, 0, 10, -1610612729, 0, 11, -1610612729, 0, 65536, 7, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 8, 0, 65545, 8, 0, 65546, 8, 0, 65547, 8, 0, 65548, 1610612743, 0, 131072, 7, 0, 131073, 22, 0, 131074, 22, 0, 131075, 22, 0, 131076, 22, 0, 131077, 22, 0, 131078, 22, 0, 131079, 22, 0, 131080, 22, 0, 131081, 22, 0, 131082, 22, 0, 131083, 22, 0, 131084, 1610612743, 0, 196608, 7, 0, 196609, 22, 0, 196610, 22, 0, 196611, 22, 0, 196612, 22, 0, 196613, 22, 0, 196614, 22, 0, 196615, 22, 0, 196616, 22, 0, 196617, 22, 0, 196618, 22, 0, 196619, 22, 0, 196620, 1610612743, 0, 262144, 1073741831, 0, 262145, 22, 0, 262146, 22, 0, 262147, 22, 0, 262148, 22, 0, 262149, 22, 0, 262150, 22, 0, 262151, 22, 0, 262152, 22, 0, 262153, 22, 0, 262154, 22, 0, 262155, 22, 0, 262156, 1610612743, 0, 327680, 1073741831, 0, 327681, 22, 0, 327682, 22, 0, 327683, 22, 0, 327684, 22, 0, 327685, 22, 0, 327686, 22, 0, 327687, 22, 0, 327688, 22, 0, 327689, 22, 0, 327690, 22, 0, 327691, 22, 0, 327692, 1610612743, 0, 393216, 7, 0, 393217, 22, 0, 393218, 22, 0, 393219, 22, 0, 393220, 22, 0, 393221, 22, 0, 393222, 22, 0, 393223, 22, 0, 393224, 22, 0, 393225, 22, 0, 393226, 22, 0, 393227, 22, 0, 393228, 1610612743, 0, 458752, 7, 0, 458753, 22, 0, 458754, 22, 0, 458755, 22, 0, 458756, 22, 0, 458757, 22, 0, 458758, 22, 0, 458759, 22, 0, 458760, 22, 0, 458761, 22, 0, 458762, 22, 0, 458763, 22, 0, 458764, 1610612743, 0, 524288, 7, 0, 524300, 1610612743, 0 )
+tile_data = PoolIntArray( 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 65536, -1073741820, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, -1610612732, 0, 131072, -1073741820, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 9, 0, 131082, 9, 0, 131083, 9, 0, 131084, -1610612732, 0, 196608, -1073741820, 0, 196609, 9, 0, 196610, 9, 0, 196611, 9, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 9, 0, 196617, 9, 0, 196618, 9, 0, 196619, 9, 0, 196620, -1610612732, 0, 262144, -1073741820, 0, 262145, 9, 0, 262146, 9, 0, 262147, 9, 0, 262148, 9, 0, 262149, 9, 0, 262150, 9, 0, 262151, 9, 0, 262152, 9, 0, 262153, 9, 0, 262154, 9, 0, 262155, 9, 0, 262156, -1610612732, 0, 327680, -1073741820, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 327689, 9, 0, 327690, 9, 0, 327691, 9, 0, 327692, -1610612732, 0, 393216, -1073741820, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0, 393226, 9, 0, 393227, 9, 0, 393228, -1610612732, 0, 458752, -1073741820, 0, 458753, 9, 0, 458754, 9, 0, 458755, 9, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 9, 0, 458760, 9, 0, 458761, 9, 0, 458762, 9, 0, 458763, 9, 0, 458764, -1610612732, 0, 524289, 9, 0, 524290, 9, 0, 524291, 9, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0 )
 _sections_unfolded = [ "Cell", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -51,7 +51,7 @@ __meta__ = {
 
 [node name="layer_02" type="TileMap" parent="." index="1"]
 
-z_index = 5
+z_index = 6
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 64, 64 )
@@ -68,10 +68,10 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 458753, -1610612710, 0, 458754, -1610612710, 0, 458755, -1610612710, 0, 458756, -1610612710, 0, 458757, -1610612710, 0, 458758, -1610612710, 0, 458759, -1610612710, 0, 458760, -1610612710, 0, 458761, -1610612710, 0, 458762, -1610612710, 0, 458763, -1610612710, 0, 524289, 9, 0, 524290, 9, 0, 524291, 9, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0 )
+tile_data = PoolIntArray( -327667, -1610612732, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 524289, 3, 0, 524290, 3, 0, 524291, 3, 0, 524292, 3, 0, 524293, 3, 0, 524294, 3, 0, 524295, 3, 0, 524296, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 0 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="furniture" type="TileMap" parent="." index="2"]
+[node name="layer_03" type="TileMap" parent="." index="2"]
 
 z_index = 2
 mode = 0
@@ -93,12 +93,34 @@ format = 1
 tile_data = PoolIntArray( 131092, 25, 0, 196626, 24, 0, 524294, 28, 0, 589839, 27, 0 )
 _sections_unfolded = [ "Cell", "Z Index" ]
 
-[node name="Chest" parent="." index="3" instance=ExtResource( 2 )]
+[node name="layer_04" type="TileMap" parent="." index="3"]
+
+z_index = 1
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Chest" parent="." index="4" instance=ExtResource( 2 )]
 
 visible = false
 position = Vector2( 361.856, 303.822 )
 
-[node name="Position_spawners" type="Node2D" parent="." index="4"]
+[node name="Position_spawners" type="Node2D" parent="." index="5"]
 
 [node name="Position2D" type="Position2D" parent="Position_spawners" index="0"]
 
@@ -116,7 +138,7 @@ position = Vector2( 409.648, 236.035 )
 
 position = Vector2( 497.43, 408.673 )
 
-[node name="Player_initial_position" type="Position2D" parent="." index="5"]
+[node name="Player_initial_position" type="Position2D" parent="." index="6"]
 
 position = Vector2( 391.117, 316.502 )
 
