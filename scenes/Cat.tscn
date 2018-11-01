@@ -1,78 +1,64 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Cat.gd" type="Script" id=1]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=8]
 
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-
-void fragment() {
-	vec4 col = texture(TEXTURE, UV);
-	COLOR = col;
-}"
-_sections_unfolded = [ "Resource" ]
-
-[sub_resource type="ShaderMaterial" id=2]
-
-render_priority = 0
-shader = SubResource( 1 )
-
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "wait_front",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "wait_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Cat" type="KinematicBody2D" index="0"]
+[node name="Cat" type="KinematicBody2D"]
 
 position = Vector2( 0.170509, 0 )
 input_pickable = false
@@ -83,21 +69,28 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Transform", "collision" ]
 hit = null
 SPEED = null
-life = null
+life_max = null
+range_attack = null
+move_attack = null
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="shadow" type="Sprite" parent="." index="0"]
 
-material = SubResource( 2 )
+position = Vector2( -1.2562, -6.49821 )
+scale = Vector2( 0.630041, 0.630041 )
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "walk_right"
-frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+[node name="Collision" type="CollisionShape2D" parent="." index="2"]
 
-shape = SubResource( 4 )
+visible = false
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 

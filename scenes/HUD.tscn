@@ -1,19 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/svg/radar.png" type="Texture" id=2]
-[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=3]
-
-[sub_resource type="Gradient" id=1]
-
-offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-
-flags = 4
-gradient = SubResource( 1 )
-width = 100
+[ext_resource path="res://assets/hud/menu_access_button.png" type="Texture" id=3]
+[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/hud/action_button_pressed_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/hud/around_moving_stick.png" type="Texture" id=6]
+[ext_resource path="res://assets/hud/stick.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=3]
 
@@ -27,9 +20,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
-radius = 175.0
+radius = 150.0
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -54,37 +47,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="LifeBar" type="TextureProgress" parent="Control" index="0"]
-
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = 1102.0
-margin_right = 1272.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = true
-texture_under = null
-texture_over = null
-texture_progress = SubResource( 2 )
-radial_fill_degrees = 360.0
-radial_center_offset = Vector2( 0, 0 )
-nine_patch_stretch = true
-_sections_unfolded = [ "Radial Fill", "Textures" ]
-
-[node name="ViewportContainer" type="ViewportContainer" parent="Control" index="1"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Control" index="0"]
 
 visible = false
 anchor_left = 0.0
@@ -104,27 +67,53 @@ stretch_shrink = 1
 
 [node name="radar" type="AnimatedSprite" parent="Control/ViewportContainer" index="0"]
 
+visible = false
 position = Vector2( 1248, 672 )
 frames = SubResource( 3 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="1"]
+[node name="Menu_Acess" type="TextureButton" parent="." index="1"]
 
-position = Vector2( 1189.18, 607.622 )
-scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 3 )
-pressed = null
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1270.0
+margin_right = 1334.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+expand = true
+_sections_unfolded = [ "Textures" ]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="2"]
+
+position = Vector2( 1112.61, 531.051 )
+scale = Vector2( 1.09821, 1.09821 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
 bitmask = null
 shape = null
-shape_centered = true
+shape_centered = false
 shape_visible = true
 passby_press = false
 action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="." index="2"]
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="." index="3"]
 
 position = Vector2( 211.418, 549.221 )
 normal = null
@@ -137,6 +126,22 @@ passby_press = false
 action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
+
+[node name="border" type="Sprite" parent="." index="4"]
+
+position = Vector2( 211.854, 549.347 )
+scale = Vector2( 4.86205, 4.84582 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Material", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="Joystick" type="Sprite" parent="." index="5"]
+
+position = Vector2( 211.883, 545.234 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Offset" ]
+
+[connection signal="pressed" from="Menu_Acess" to="." method="_on_Menu_Acess_pressed"]
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
 

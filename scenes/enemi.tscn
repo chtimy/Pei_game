@@ -1,27 +1,28 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/Enemi.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Blaster.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_3.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_1.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_2.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_1.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_1.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_0.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_1.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=22]
+[ext_resource path="res://scenes/life_bar.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -31,64 +32,64 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "attack_right",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "prepare_attack_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "prepare_attack_left",
+"name": "prepare_attack_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "prepare_attack_front",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "prepare_attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "attack_right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 22 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "prepare_attack_back",
+"name": "attack_front",
 "speed": 5.0
 } ]
 
@@ -102,9 +103,52 @@ radius = 3.0
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
+[sub_resource type="Animation" id=5]
+
+resource_name = "movement"
+length = 0.5
+loop = false
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 20.2, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walk_right" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="enemi" type="KinematicBody2D" groups=[
-"Movables",
 "Enemis",
+"Movables",
 ]]
 
 input_pickable = false
@@ -112,26 +156,37 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Pickable", "Transform" ]
 hit = 10
 SPEED = 50
-life = 100
-blaster_shoot_scene = ExtResource( 2 )
-range_attack = 100
+life_max = 100
+range_attack = null
+move_attack = 50
 
-[node name="Collision" type="CollisionShape2D" parent="." index="0"]
+[node name="shadow" type="Sprite" parent="." index="0"]
 
+position = Vector2( 0.693634, 6.59629 )
+scale = Vector2( 0.607188, 0.607188 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
 position = Vector2( 0.811882, 15.389 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
 frames = SubResource( 2 )
 animation = "walk_right"
+frame = 5
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="View" type="Area2D" parent="." index="2"]
+[node name="View" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -141,9 +196,6 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="zona" type="CollisionShape2D" parent="View" index="0"]
 
@@ -154,14 +206,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ShootLoopTimer" type="Timer" parent="." index="3"]
+[node name="ShootLoopTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 3.0
 one_shot = false
 autostart = false
 
-[node name="Trigger" type="Area2D" parent="." index="4"]
+[node name="Trigger" type="Area2D" parent="." index="5"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -170,6 +222,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="zona" type="CollisionShape2D" parent="Trigger" index="0"]
 
@@ -177,12 +232,28 @@ position = Vector2( 0.81, 15.38 )
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
-[connection signal="area_entered" from="View" to="." method="_on_view_area_entered"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/movement = SubResource( 5 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
-[connection signal="area_exited" from="View" to="." method="_on_view_area_exited"]
+[node name="TextureProgress" parent="." index="7" instance=ExtResource( 23 )]
+
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+margin_bottom = -35.0
+
+[connection signal="body_entered" from="View" to="." method="_on_View_body_entered"]
 
 [connection signal="timeout" from="ShootLoopTimer" to="." method="_on_ShootLoopTimer_timeout"]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 

@@ -43,8 +43,10 @@ func start_level():
 	#generate the level map
 	var word = init_word()
 	#generate the word for the level
-	$Level.generate(word.length()/2, word.length()/2 + 1, word)
+	var init_map_id = $Level.generate(word.length()/2, word.length()/2 + 1, word)
 	$Level/Cat.update_position()
+	#init minimap
+	$Menu/Minimap.init($Level.matrix, init_map_id)
 	#init the HUD
 	$HUD.set_process(true)
 	$HUD.show()
@@ -53,18 +55,20 @@ func start_level():
 	
 func stop_level(var win):
 	var found_word = $Password/Terminal.word
-
 	$Password/Terminal.clear()
 	$Level.clear_map()
+	$HUD.hide()
+	if win:
+		$Score/Score.win(found_word)
 
-	$Score/Score.init(found_word)
+		var index = States.words[States.stage-1].find(found_word)
+		if index != -1:
+			States.words[States.stage-1].remove(index)
+			States.used_words[States.stage-1].push_back(found_word)
+		States.level += 1
+	else:
+		$Score/Score.loose()
 	$Score.show()
-
-	var index = States.words[States.stage-1].find(found_word)
-	if index != -1:
-		States.words[States.stage-1].remove(index)
-		States.used_words[States.stage-1].push_back(found_word)
-	States.level += 1
 
 ################SIGNALS##################
 func valid_password():
@@ -80,8 +84,20 @@ func change_player_position(var position):
 func _on_HUD_attack_button():
 	$Level/Player.attack_on()
 
-func find_letter(var letter, var letter_position):
-	$Password/Terminal.active_letter({"letter" : letter, "position" : letter_position})
+func find_treasure(var treasure):
+	if treasure.type == "letter":
+		$Password/Terminal.active_letter(treasure)
 	
 func change_HUD_life(var value):
-	get_node("HUD/Control/LifeBar").value = value
+	get_node("Level/Cat").change_life(value)
+	
+func _on_Player_died():
+	stop_level(false)
+	
+func show_minimap():
+	$Menu.show()
+	$HUD.hide()
+	
+func hide_minimap():
+	$Menu.hide()
+	$HUD.show()

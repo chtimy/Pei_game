@@ -47,6 +47,21 @@ func close_ref_vec(var direction, var div):
 		i += 2.0 *PI / div
 	return null
 	
+func point_is_inside_triangle(var p, var a, var b, var c):
+#	print("inside triangle : ", a, " ", b, " " , c, " point:", p)
+	var v = (b-a).normalized()
+	var v2 = (c-a).normalized()
+	var v3 = (p-a).normalized()
+#	print("angles : ", abs(v.angle_to(v3)), " ", abs(v.angle_to(v2)))
+	if abs(v.angle_to(v3)) >= abs(v.angle_to(v2)):
+		return false
+	v = (a-b).normalized()
+	v2 = (c-b).normalized()
+	v3 = (p-b).normalized()
+#	print("angles : ", abs(v.angle_to(v3)), " ", abs(v.angle_to(v2)))
+	if abs(v.angle_to(v3)) >= abs(v.angle_to(v2)):
+		return false
+	return true
 #func get_direction_value(var direction):
 #	var PI16 = PI/16.0
 #	if direction == VEC_RIGHT:

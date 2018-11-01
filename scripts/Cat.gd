@@ -1,15 +1,13 @@
 extends "res://scripts/movable.gd"
 
 var player
-var direction = Tools.VEC_SOUTH
 var bias = 2.0
 var CLOSE_DISTANCE_SCALE = 0.4
-var direction_name = Tools.VEC_SOUTH
-var velocity = Vector2()
 
 func _ready():
 	self.player = get_node("../Player")
 	self.position = self.player.position + self.player.direction_vec
+	self.direction_name = Tools.VEC_SOUTH
 	
 func update_position():
 	var offset = self.player.position + (self.player.get_node("Trigger/CollisionShape2D").position + self.player.get_node("Trigger/CollisionShape2D").shape.extents/2.0) - self.player.direction_vec * SPEED * CLOSE_DISTANCE_SCALE
@@ -26,7 +24,6 @@ func _process(delta):
 
 		#which direction is the player
 		if(self.velocity != Vector2(0,0)):
-			self.direction = Tools.get_direction(self.velocity.normalized())
 			self.direction_name = Tools.get_direction(self.velocity.normalized())
 			play_animation(self.direction_name, "walk", $AnimatedSprite)
 		

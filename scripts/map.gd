@@ -33,7 +33,7 @@ func _ready():
 	connect("stop_level_sig", get_node("../.."), "stop_level")
 	connect("show_terminal_sig", get_node("../.."), "show_terminal")
 	connect("change_map_sig", get_node(".."), "on_change_map")
-	connect("find_letter_sig", get_node("../.."), "find_letter")
+	$Chest.connect("find_treasure_sig", get_node("../.."), "find_treasure")
 	#down signals
 	for child in get_children():
 		if child.get_name() == "left_exit":
@@ -53,7 +53,7 @@ func _ready():
 			child.connect("area_entered", self, "enter_area", ["door"])
 	
 func init_chest(var letter, var letter_position):
-	init_clue(letter, letter_position)
+	$Chest.init({"type" : "letter", "letter" : letter, "position": letter_position})
 	
 func init():
 	var nb_enemis = randi() % 3
@@ -65,10 +65,6 @@ func init():
 		enemi.set_position($Position_spawners.get_children()[i].position)
 		self.enemis.push_back(enemi)
 
-func init_clue(var letter, var letter_position):
-	self.letter = letter
-	self.letter_position = letter_position
-
 func enemi_killed(var enemi):
 	var id = enemis.find(enemi)
 	if id != -1:
@@ -79,22 +75,7 @@ func enemi_killed(var enemi):
 
 func finish_room():
 	print("finish room")
-	show_chest()
-
-func show_chest():
-	var chest = find_node("Chest")
-	if chest:
-		chest.show()
-		chest.get_node("Area2D").connect("area_entered", self, "touch_chest")
-
-func touch_chest(var area):
-	var chest = find_node("Chest")
-	chest.hide()
-	call_deferred("queue_free", chest)
-	if(self.letter):
-		emit_signal("find_letter_sig", self.letter, self.letter_position)
-	#else:
-		#emit_signal("find_treasure", self.treasure)
+	$Chest.show()
 
 func pause():
 	pass

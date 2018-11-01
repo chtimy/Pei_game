@@ -1,24 +1,21 @@
 extends "res://scripts/movable.gd"
 
-signal hud_life_player_change_sig
 signal enter_in_another_area
 signal player_died
 
-export (int) var range_attack
-
 var destination = Vector2()
 var direction_vec = Vector2(0.0, 0.0)
-var direction_name = Tools.VEC_SOUTH
-var velocity = Vector2()
 var factor_speed = 0.0
 
 func _ready():
+	self.life = self.life_max
 	self.velocity = Vector2(0,0)
-	connect("hud_life_player_change_sig", get_node("../.."), "change_HUD_life")
-	get_node("AnimatedSprite").connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+	self.direction_name = Tools.VEC_SOUTH
+	connect("hud_life_player_change_sig", $TextureProgress, "set_value")
+	connect("player_died", get_node("../.."), "_on_Player_died")
 
 func _process(delta):
-	move_and_slide(velocity)
+	move_and_slide(self.velocity)
 	
 	#which direction is the player
 	if(self.velocity != Vector2(0,0)):
@@ -27,61 +24,57 @@ func _process(delta):
 		self.direction_vec = self.velocity.normalized()
 		
 func stop():
-	velocity = Vector2(0,0)
+	.stop_move()
 	play_animation(self.direction_name, "wait", $AnimatedSprite)
 	
 func set_move(var move, var factor_speed):
-	self.factor_speed = clamp(factor_speed, 0.0, 1.0)
-	velocity = move * SPEED * self.factor_speed
+	self.factor_speed = factor_speed
+	self.velocity = move * SPEED * self.factor_speed
 	
 func die():
 	print("dead")
 	emit_signal("player_died")
 	
-#func _on_View_area_entered(area):
-#	var selectable = area.get_node("..")
-#	print(selectable)
-#	if selectable.is_in_group("Enemis") :
-#		print("area : ", selectable, "group : ", selectable.get_groups())
-#		self.enemis_viewed.push_back(selectable)
-#
-#func _on_View_area_exited(area):
-#	var selectable = area.get_node("..")
-#	if selectable.is_in_group("Enemis"):
-#		var index = self.enemis_viewed.find(selectable)
-#		if index != -1:
-#			self.enemis_viewed.remove(index)
-	
 func take_damages(var value):
 	#play_animation(self.direction, "touched")
 	decrease_life(value)
-	emit_signal("hud_life_player_change_sig", life)
-			
+	emit_signal("hud_life_player_change_sig", (float(life)/life_max) * 100)
+
 func attack_on():
 	$attack_effects.rotation = Vector2(0,1).angle_to(self.direction_vec)
-	print($attack_effects.rotation)
-	print(self.direction_vec)
-	play_animation(self.direction_name, "attack", $AnimatedSprite)
-	$attack_effects.play("normal")
-	for area in $View.get_overlapping_areas():
-		var selectable = area.get_node("..")
-		if selectable.is_in_group("Enemis") && area.get_name() == "Trigger":
-			print("area : ", selectable, "group : ", selectable.get_groups())
-			var pos_enemi = selectable.position + selectable.get_node("Collision").position + selectable.get_node("Collision").shape.extents/2.0
-			var vec = (pos_enemi - self.position).normalized()
+	#on joue l"animation d'attaque
+	attack_animation(self.position, self.position + self.direction_vec * self.move_attack, get_animation(self.direction_name, "attack"), "normal")
+
+	var bodies = $View.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Enemis"):
+			var pos_enemi = body.get_collision_position()
+			var vec = (pos_enemi - get_collision_position()).normalized()
 #			var dir_player = Tools.get_direction_value(self.direction_name)
 			var angle = vec.angle_to(self.direction_vec)
 			if angle <= PI/4.0 || angle >= -PI/4.0:
-				selectable.take_damages(self.hit)
+				body.take_damages(self.hit)
+				body.move_animation(body.position, body.position + self.direction_vec * self.move_attack, get_animation(body.direction_name, "walk"))
 	
+func attack_animation(var init_position, new_position, var animation_name, var animation_name2):
+	$AnimationPlayer.get_animation("attack").track_set_key_value(0,0, init_position)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(0,1, new_position)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(1,0, animation_name)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(2,0, true)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(3,0, animation_name2)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(4,0, true)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(4,1, false)
+	$AnimationPlayer.play("attack")
 
-func _on_AnimatedSprite_animation_finished():
-	var name_animation = $AnimatedSprite.animation
-	var regex = RegEx.new()
-	regex.compile("_[a-z]*")
-	var result1 = regex.search(name_animation)
-	regex.compile("[a-z]*_")
-	var result2 = regex.search(name_animation)
-	if result1 && result2:
-		if result2.get_string() == "attack_":
-			$AnimatedSprite.play("wait"+result1.get_string())
+func move_animation(var init_position, new_position, var animation_name):
+	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, init_position)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(0,1, new_position)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, "touched_front")
+	$AnimationPlayer.get_animation("movement").track_set_key_value(1,1, animation_name)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, true)
+	$AnimationPlayer.play("movement")
+	$AnimationPlayer.queue("touched")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	play_animation(self.direction_name, "wait", $AnimatedSprite)
+	$AnimatedSprite.playing = true

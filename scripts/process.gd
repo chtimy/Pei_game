@@ -69,6 +69,7 @@ func generate(var w, var h, var word):
 		matrix[alea[i].x][alea[i].y].init_chest(word[i], i)
 	
 	add_child(matrix[0][0])
+	return Vector2(0,0)
 
 func on_change_map(var T):
 	call_deferred("change_map", T)
