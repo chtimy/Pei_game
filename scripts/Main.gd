@@ -13,7 +13,7 @@ func _ready():
 	$Score/Score.connect("next_level", self, "start_level")
 
 ################INIT###############
-func init_word():
+func init_word(var stage, var level):
 	var index = randi()%States.words[States.stage-1].size()
 	var word = States.words[States.stage-1][index]
 	$Password/Terminal.set_password(word)
@@ -39,11 +39,11 @@ func unfreeze():
 	set_process_input(true)
 	$Level/Player.unfreeze()
 
-func start_level():
+func start_level(var stage, var level):
 	#generate the level map
-	var word = init_word()
+	var word = init_word(stage, level)
 	#generate the word for the level
-	var init_map_id = $Level.generate(word.length()/2, word.length()/2 + 1, word)
+	var init_map_id = $Level.generate(stage, word.length()/2, word.length()/2 + 1, word)
 	$Level/Cat.update_position()
 	#init minimap
 	$Menu/Minimap.init($Level.matrix, init_map_id)

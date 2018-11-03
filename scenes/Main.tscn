@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/process.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/svg/enemi_on_radar.png" type="Texture" id=6]
-[ext_resource path="res://scenes/Terminal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Minimap.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Terminal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Minimap.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 
@@ -56,20 +55,16 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 
 scale = Vector2( 1.2, 1.2 )
 z_index = 4
-_sections_unfolded = [ "Collision", "Material", "Transform", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index", "collision" ]
 SPEED = 100
 
 [node name="HUD" parent="." index="1" instance=ExtResource( 5 )]
 
-ENEMI_TEXTURE = ExtResource( 6 )
+[node name="Password" parent="." index="2" instance=ExtResource( 6 )]
 
-[node name="Password" parent="." index="2" instance=ExtResource( 7 )]
+[node name="Score" parent="." index="3" instance=ExtResource( 7 )]
 
-[node name="Score" parent="." index="3" instance=ExtResource( 8 )]
-
-[node name="Menu" parent="." index="4" instance=ExtResource( 9 )]
-
-[connection signal="attack_button" from="HUD" to="." method="_on_HUD_attack_button"]
+[node name="Menu" parent="." index="4" instance=ExtResource( 8 )]
 
 [connection signal="moving_stick" from="HUD" to="Level/Player" method="set_move"]
 
