@@ -1,6 +1,7 @@
 extends Node2D
 
 signal end_level
+signal save_game_signal
 
 var begin = Vector2()
 var end = Vector2()
@@ -11,11 +12,12 @@ func _ready():
 	$Password/Terminal.connect("close_terminal", self, "exit_terminal")
 	$Password/Terminal.connect("valid_password", self, "valid_password")
 	$Score/Score.connect("next_level", self, "start_level")
+	connect("save_game_signal", get_node(".."), "save_game")
 
 ################INIT###############
 func init_word(var stage, var level):
-	var index = randi()%States.words[States.stage-1].size()
-	var word = States.words[States.stage-1][index]
+	var index = randi()%States.words[States.stage-1][level-1].size()
+	var word = States.words[States.stage-1][level-1][index]
 	$Password/Terminal.set_password(word)
 	return word.translation
 	
@@ -43,7 +45,7 @@ func start_level(var stage, var level):
 	#generate the level map
 	var word = init_word(stage, level)
 	#generate the word for the level
-	var init_map_id = $Level.generate(stage, word.length()/2, word.length()/2 + 1, word)
+	var init_map_id = $Level.generate(word.length()/2, word.length()/2 + 1, word)
 	$Level/Cat.update_position()
 	#init minimap
 	$Menu/Minimap.init($Level.matrix, init_map_id)
@@ -68,6 +70,8 @@ func stop_level(var win):
 		States.level += 1
 	else:
 		$Score/Score.loose()
+		
+	emit_signal("save_game_signal")
 	$Score.show()
 
 ################SIGNALS##################

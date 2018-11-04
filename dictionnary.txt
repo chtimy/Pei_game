@@ -1,30 +1,31 @@
-1 1 6
-fork : fourchette
-knife : couteau
-glass : verre
-plate : assiette
-spoon : cuillère
-kitchen : cuisine
-1 2 7
-oven : four
-colander : passoire
-bowl : bol
-napkin : serviette
-chopsticks : baguettes
-napkin : serviette
-dishes : vaisselle
-1 3 8
-micro-wave : micro-onde
-coffee maker : machine à café
-timer : minuteur
-rolling pin : rouleau
-frying pan : poêle
-spatula : spatule
-fridge : frigo
-sink : évier
-1 4 5
-chopping board : planche à couper
-aprot : tablier
-corkscrew : tire-bouchon
-toaster : grille-pain
-cooker : cuiseur
+﻿1 4
+1 6
+fork:fourchette
+knife:couteau
+glass:verre
+plate:assiette
+spoon:cuillère
+kitchen:cuisine
+2 7
+oven:four
+colander:passoire
+bowl:bol
+napkin:serviette
+chopsticks:baguettes
+napkin:serviette
+dishes:vaisselle
+3 8
+micro-wave:micro-onde
+coffee maker:machine à café
+timer:minuteur
+rolling pin:rouleau
+frying pan:poêle
+spatula:spatule
+fridge:frigo
+sink:évier
+4 5
+chopping board:planche à couper
+aprot:tablier
+corkscrew:tire-bouchon
+toaster:grille-pain
+cooker:cuiseur

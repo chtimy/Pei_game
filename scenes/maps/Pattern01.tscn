@@ -20,7 +20,7 @@ func _init():
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -90,7 +90,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 131092, 25, 0, 196626, 24, 0, 524294, 28, 0, 589839, 27, 0 )
+tile_data = PoolIntArray( 131092, 25, 0, 196626, 24, 0, 524294, 28, 0, 589829, 14, 0, 589839, 27, 0 )
 _sections_unfolded = [ "Cell", "Z Index" ]
 
 [node name="layer_04" type="TileMap" parent="." index="3"]

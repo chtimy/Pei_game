@@ -1,13 +1,17 @@
 extends CanvasLayer
 signal moving_stick
 signal stop_moving_stick
+signal attack_button_signal
+signal access_menu_signal
 
 var touching_moving_stick = false
 
 func _ready():
 	$Joystick.position = $TouchScreenButton2.position
-	connect("moving_stick", get_node("../image/Player"), "set_move")
-	connect("stop_moving_stick", get_node("../image/Player"), "stop")
+	connect("moving_stick", get_node("../Level/Player"), "set_move")
+	connect("stop_moving_stick", get_node("../Level/Player"), "stop")
+	connect("attack_button_signal", get_node("../Level/Player"), "attack_on")
+	connect("access_menu_signal", get_node(".."), "show_minimap")
 
 func _process(var delta):
 	if touching_moving_stick:
@@ -44,3 +48,10 @@ func show():
 	$TouchScreenButton2.show()
 	$border.show()
 	$Joystick.show()
+
+
+func _on_TouchScreenButton_pressed():
+	emit_signal("attack_button_signal")
+
+func _on_Menu_Access_pressed():
+	emit_signal("access_menu_signal")

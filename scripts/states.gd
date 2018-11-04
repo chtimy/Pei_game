@@ -3,16 +3,7 @@ extends Node
 var level = 1
 var stage = 1
 
-var words = [
-			 [
-			  {"name": "fork", "translation" : "fourchette"}, 
-			  {"name": "knife", "translation" : "couteau"},
-			  {"name": "plate", "translation" : "assiette"},
-			  {"name": "glass", "translation" : "verre"},
-			  {"name": "spoon", "translation" : "cuillère"},
-			  {"name": "napkin", "translation" : "serviette"}
-			 ]
-			]
+var words = []
 			
 var used_words = [[]]
 
@@ -25,10 +16,18 @@ func read_dictionnary():
 	if !file.is_open():
 		print("Error, dictionnary can't be opened")
 		get_tree().quit()
-	var line = file.get_line().split(" ")
-	print(line)
-	var stage = int(line[0])
-	var level = int(line[1])
-	var nb_words = int(line[2])
-	print(stage, " ", level, " ", nb_words)
+	while !file.eof_reached():
+		var line = file.get_line().split(" ")
+		var stage_cur = int(line[0])
+		var nb_levels = int(line[1])
+		words.append([])
+		print(words)
+		for l in range(nb_levels):
+			line = file.get_line().split(" ")
+			var level_cur = int(line[0])
+			words[stage_cur-1].append([])
+			var nb_words = int(line[1])
+			for i in range(nb_words):
+				line = file.get_line().split(":")
+				words[stage_cur-1][level_cur-1].append({"name" : line[0], "translation" : line[1]})
 	file.close()

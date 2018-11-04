@@ -22,6 +22,10 @@ func _process(delta):
 		self.direction_name = Tools.get_direction(self.velocity.normalized())
 		play_animation(self.direction_name, "walk", $AnimatedSprite)
 		self.direction_vec = self.velocity.normalized()
+		if $WalkTimer.is_stopped():
+			$WalkTimer.start()
+	else:
+		$WalkTimer.stop()
 		
 func stop():
 	.stop_move()
@@ -44,6 +48,7 @@ func attack_on():
 	$attack_effects.rotation = Vector2(0,1).angle_to(self.direction_vec)
 	#on joue l"animation d'attaque
 	attack_animation(self.position, self.position + self.direction_vec * self.move_attack, get_animation(self.direction_name, "attack"), "normal")
+	$PunchSound.play()
 
 	var bodies = $View.get_overlapping_bodies()
 	for body in bodies:
@@ -78,3 +83,6 @@ func move_animation(var init_position, new_position, var animation_name):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	play_animation(self.direction_name, "wait", $AnimatedSprite)
 	$AnimatedSprite.playing = true
+
+func _on_WalkTimer_timeout():
+	$StepSound.play()

@@ -4,7 +4,7 @@ signal next_level
 
 func _on_ContinueButton_pressed():
 	self.hide()
-	emit_signal("next_level")
+	emit_signal("next_level", States.stage, States.level)
 
 func win(var word):
 	$State.set_text("Level complete")

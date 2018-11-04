@@ -3,42 +3,41 @@
 [ext_resource path="res://scripts/stage.gd" type="Script" id=1]
 [ext_resource path="res://assets/object/house.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=12]
 [ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=22]
-[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=23]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=24]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=25]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=26]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=27]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=28]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=29]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=30]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=31]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=32]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=33]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=34]
-[ext_resource path="res://scripts/HUD.gd" type="Script" id=35]
-[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=36]
-[ext_resource path="res://assets/hud/action_button_pressed_2.png" type="Texture" id=37]
-[ext_resource path="res://assets/hud/around_moving_stick.png" type="Texture" id=38]
-[ext_resource path="res://assets/hud/stick.png" type="Texture" id=39]
+[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=34]
+[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/hud/action_button_pressed_2.png" type="Texture" id=36]
+[ext_resource path="res://assets/hud/around_moving_stick.png" type="Texture" id=37]
+[ext_resource path="res://assets/hud/stick.png" type="Texture" id=38]
 
 [sub_resource type="GDScript" id=1]
 
@@ -80,29 +79,34 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk_back",
+"name": "wait_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "attack_right",
+"name": "attack2_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "wait_back",
+"name": "attack_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "attack2_back",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "touched_front",
+"name": "attack2_front",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -110,59 +114,54 @@ animations = [ {
 "name": "attack_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "attack2_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "attack2_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "attack2_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "wait_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "attack2_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "wait_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "wait_front",
+"name": "walk_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "attack2_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "attack_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "touched_front",
 "speed": 5.0
 } ]
 
@@ -214,44 +213,44 @@ func stop():
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "wait_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ) ],
+"frames": [ ExtResource( 29 ) ],
 "loop": true,
 "name": "wait_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_front",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -271,7 +270,58 @@ extents = Vector2( 157.649, 95.7926 )
 custom_solver_bias = 0.0
 extents = Vector2( 1.45044, 89.0085 )
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends CanvasLayer
+signal moving_stick
+signal stop_moving_stick
+signal attack_button_signal
+signal access_menu_signal
+
+var touching_moving_stick = false
+
+func _ready():
+	$Joystick.position = $TouchScreenButton2.position
+	connect(\"moving_stick\", get_node(\"../image/Player\"), \"set_move\")
+	connect(\"stop_moving_stick\", get_node(\"../image/Player\"), \"stop\")
+
+func _process(var delta):
+	if touching_moving_stick:
+		var mouse_position = get_viewport().get_mouse_position()
+		var center = $TouchScreenButton2.position
+		var vec = mouse_position - center
+		var radius = $TouchScreenButton2.get_shape().radius
+		if vec.length() <= radius:
+			$Joystick.position = mouse_position
+		else:
+			$Joystick.position = center + vec.clamped(radius)
+		var factor = clamp(mouse_position.distance_to(center) / float(radius), 0.0, 1.0)
+		emit_signal(\"moving_stick\", 
+				(get_viewport().get_mouse_position() - $TouchScreenButton2.position).normalized(), factor)
+			
+func _on_TouchScreenButtonMove_pressed():
+	touching_moving_stick = true
+	
+func _on_TouchScreenButtonMove_released():
+	touching_moving_stick = false
+	$Joystick.position = $TouchScreenButton2.position
+	call_deferred(\"emit_signal\", \"stop_moving_stick\")
+	
+func hide():
+	$Control.hide()
+	$TouchScreenButton.hide()
+	$TouchScreenButton2.hide()
+	$border.hide()
+	$Joystick.hide()
+	
+func show():
+	$Control.show()
+	$TouchScreenButton.show()
+	$TouchScreenButton2.show()
+	$border.show()
+	$Joystick.show()"
+
+[sub_resource type="CircleShape2D" id=11]
 
 custom_solver_bias = 0.0
 radius = 150.0
@@ -483,14 +533,14 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 35 )
+script = SubResource( 10 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="HUD" index="0"]
 
 position = Vector2( 1112.61, 531.051 )
 scale = Vector2( 1.09821, 1.09821 )
-normal = ExtResource( 36 )
-pressed = ExtResource( 37 )
+normal = ExtResource( 35 )
+pressed = ExtResource( 36 )
 bitmask = null
 shape = null
 shape_centered = false
@@ -506,7 +556,7 @@ position = Vector2( 211.418, 549.221 )
 normal = null
 pressed = null
 bitmask = null
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 shape_centered = false
 shape_visible = true
 passby_press = false
@@ -518,14 +568,14 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 211.854, 549.347 )
 scale = Vector2( 4.86205, 4.84582 )
-texture = ExtResource( 38 )
+texture = ExtResource( 37 )
 _sections_unfolded = [ "Material", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Joystick" type="Sprite" parent="HUD" index="3"]
 
 position = Vector2( 211.883, 545.234 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 39 )
+texture = ExtResource( 38 )
 _sections_unfolded = [ "Offset" ]
 
 [connection signal="released" from="HUD/TouchScreenButton" to="." method="_on_TouchScreenButton2_pressed"]

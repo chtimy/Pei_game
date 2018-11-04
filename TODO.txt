@@ -1,0 +1,14 @@
+Changer les boutons du menus
+Ajouter des indications de level dans la map de stages
+attention aux coffres vides
+changer police car pas accents
+ajouter animation pei pour la marche
+varier la vitesse de marche d'animation en fct de la vitesse ainsi que le son
+modifier sprites run pei
+améliorer minimap
+améliorer les trésors de coffres visuellement
+animation porte principales ouvrent
+faire des patterns de carte
+changer logo minimap menu
+changer movement animation en cubic interpolation
+check les callback function dans les animations
