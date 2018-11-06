@@ -1,10 +1,10 @@
 extends Control
 
-signal next_level
+signal next_level_signal
 
 func _on_ContinueButton_pressed():
 	self.hide()
-	emit_signal("next_level", States.stage, States.level)
+	emit_signal("next_level_signal")
 
 func win(var word):
 	$State.set_text("Level complete")

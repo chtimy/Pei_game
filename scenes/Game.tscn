@@ -13,4 +13,6 @@ gamePackedScene = ExtResource( 3 )
 
 [node name="Menu" parent="." index="0" instance=ExtResource( 4 )]
 
+_sections_unfolded = [ "Pause", "Visibility" ]
+
 

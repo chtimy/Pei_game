@@ -2,17 +2,22 @@ extends Node2D
 
 signal end_level
 signal save_game_signal
+signal show_stages_signal
 
 var begin = Vector2()
 var end = Vector2()
 var path = []
 
+var current_level
+var current_stage
+
 func _ready():
 	randomize()
 	$Password/Terminal.connect("close_terminal", self, "exit_terminal")
 	$Password/Terminal.connect("valid_password", self, "valid_password")
-	$Score/Score.connect("next_level", self, "start_level")
+	$Score/Score.connect("next_level_signal", self, "next_level")
 	connect("save_game_signal", get_node(".."), "save_game")
+	connect("show_stages_signal", get_node(".."), "show_stages")
 
 ################INIT###############
 func init_word(var stage, var level):
@@ -42,6 +47,8 @@ func unfreeze():
 	$Level/Player.unfreeze()
 
 func start_level(var stage, var level):
+	self.current_level = level
+	self.current_stage = stage
 	#generate the level map
 	var word = init_word(stage, level)
 	#generate the word for the level
@@ -55,6 +62,13 @@ func start_level(var stage, var level):
 	
 	$Level/Player.set_position($Level/Map/Player_initial_position.position)
 	
+func next_level():
+	States.level += 1
+	if (self.current_stage == States.stage && self.current_level >= States.level-1) || self.current_stage > States.stage:
+		emit_signal("show_stages_signal", self.current_stage, self.current_level+1)
+	else:
+		emit_signal("show_stages_signal")
+	
 func stop_level(var win):
 	var found_word = $Password/Terminal.word
 	$Password/Terminal.clear()
@@ -67,11 +81,9 @@ func stop_level(var win):
 		if index != -1:
 			States.words[States.stage-1].remove(index)
 			States.used_words[States.stage-1].push_back(found_word)
-		States.level += 1
+		emit_signal("save_game_signal")
 	else:
 		$Score/Score.loose()
-		
-	emit_signal("save_game_signal")
 	$Score.show()
 
 ################SIGNALS##################

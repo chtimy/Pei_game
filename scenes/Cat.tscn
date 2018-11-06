@@ -2,59 +2,59 @@
 
 [ext_resource path="res://scripts/Cat.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_01.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_02.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_right_01.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_right_02.png" type="Texture" id=8]
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "wait_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "wait_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_front",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -83,15 +83,16 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 13 )
+frames = SubResource( 1 )
 animation = "wait_right"
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Collision" type="CollisionShape2D" parent="." index="2"]
 
 visible = false
-shape = SubResource( 14 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 

@@ -8,11 +8,11 @@
 
 script/source = "extends CanvasLayer
 
-signal hide
+signal hide_signal
 
 func _ready():
 	hide()
-	connect(\"hide\", get_node(\"..\"), \"hide_minimap\")
+	connect(\"hide_signal\", get_node(\"..\"), \"hide_minimap\")
 	
 func hide():
 	$ColorRect.hide()
@@ -25,7 +25,7 @@ func show():
 	$TextureButton.show()
 
 func _on_TextureButton_pressed():
-	emit_signal(\"hide\")
+	emit_signal(\"hide_signal\")
 "
 
 [node name="Menu" type="CanvasLayer"]

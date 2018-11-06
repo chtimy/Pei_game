@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 signal moving_stick
 signal stop_moving_stick
 signal attack_button_signal
@@ -34,16 +35,14 @@ func _on_TouchScreenButtonMove_released():
 	touching_moving_stick = false
 	$Joystick.position = $TouchScreenButton2.position
 	call_deferred("emit_signal", "stop_moving_stick")
-	
+
 func hide():
-	$Control.hide()
 	$TouchScreenButton.hide()
 	$TouchScreenButton2.hide()
 	$border.hide()
 	$Joystick.hide()
-	
+
 func show():
-	$Control.show()
 	$TouchScreenButton.show()
 	$TouchScreenButton2.show()
 	$border.show()

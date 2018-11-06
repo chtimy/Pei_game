@@ -1,332 +1,371 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scripts/stage.gd" type="Script" id=1]
 [ext_resource path="res://assets/object/house.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=22]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=23]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=24]
-[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=25]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=26]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=27]
-[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=28]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=29]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_0.png" type="Texture" id=30]
-[ext_resource path="res://assets/characters/cat/walk/left/sprite_1.png" type="Texture" id=31]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=32]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_0.png" type="Texture" id=33]
-[ext_resource path="res://assets/characters/cat/walk/right/walk_1.png" type="Texture" id=34]
-[ext_resource path="res://assets/hud/action_button_pressed.png" type="Texture" id=35]
-[ext_resource path="res://assets/hud/action_button_pressed_2.png" type="Texture" id=36]
-[ext_resource path="res://assets/hud/around_moving_stick.png" type="Texture" id=37]
-[ext_resource path="res://assets/hud/stick.png" type="Texture" id=38]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_right_01.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/cat/walk/right/walk_right_02.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_01.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_02.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=34]
+[ext_resource path="res://assets/stages/point.png" type="Texture" id=35]
+[ext_resource path="res://assets/stages/point_disabled.png" type="Texture" id=36]
+[ext_resource path="res://assets/stages/particle.png" type="Texture" id=37]
 
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends \"res://scripts/movable.gd\"
-
-signal enter_in_another_area
-signal player_died
-
-var destination = Vector2()
-var direction_vec = Vector2(0.0, 0.0)
-var factor_speed = 0.0
-
-func _ready():
-	self.velocity = Vector2(0,0)
-	self.direction_name = Tools.VEC_SOUTH
-
-func _process(delta):
-	move_and_slide(self.velocity)
-	
-	#which direction is the player
-	if(self.velocity != Vector2(0,0)):
-		self.direction_name = Tools.get_direction(self.velocity.normalized())
-		play_animation(self.direction_name, \"walk\", $AnimatedSprite)
-		self.direction_vec = self.velocity.normalized()
-		
-func stop():
-	.stop_move()
-	play_animation(self.direction_name, \"wait\", $AnimatedSprite)
-	
-func set_move(var move, var factor_speed):
-	self.factor_speed = factor_speed
-	self.velocity = move * SPEED * self.factor_speed
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	play_animation(self.direction_name, \"wait\", $AnimatedSprite)
-	$AnimatedSprite.playing = true
-"
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "wait_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "attack2_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "attack2_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "attack2_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "wait_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "wait_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "attack2_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": true,
-"name": "attack_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "touched_front",
+"name": "walk_back",
 "speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 9.69221, 9.03726 )
-
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 9.70213, 9.14191 )
-
-[sub_resource type="GDScript" id=5]
-
-script/source = "extends \"res://scripts/movable.gd\"
-
-var player
-var bias = 2.0
-var CLOSE_DISTANCE_SCALE = 0.4
-
-func _ready():
-	self.player = get_node(\"../Player\")
-	self.position = self.player.position + self.player.direction_vec
-	self.direction_name = Tools.VEC_SOUTH
-	
-func update_position():
-	var offset = self.player.position + (self.player.get_node(\"Trigger/CollisionShape2D\").position + self.player.get_node(\"Trigger/CollisionShape2D\").shape.extents/2.0) - self.player.direction_vec * SPEED * CLOSE_DISTANCE_SCALE
-	self.position = offset
-
-func _process(delta):
-	var offset = self.player.position + (self.player.get_node(\"Trigger/CollisionShape2D\").position + self.player.get_node(\"Trigger/CollisionShape2D\").shape.extents/2.0) - self.player.direction_vec * SPEED * CLOSE_DISTANCE_SCALE
-	if self.position.distance_to(offset) < bias:
-		stop()
-	else:
-		var move = (offset - self.position).normalized()
-		self.velocity = move * self.player.SPEED * self.player.factor_speed
-		move_and_slide(self.velocity)
-
-		#which direction is the player
-		if(self.velocity != Vector2(0,0)):
-			self.direction_name = Tools.get_direction(self.velocity.normalized())
-			play_animation(self.direction_name, \"walk\", $AnimatedSprite)
-		
-func stop():
-	move_and_slide(Vector2(0,0))
-	play_animation(self.direction_name, \"wait\", $AnimatedSprite)"
-
-[sub_resource type="SpriteFrames" id=6]
-
-animations = [ {
-"frames": [ ExtResource( 29 ) ],
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "wait_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "wait_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "wait_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "walk_front",
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_left",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="SpriteFrames" id=2]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "attack2_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "attack_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "attack_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": true,
+"name": "touched_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "attack2_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "attack2_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": true,
+"name": "attack2_left",
+"speed": 5.0
+} ]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="GDScript" id=3]
 
-custom_solver_bias = 0.0
-extents = Vector2( 157.649, 95.7926 )
+script/source = "extends AnimatedSprite
 
-[sub_resource type="RectangleShape2D" id=9]
+export (int) var SPEED"
 
-custom_solver_bias = 0.0
-extents = Vector2( 1.45044, 89.0085 )
+[sub_resource type="GDScript" id=4]
 
-[sub_resource type="GDScript" id=10]
+script/source = "extends Control
 
-script/source = "extends CanvasLayer
-signal moving_stick
-signal stop_moving_stick
-signal attack_button_signal
-signal access_menu_signal
+export(int, 1, 1000) var size_dot_px
+export (float) var width_line
 
-var touching_moving_stick = false
+var stage = 1
 
 func _ready():
-	$Joystick.position = $TouchScreenButton2.position
-	connect(\"moving_stick\", get_node(\"../image/Player\"), \"set_move\")
-	connect(\"stop_moving_stick\", get_node(\"../image/Player\"), \"stop\")
+	var children = get_children()
+	var nb_children = children.size()
+	for i in range(nb_children):
+		children[i].connect(\"pressed\", get_node(\"..\"), \"choose_level\", [children[i], 1, i+1])
+		if (States.stage == self.stage && States.level <= i) || States.stage < self.stage:
+			children[i].set_disabled(true)
+		
+#func _draw():
+#	var children = get_children()
+#	var nb_children = children.size()
+#	for i in range(nb_children-1):
+#		if States.stage > self.stage || States.level > i+1:
+#			var child_position = children[i].rect_position + (children[i].rect_size*children[i].rect_scale)/2.0
+#			var child2_position = children[i+1].rect_position + (children[i+1].rect_size*children[i+1].rect_scale)/2.0
+#			draw_line(child_position, child2_position, Color(1,1,1,0.5), width_line + width_line * 0.3, true)
+#			draw_line(child_position, child2_position, Color(0.5,0.5,0.5,1), width_line, true)
+#			draw_line(child_position, child2_position, Color(0,0,0,1), width_line * 0.7, true)
+#	#		draw_dotted_line(child.position, child2.position, Color(0,0,0,1), width_line)
+#
+#func draw_dotted_line(var from, var to, var color, var width):
+#	var vector = to - from
+#	var nb_dots = int(vector.length() / size_dot_px)
+#	var dot = vector / nb_dots
+#	for i in range(0, nb_dots-2, 2):
+#		print(\"i : \" , i, \"from : \", from + dot*i, \" to : \", from + dot*(i+1))
+#		draw_line(from + dot*i, from + dot*(i+1), color, width)"
 
-func _process(var delta):
-	if touching_moving_stick:
-		var mouse_position = get_viewport().get_mouse_position()
-		var center = $TouchScreenButton2.position
-		var vec = mouse_position - center
-		var radius = $TouchScreenButton2.get_shape().radius
-		if vec.length() <= radius:
-			$Joystick.position = mouse_position
-		else:
-			$Joystick.position = center + vec.clamped(radius)
-		var factor = clamp(mouse_position.distance_to(center) / float(radius), 0.0, 1.0)
-		emit_signal(\"moving_stick\", 
-				(get_viewport().get_mouse_position() - $TouchScreenButton2.position).normalized(), factor)
-			
-func _on_TouchScreenButtonMove_pressed():
-	touching_moving_stick = true
-	
-func _on_TouchScreenButtonMove_released():
-	touching_moving_stick = false
-	$Joystick.position = $TouchScreenButton2.position
-	call_deferred(\"emit_signal\", \"stop_moving_stick\")
-	
-func hide():
-	$Control.hide()
-	$TouchScreenButton.hide()
-	$TouchScreenButton2.hide()
-	$border.hide()
-	$Joystick.hide()
-	
-func show():
-	$Control.show()
-	$TouchScreenButton.show()
-	$TouchScreenButton2.show()
-	$border.show()
-	$Joystick.show()"
+[sub_resource type="Gradient" id=5]
 
-[sub_resource type="CircleShape2D" id=11]
+offsets = PoolRealArray( 0, 0.514139, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-custom_solver_bias = 0.0
-radius = 150.0
+[sub_resource type="GradientTexture" id=6]
 
-[node name="stage" type="Control"]
+flags = 4
+gradient = SubResource( 5 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=7]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color_ramp = SubResource( 6 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Animation", "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Trail" ]
+
+[sub_resource type="Animation" id=8]
+
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("image/Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 78.655, 319.766 ), Vector2( 78.655, 319.766 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("image/Player/AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "wait_front", "wait_front" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("image/Cat:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("image/Cat/AnimatedSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "wait_right", "wait_right" ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource_name = "unlock_level"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 165.243, 330.144 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unlock_level_graphics"
+} ]
+}
+
+[node name="stage" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -340,6 +379,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
+offset_vector = Vector2( -20, 0 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
@@ -347,8 +387,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1335.0
-margin_bottom = 740.0
+margin_left = -546.0
+margin_top = -443.0
+margin_right = 1918.0
+margin_bottom = 1000.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -359,229 +401,325 @@ color = Color( 0.183594, 0.183594, 0.183594, 1 )
 
 [node name="image" type="Sprite" parent="." index="1"]
 
-position = Vector2( 669.924, 209.124 )
 texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
+[node name="Cat" type="Node2D" parent="image" index="0"]
+
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" type="KinematicBody2D" parent="image" index="0" groups=[
-"Player",
-"Movables",
-]]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="image/Cat" index="0"]
 
-position = Vector2( -250.11, 134.011 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = SubResource( 1 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Material", "Transform", "collision" ]
-hit = null
-SPEED = 200
-life_max = null
-range_attack = null
-move_attack = null
-
-[node name="shadow" type="Sprite" parent="image/Player" index="0"]
-
-position = Vector2( 0, 24.3598 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Material", "Transform", "Z Index" ]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="image/Player" index="1"]
-
-frames = SubResource( 2 )
-animation = "wait_front"
+scale = Vector2( 0.35, 0.35 )
+frames = SubResource( 1 )
+animation = "wait_right"
 frame = 1
 playing = true
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
-[node name="Trigger" type="Area2D" parent="image/Player" index="2" groups=[
-"Player",
-]]
+[node name="shadow" type="Sprite" parent="image/Cat/AnimatedSprite" index="0"]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Audio Bus", "Collision", "Pickable" ]
+position = Vector2( -2.51239, -12.9964 )
+scale = Vector2( 1.26008, 1.26008 )
+texture = ExtResource( 9 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="image/Player/Trigger" index="0"]
+[node name="Player" type="Node2D" parent="image" index="1"]
 
-position = Vector2( 0, 37.968 )
-shape = SubResource( 3 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+position = Vector2( 78.655, 319.766 )
+z_index = 1
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Collision" type="CollisionShape2D" parent="image/Player" index="3"]
-
-position = Vector2( 0, 38.0414 )
-shape = SubResource( 4 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Cat" type="KinematicBody2D" parent="image" index="1"]
-
-position = Vector2( -282.353, 162.716 )
-scale = Vector2( 1.2, 1.2 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = SubResource( 5 )
-_sections_unfolded = [ "Collision", "Material", "Transform", "collision" ]
-hit = null
-SPEED = 100
-life_max = null
-range_attack = null
-move_attack = null
-
-[node name="shadow" type="Sprite" parent="image/Cat" index="0"]
-
-position = Vector2( -1.2562, -6.49821 )
-scale = Vector2( 0.630041, 0.630041 )
-texture = ExtResource( 3 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="image/Cat" index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="image/Player" index="0"]
 
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 6 )
-animation = "wait_right"
+z_index = 1
+frames = SubResource( 2 )
+animation = "wait_front"
 playing = true
-_sections_unfolded = [ "Material", "Transform" ]
+script = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+SPEED = 100
 
-[node name="Collision" type="CollisionShape2D" parent="image/Cat" index="2"]
+[node name="Camera2D" type="Camera2D" parent="image/Player/AnimatedSprite" index="0"]
 
-shape = SubResource( 7 )
+position = Vector2( 0.42926, -0.429321 )
+scale = Vector2( 21, 12 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.4, 0.4 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = true
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Offset", "Smoothing" ]
+
+[node name="shadow" type="Sprite" parent="image/Player" index="1"]
+
+position = Vector2( -0.17717, 12.1779 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
+
+[node name="Position2D" type="Position2D" parent="image/Player" index="2"]
+
+position = Vector2( -0.314026, 21.6676 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="limits" type="StaticBody2D" parent="." index="2"]
+[node name="Line2D" type="Line2D" parent="image" index="2"]
 
-editor/display_folded = true
-position = Vector2( 0, -161 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+points = PoolVector2Array( 50.5299, 264.559, 55.0532, 328.581, 98.2782, 354.346, 166.198, 329.637, 221.554, 349.423, 252.444, 392.891, 280.409, 324.744 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = 1315437296
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="limits" index="0"]
+[node name="Stage_1" type="Control" parent="." index="2"]
 
-build_mode = 0
-polygon = PoolVector2Array( 219.768, 572.856, 216.961, 576.276, 216.722, 163.971, 1122.93, 164.012, 1123.18, 576.268, 217.2, 576.211, 219.671, 573.335, 1120.75, 573.098, 1120.7, 167.133, 219.799, 167.105 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 4 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Visibility" ]
+size_dot_px = 5
+width_line = 2.0
 
-[node name="Node2D" type="Node2D" parent="." index="3"]
+[node name="Sprite" type="TextureButton" parent="Stage_1" index="0"]
 
-position = Vector2( 0, -161 )
-_sections_unfolded = [ "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 41.0
+margin_top = 255.0
+margin_right = 109.0
+margin_bottom = 322.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
+expand = true
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Textures" ]
 
-[node name="kitchen_trigger" type="Area2D" parent="Node2D" index="0"]
+[node name="Sprite4" type="TextureButton" parent="Stage_1" index="1"]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-monitoring = false
-audio_bus_override = false
-audio_bus_name = "Master"
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 46.0
+margin_top = 318.0
+margin_right = 114.0
+margin_bottom = 385.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
+_sections_unfolded = [ "Rect", "Region", "Textures", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/kitchen_trigger" index="0"]
+[node name="Sprite3" type="TextureButton" parent="Stage_1" index="2"]
 
-position = Vector2( 376.729, 478.728 )
-shape = SubResource( 8 )
-_sections_unfolded = [ "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 89.0
+margin_top = 344.0
+margin_right = 157.0
+margin_bottom = 411.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" index="1"]
+[node name="Sprite2" type="TextureButton" parent="Stage_1" index="3"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 157.0
+margin_top = 321.0
+margin_right = 225.0
+margin_bottom = 388.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D" index="0"]
+[node name="Sprite5" type="TextureButton" parent="Stage_1" index="4"]
 
-build_mode = 0
-polygon = PoolVector2Array( 219.872, 505.827, 238.818, 505.931, 239.55, 527.599, 262.683, 527.808, 262.778, 538.805, 281.299, 538.627, 287.182, 543.491, 341.82, 542.926, 346.628, 538.231, 364.897, 537.948, 364.459, 525.295, 400.451, 525.483, 407.442, 520.571, 467.996, 520.193, 516.931, 519.91, 517.341, 509.612, 533.401, 509.99, 534.118, 408.79, 379.398, 417.182, 219.829, 423.58 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 212.0
+margin_top = 340.0
+margin_right = 280.0
+margin_bottom = 407.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D" index="2"]
+[node name="Sprite7" type="TextureButton" parent="Stage_1" index="5"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 382.0
+margin_right = 311.0
+margin_bottom = 449.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D3" index="0"]
+[node name="Sprite6" type="TextureButton" parent="Stage_1" index="6"]
 
-position = Vector2( 535.023, 484.329 )
-shape = SubResource( 9 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 271.0
+margin_top = 315.0
+margin_right = 339.0
+margin_bottom = 382.0
+rect_scale = Vector2( 0.282705, 0.282705 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
 
-[node name="HUD" type="CanvasLayer" parent="." index="4"]
+[node name="Particles2D" type="Particles2D" parent="." index="3"]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = SubResource( 10 )
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD" index="0"]
-
-position = Vector2( 1112.61, 531.051 )
-scale = Vector2( 1.09821, 1.09821 )
-normal = ExtResource( 35 )
-pressed = ExtResource( 36 )
-bitmask = null
-shape = null
-shape_centered = false
-shape_visible = true
-passby_press = false
-action = ""
-visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="HUD" index="1"]
-
-position = Vector2( 211.418, 549.221 )
-normal = null
-pressed = null
-bitmask = null
-shape = SubResource( 11 )
-shape_centered = false
-shape_visible = true
-passby_press = false
-action = ""
-visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
-
-[node name="border" type="Sprite" parent="HUD" index="2"]
-
-position = Vector2( 211.854, 549.347 )
-scale = Vector2( 4.86205, 4.84582 )
+position = Vector2( 165.243, 330.144 )
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+amount = 300
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.5
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
 texture = ExtResource( 37 )
-_sections_unfolded = [ "Material", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
 
-[node name="Joystick" type="Sprite" parent="HUD" index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
-position = Vector2( 211.883, 545.234 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 38 )
-_sections_unfolded = [ "Offset" ]
-
-[connection signal="released" from="HUD/TouchScreenButton" to="." method="_on_TouchScreenButton2_pressed"]
-
-[connection signal="pressed" from="HUD/TouchScreenButton2" to="HUD" method="_on_TouchScreenButtonMove_pressed"]
-
-[connection signal="released" from="HUD/TouchScreenButton2" to="HUD" method="_on_TouchScreenButtonMove_released"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/move = SubResource( 8 )
+anims/unlock_level = SubResource( 9 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
 
