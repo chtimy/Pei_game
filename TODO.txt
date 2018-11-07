@@ -1,4 +1,4 @@
-Ajouter des indications de level dans la map de stages
+Ajouter nombre étoiles sur chaque niveau dans la selection stage
 attention aux coffres vides
 changer police car pas accents
 ajouter animation pei pour la marche
