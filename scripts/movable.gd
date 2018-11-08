@@ -6,17 +6,21 @@ export (int) var life_max
 export (int) var range_attack
 export (int) var move_attack
 
-signal hud_life_player_change_sig
+signal hud_life_change_sig
+signal character_dead_signal
 
 var life = life_max
 var direction_name = Tools.VEC_SOUTH
 var velocity = Vector2(0,0)
 
 func decrease_life(var value):
-	self.life -= value
-	if self.life <= 0:
-		self.life = 0
-		die()
+	self.life = clamp(self.life - value, 0, self.life_max)
+
+func increase_life(var value):
+	self.life = clamp(self.life + value, 0, self.life_max)
+	
+func die():
+	emit_signal("character_dead_signal", self)
 	
 func freeze():
 	set_process(false)

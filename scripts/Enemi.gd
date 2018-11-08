@@ -22,8 +22,8 @@ func _ready():
 	self.direction_name = Tools.VEC_LEFT
 	
 	self.connect("touched_from_enemi", get_tree().root.get_node("Game"), "on_touched_enemi")
-	self.connect("enemi_died_sig", get_node(".."), "enemi_killed")
-	connect("hud_life_player_change_sig", $TextureProgress, "set_value")
+	self.connect("hud_life_change_sig", $TextureProgress, "set_value")
+	self.connect("character_dead_signal", get_node(".."), "character_dead")
 	
 	$ShootLoopTimer.set_one_shot(true)
 	
@@ -63,7 +63,7 @@ func _on_View_body_entered(body):
 			self.state = NOTHING
 
 func attack_on():
-#	play_animation(self.direction_name, "attack", $AnimatedSprite)
+	#play_animation(self.direction_name, "attack", $AnimatedSprite)
 	#calcul si le joueur est toujours dans la zone d'attaque de l'ennemi
 	var current_position = get_collision_position()
 	var enemi_current_position = self.target.body.get_collision_position()
@@ -75,7 +75,7 @@ func attack_on():
 	
 	#check si çà touche
 	if object_inside_attack_area(old_vec, current_position, enemi_current_position):
-		self.target.body.take_damages(self.hit)
+		self.target.body.decrease_life(self.hit)
 		self.target.body.move_animation(self.target.body.position, self.target.body.position + old_vec * self.move_attack, get_animation(self.target.body.direction_name, "wait"))
 		
 func object_inside_attack_area(var vector_attack, var current_position, var object_position):
@@ -112,15 +112,14 @@ func _on_ShootLoopTimer_timeout():
 			#lancement du timer pour l'attaque
 			$ShootLoopTimer.start()
 			break
-	
-func die():
-	emit_signal("enemi_died_sig", self)
 
-func take_damages(var value):
+func decrease_life(var value):
 	#animation touché
-	decrease_life(value)
+	.decrease_life(value)
 	$ShootLoopTimer.start()
-	emit_signal("hud_life_player_change_sig", (float(life)/life_max) * 100)
+	emit_signal("hud_life_change_sig", (float(life)/life_max) * 100)
+	if self.life == 0:
+		die()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if !$ShootLoopTimer.is_stopped():

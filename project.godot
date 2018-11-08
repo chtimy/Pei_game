@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 Tools="*res://scripts/Tools.gd"
 States="*res://scripts/states.gd"
+Constants="*res://scripts/Constants.gd"
 
 [display]
 

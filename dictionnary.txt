@@ -25,7 +25,7 @@ fridge:frigo
 sink:évier
 4 5
 chopping board:planche à couper
-aprot:tablier
+apron:tablier
 corkscrew:tire-bouchon
 toaster:grille-pain
 cooker:cuiseur

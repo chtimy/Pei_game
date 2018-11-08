@@ -52,8 +52,8 @@ func _ready():
 		elif child.get_name() == "Door":
 			child.connect("area_entered", self, "enter_area", ["door"])
 	
-func init_chest(var letter, var letter_position):
-	$Chest.init({"type" : "letter", "letter" : letter, "position": letter_position})
+func init_chest(var state, var args):
+	$Chest.init({"type" : state, "args" : args})
 	
 func init():
 	var nb_enemis = randi() % 3
@@ -65,13 +65,14 @@ func init():
 		enemi.set_position($Position_spawners.get_children()[i].position)
 		self.enemis.push_back(enemi)
 
-func enemi_killed(var enemi):
-	var id = enemis.find(enemi)
-	if id != -1:
-		self.enemis.remove(id)
-	enemi.call_deferred("queue_free")
-	if enemis.size() == 0:
-		finish_room()
+func character_dead(var body):
+	if body.is_in_group("Enemis"):
+		var id = enemis.find(body)
+		if id != -1:
+			self.enemis.remove(id)
+		body.call_deferred("queue_free")
+		if enemis.size() == 0:
+			finish_room()
 
 func finish_room():
 	print("finish room")

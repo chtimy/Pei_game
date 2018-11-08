@@ -13,11 +13,6 @@ func _ready():
 	connect("change_player_position", get_node(".."), "change_player_position")
 
 func generate(var w, var h, var word):
-	var alea = []
-	for i in range(w):
-		for j in range(h):
-			alea.push_back(Vector2(i, j))
-	alea = Tools.randomize_array(alea)
 	matrix.resize(w)
 	for i in range(w):
 		matrix[i] = []
@@ -64,9 +59,17 @@ func generate(var w, var h, var word):
 				matrix[i][j].open_exit(DOWN)
 			matrix[i][j].init()
 	self.current_map_id = Vector2(0,0)
+	
+	var alea = []
+	for i in range(w):
+		for j in range(h):
+			alea.push_back(Vector2(i, j))
+	alea = Tools.randomize_array(alea)
 	# distribute the letters
 	for i in range(word.length()):
-		matrix[alea[i].x][alea[i].y].init_chest(word[i], i)
+		matrix[alea[i].x][alea[i].y].init_chest(Constants.LETTER, [word[i], i])
+	for i in range(word.length()):
+		matrix[alea[i].x][alea[i].y].init_chest(Constants.LIFE, [25])
 	
 	add_child(matrix[0][0])
 	return Vector2(0,0)

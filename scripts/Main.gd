@@ -101,15 +101,18 @@ func _on_HUD_attack_button():
 	$Level/Player.attack_on()
 
 func find_treasure(var treasure):
-	if treasure.type == "letter":
-		$Password/Terminal.active_letter(treasure)
+	if treasure.type == Constants.LETTER:
+		$Password/Terminal.active_letter({"letter" : treasure.args[0], "position" : treasure.args[1]})
+	elif treasure.type == Constants.LIFE:
+		$Level/Player.increase_life(treasure.args[0])
 	
 func change_HUD_life(var value):
 	get_node("Level/Cat").change_life(value)
 	
-func _on_Player_died():
-	stop_level(false)
-	
+func _on_character_dead(var body):
+	if body.is_in_group("Players"):
+		stop_level(false)		
+			
 func show_minimap():
 	$Menu.show()
 	$HUD.hide()

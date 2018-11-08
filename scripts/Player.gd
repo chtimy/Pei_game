@@ -1,7 +1,6 @@
 extends "res://scripts/movable.gd"
 
 signal enter_in_another_area
-signal player_died
 
 var destination = Vector2()
 var direction_vec = Vector2(0.0, 0.0)
@@ -11,8 +10,8 @@ func _ready():
 	self.life = self.life_max
 	self.velocity = Vector2(0,0)
 	self.direction_name = Tools.VEC_SOUTH
-	connect("hud_life_player_change_sig", $TextureProgress, "set_value")
-	connect("player_died", get_node("../.."), "_on_Player_died")
+	self.connect("hud_life_change_sig", $TextureProgress, "set_value")
+	self.connect("character_dead_signal", get_node("../.."), "character_dead")
 
 func _process(delta):
 	move_and_slide(self.velocity)
@@ -34,15 +33,17 @@ func stop():
 func set_move(var move, var factor_speed):
 	self.factor_speed = factor_speed
 	self.velocity = move * SPEED * self.factor_speed
-	
-func die():
-	print("dead")
-	emit_signal("player_died")
-	
-func take_damages(var value):
+
+func decrease_life(var value):
 	#play_animation(self.direction, "touched")
-	decrease_life(value)
-	emit_signal("hud_life_player_change_sig", (float(life)/life_max) * 100)
+	.decrease_life(value)
+	emit_signal("hud_life_change_sig", (float(life)/life_max) * 100)
+	if self.life == 0:
+		die()
+
+func increase_life(var value):
+	.increase_life(value)
+	emit_signal("hud_life_change_sig", (float(life)/life_max) * 100)
 
 func attack_on():
 	$attack_effects.rotation = Vector2(0,1).angle_to(self.direction_vec)
@@ -58,7 +59,7 @@ func attack_on():
 #			var dir_player = Tools.get_direction_value(self.direction_name)
 			var angle = vec.angle_to(self.direction_vec)
 			if angle <= PI/4.0 || angle >= -PI/4.0:
-				body.take_damages(self.hit)
+				body.decrease_life(self.hit)
 				body.move_animation(body.position, body.position + self.direction_vec * self.move_attack, get_animation(body.direction_name, "walk"))
 	
 func attack_animation(var init_position, new_position, var animation_name, var animation_name2):
