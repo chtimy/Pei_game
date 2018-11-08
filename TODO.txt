@@ -1,5 +1,4 @@
 Ajouter nombre étoiles sur chaque niveau dans la selection stage
-attention aux coffres vides
 changer police car pas accents
 ajouter animation pei pour la marche
 varier la vitesse de marche d'animation en fct de la vitesse ainsi que le son
