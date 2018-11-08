@@ -25,6 +25,7 @@ Constants="*res://scripts/Constants.gd"
 window/size/width=1334
 window/size/height=750
 window/handheld/emulate_touchscreen=true
+window/handheld/emulate_mouse_from_touch=false
 
 [global]
 

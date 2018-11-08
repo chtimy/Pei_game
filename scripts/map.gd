@@ -33,7 +33,7 @@ func _ready():
 	connect("stop_level_sig", get_node("../.."), "stop_level")
 	connect("show_terminal_sig", get_node("../.."), "show_terminal")
 	connect("change_map_sig", get_node(".."), "on_change_map")
-	$Chest.connect("find_treasure_sig", get_node("../.."), "find_treasure")
+	$Chest.connect("find_treasure_sig", get_node(".."), "find_treasure")
 	#down signals
 	for child in get_children():
 		if child.get_name() == "left_exit":
@@ -56,7 +56,7 @@ func init_chest(var state, var args):
 	$Chest.init({"type" : state, "args" : args})
 	
 func init():
-	var nb_enemis = randi() % 3
+	var nb_enemis = randi() % 3 + 1
 	for i in range(nb_enemis):
 		var enemi = ENEMI_SCENE.instance()
 		enemi.add_to_group("Enemis")
@@ -75,7 +75,6 @@ func character_dead(var body):
 			finish_room()
 
 func finish_room():
-	print("finish room")
 	$Chest.show()
 
 func pause():

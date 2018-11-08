@@ -3,6 +3,8 @@ extends Node2D
 enum {RIGHT = 2, LEFT = 0, UP = 1, DOWN = 3}
 
 signal change_player_position
+signal find_treasure_signal
+signal finish_room_signal
 
 var cell_size = Vector2(64,64)
 var maps = [load("res://scenes/maps/Pattern01.tscn")]#, load("res://scenes/maps/Pattern02.tscn")]
@@ -11,6 +13,12 @@ var current_map_id
 
 func _ready():
 	connect("change_player_position", get_node(".."), "change_player_position")
+	connect("find_treasure_signal", get_node(".."), "find_treasure")
+	connect("finish_room_signal", get_node(".."), "finish_room")
+	
+func find_treasure(var treasure):
+	emit_signal("find_treasure_signal", treasure)
+	emit_signal("finish_room_signal", self.current_map_id)
 
 func generate(var w, var h, var word):
 	matrix.resize(w)
@@ -68,8 +76,11 @@ func generate(var w, var h, var word):
 	# distribute the letters
 	for i in range(word.length()):
 		matrix[alea[i].x][alea[i].y].init_chest(Constants.LETTER, [word[i], i])
-	for i in range(word.length()):
+	for i in range(word.length(), alea.size()):
 		matrix[alea[i].x][alea[i].y].init_chest(Constants.LIFE, [25])
+		
+	print(range(word.length()))
+	print(range(word.length(), alea.size()))
 	
 	add_child(matrix[0][0])
 	return Vector2(0,0)
@@ -81,7 +92,7 @@ func change_map(var T):
 	remove_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
 	self.current_map_id += T
 	add_child(self.matrix[self.current_map_id.x][self.current_map_id.y])
-	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T])
+	emit_signal("change_player_position", cell_size * self.matrix[self.current_map_id.x][self.current_map_id.y].exit[T], self.current_map_id)
 
 func clear_map():
 	var map = $Map

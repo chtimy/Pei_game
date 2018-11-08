@@ -1,6 +1,7 @@
 extends "res://scripts/movable.gd"
 
 signal enter_in_another_area
+signal get_object_signal
 
 var destination = Vector2()
 var direction_vec = Vector2(0.0, 0.0)
@@ -12,6 +13,7 @@ func _ready():
 	self.direction_name = Tools.VEC_SOUTH
 	self.connect("hud_life_change_sig", $TextureProgress, "set_value")
 	self.connect("character_dead_signal", get_node("../.."), "character_dead")
+	self.connect("get_object_signal", $ObjectGetting, "print_object")
 
 func _process(delta):
 	move_and_slide(self.velocity)
@@ -80,6 +82,9 @@ func move_animation(var init_position, new_position, var animation_name):
 	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, true)
 	$AnimationPlayer.play("movement")
 	$AnimationPlayer.queue("touched")
+	
+func get_object(var name):
+	$ObjectGetting.play(name)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	play_animation(self.direction_name, "wait", $AnimatedSprite)
@@ -87,3 +92,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_WalkTimer_timeout():
 	$StepSound.play()
+
+
+func _on_ObjectGetting_animation_finished():
+	$ObjectGetting.play("default")

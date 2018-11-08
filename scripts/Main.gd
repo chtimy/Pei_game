@@ -3,6 +3,8 @@ extends Node2D
 signal end_level
 signal save_game_signal
 signal show_stages_signal
+signal player_get_objet_signal
+signal change_room_signal
 
 var begin = Vector2()
 var end = Vector2()
@@ -18,6 +20,8 @@ func _ready():
 	$Score/Score.connect("next_level_signal", self, "next_level")
 	connect("save_game_signal", get_node(".."), "save_game")
 	connect("show_stages_signal", get_node(".."), "show_stages")
+	connect("player_get_objet_signal", $Level/Player, "get_object")
+	connect("change_room_signal", $Menu/Minimap, "change_room")
 
 ################INIT###############
 func init_word(var stage, var level):
@@ -92,26 +96,32 @@ func valid_password():
 	unfreeze()
 	$Level/Map.unlock_door()
 
-func change_player_position(var position):
+func change_player_position(var position, var current_map_id):
 	$Level/Player.position = position;
 	$Level/Cat.update_position()
 	$Level/Player.stop()
+	emit_signal("change_room_signal", current_map_id)
 
 func _on_HUD_attack_button():
 	$Level/Player.attack_on()
 
 func find_treasure(var treasure):
 	if treasure.type == Constants.LETTER:
+		emit_signal("player_get_objet_signal", "letter")
 		$Password/Terminal.active_letter({"letter" : treasure.args[0], "position" : treasure.args[1]})
 	elif treasure.type == Constants.LIFE:
+		emit_signal("player_get_objet_signal", "heart")
 		$Level/Player.increase_life(treasure.args[0])
-	
+
+func finish_room(var current_room_id):
+	$Menu/Minimap.finish_room(current_room_id)
+
 func change_HUD_life(var value):
 	get_node("Level/Cat").change_life(value)
 	
 func _on_character_dead(var body):
 	if body.is_in_group("Players"):
-		stop_level(false)		
+		stop_level(false)
 			
 func show_minimap():
 	$Menu.show()
