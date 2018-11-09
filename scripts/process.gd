@@ -16,6 +16,14 @@ func _ready():
 	connect("find_treasure_signal", get_node(".."), "find_treasure")
 	connect("finish_room_signal", get_node(".."), "finish_room")
 	
+func freeze():
+	for child in get_children():
+		child.freeze()
+		
+func unfreeze():
+	for child in get_children():
+		child.unfreeze()
+	
 func find_treasure(var treasure):
 	emit_signal("find_treasure_signal", treasure)
 	emit_signal("finish_room_signal", self.current_map_id)

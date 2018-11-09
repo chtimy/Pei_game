@@ -12,7 +12,6 @@ func _ready():
 	self.velocity = Vector2(0,0)
 	self.direction_name = Tools.VEC_SOUTH
 	self.connect("hud_life_change_sig", $TextureProgress, "set_value")
-	self.connect("character_dead_signal", get_node("../.."), "character_dead")
 	self.connect("get_object_signal", $ObjectGetting, "print_object")
 
 func _process(delta):
@@ -62,7 +61,7 @@ func attack_on():
 			var angle = vec.angle_to(self.direction_vec)
 			if angle <= PI/4.0 || angle >= -PI/4.0:
 				body.decrease_life(self.hit)
-				body.move_animation(body.position, body.position + self.direction_vec * self.move_attack, get_animation(body.direction_name, "walk"))
+				body.move_animation(self.direction_vec, self.move_attack, get_animation(body.direction_name, "walk"), 0)
 	
 func attack_animation(var init_position, new_position, var animation_name, var animation_name2):
 	$AnimationPlayer.get_animation("attack").track_set_key_value(0,0, init_position)
@@ -96,3 +95,4 @@ func _on_WalkTimer_timeout():
 
 func _on_ObjectGetting_animation_finished():
 	$ObjectGetting.play("default")
+

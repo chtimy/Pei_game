@@ -15,12 +15,8 @@ var current_stage
 
 func _ready():
 	randomize()
-	$Password/Terminal.connect("close_terminal", self, "exit_terminal")
-	$Password/Terminal.connect("valid_password", self, "valid_password")
-	$Score/Score.connect("next_level_signal", self, "next_level")
 	connect("save_game_signal", get_node(".."), "save_game")
 	connect("show_stages_signal", get_node(".."), "show_stages")
-	connect("player_get_objet_signal", $Level/Player, "get_object")
 	connect("change_room_signal", $Menu/Minimap, "change_room")
 
 ################INIT###############
@@ -42,14 +38,6 @@ func show_terminal():
 	freeze()
 
 ################GAME#################
-func freeze():
-	set_process_input(false)
-#	$Level.freeze()
-
-func unfreeze():
-	set_process_input(true)
-	$Level/Player.unfreeze()
-
 func start_level(var stage, var level):
 	self.current_level = level
 	self.current_stage = stage
@@ -90,7 +78,6 @@ func stop_level(var win):
 		$Score/Score.loose()
 	$Score.show()
 
-################SIGNALS##################
 func valid_password():
 	exit_terminal()
 	unfreeze()
@@ -102,9 +89,6 @@ func change_player_position(var position, var current_map_id):
 	$Level/Player.stop()
 	emit_signal("change_room_signal", current_map_id)
 
-func _on_HUD_attack_button():
-	$Level/Player.attack_on()
-
 func find_treasure(var treasure):
 	if treasure.type == Constants.LETTER:
 		emit_signal("player_get_objet_signal", "letter")
@@ -115,9 +99,6 @@ func find_treasure(var treasure):
 
 func finish_room(var current_room_id):
 	$Menu/Minimap.finish_room(current_room_id)
-
-func change_HUD_life(var value):
-	get_node("Level/Cat").change_life(value)
 	
 func _on_character_dead(var body):
 	if body.is_in_group("Players"):

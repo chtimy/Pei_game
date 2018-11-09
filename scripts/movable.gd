@@ -13,6 +13,8 @@ var life = life_max
 var direction_name = Tools.VEC_SOUTH
 var velocity = Vector2(0,0)
 
+var animation_move_velocity
+
 func decrease_life(var value):
 	self.life = clamp(self.life - value, 0, self.life_max)
 
@@ -21,6 +23,9 @@ func increase_life(var value):
 	
 func die():
 	emit_signal("character_dead_signal", self)
+	
+func animation_move(var factor = 1.0):
+	move_and_slide(animation_move_velocity * factor)
 	
 func freeze():
 	set_process(false)

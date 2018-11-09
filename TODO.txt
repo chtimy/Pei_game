@@ -3,14 +3,9 @@ varier la vitesse de marche d'animation en fct de la vitesse ainsi que le son
 animation porte principales ouvrent
 faire des patterns de carte
 changer logo minimap menu
-changer movement animation en cubic interpolation
-check les callback function dans les animations
 améliorer l'animation du walk du chat
 attention collisions quand on se fait frapper
-Faire un zoom sur la pièce dans le stage
-Revoir les attaques et les animations
+Revoir les attaques et les animations / les angles d'attaque sont pas les bons
 lorsqu'un niveau où tous les mots sont découverts, alors on met une étoile / Ajouter nombre étoiles sur chaque niveau dans la selection stage / ou étoile qui se remplit au fur et à mesure
 mieux gérer les inputs
 mettre des bornes aux déplacements de la minimap
-changer couleur ou mettre sprite comme quoi la room est faite!
-Retravailler les signaux

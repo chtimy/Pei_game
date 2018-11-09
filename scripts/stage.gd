@@ -31,7 +31,6 @@ func choose_level(var level_button, var stage_id, var level_id):
 		print(step, " ", from, " ", destination)
 		var i = from
 		while i != destination:
-			print(i)
 			move_player(stage_id, i + step)
 			i += step
 	

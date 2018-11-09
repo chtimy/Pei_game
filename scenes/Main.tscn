@@ -63,9 +63,15 @@ SPEED = 100
 
 [node name="Password" parent="." index="2" instance=ExtResource( 6 )]
 
+editor/display_folded = true
+
 [node name="Score" parent="." index="3" instance=ExtResource( 7 )]
 
+editor/display_folded = true
+
 [node name="Menu" parent="." index="4" instance=ExtResource( 8 )]
+
+editor/display_folded = true
 
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 
@@ -76,8 +82,26 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
+[connection signal="player_get_objet_signal" from="." to="Level/Player" method="get_object"]
+
+[connection signal="character_dead_signal" from="Level/Player" to="." method="_on_character_dead"]
+
+[connection signal="access_menu_signal" from="HUD" to="." method="show_minimap"]
+
+[connection signal="attack_button_signal" from="HUD" to="Level/Player" method="attack_on"]
+
 [connection signal="moving_stick" from="HUD" to="Level/Player" method="set_move"]
 
 [connection signal="stop_moving_stick" from="HUD" to="Level/Player" method="stop"]
 
+[connection signal="close_terminal" from="Password/Terminal" to="." method="exit_terminal"]
 
+[connection signal="valid_password" from="Password/Terminal" to="." method="valid_password"]
+
+[connection signal="next_level_signal" from="Score/Score" to="." method="next_level"]
+
+
+[editable path="HUD"]
+[editable path="Password"]
+[editable path="Score"]
+[editable path="Menu"]

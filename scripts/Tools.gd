@@ -68,38 +68,41 @@ func find_child_by_name(var children, var name):
 		if child.name == name:
 			return child
 	return null
-#func get_direction_value(var direction):
-#	var PI16 = PI/16.0
-#	if direction == VEC_RIGHT:
-#		return Vector2(1, 0)
-#	elif direction == VEC_RIGHT_NORTH:
-#		return Vector2(cos(-3 * PI16), sin(-3 * PI16))
-#	elif direction == VEC_RIGHT_SOUTH:
-#		return Vector2(cos(3 * PI16), sin(3 * PI16))
-#	elif direction == VEC_LEFT:
-#		return Vector2(-1, 0)
-#	elif direction == VEC_LEFT_SOUTH:
-#		return Vector2(cos(13 * PI16), sin(13 * PI16))
-#	elif direction == VEC_LEFT_NORTH:
-#		return Vector2(cos(-13 * PI16), sin(-13 * PI16))
-#	elif direction == VEC_NORTH:
-#		return Vector2(0,-1)
-#	elif direction == VEC_NORTH_RIGHT:
-#		return Vector2(cos(-7 * PI16), sin(-7 * PI16))
-#	elif direction == VEC_NORTH_LEFT:
-#		return Vector2(cos(-9 * PI16), sin(-9 * PI16))
-#	elif direction == VEC_SOUTH:
-#		return Vector2(0,1)
-#	elif direction == VEC_SOUTH_RIGHT:
-#		return Vector2(cos(5 * PI16), sin(5 * PI16))
-#	elif direction == VEC_SOUTH_LEFT:
-#		return Vector2(cos(-5 * PI16), sin(-5 * PI16))
-#	elif direction == VEC_NORTH_RIGHT:
-#		return Vector2(-0.5,0.5).normalized()
-#	elif direction == VEC_SOUTH_RIGHT:
-#		return Vector2(0.5,0.5).normalized()
-#	elif direction == VEC_SOUTH_LEFT:
-#		return Vector2(-0.5,0.5).normalized()
-#	elif direction == VEC_NORTH_LEFT:
-#		return Vector2(-0.5,-0.5).normalized()
-#
+	
+func get_direction_value(var direction):
+	var PI16 = PI/16.0
+	if direction == VEC_RIGHT:
+		return Vector2(1, 0)
+	elif direction == VEC_RIGHT_NORTH:
+		return Vector2(cos(-3 * PI16), sin(-3 * PI16))
+	elif direction == VEC_RIGHT_SOUTH:
+		return Vector2(cos(3 * PI16), sin(3 * PI16))
+	elif direction == VEC_LEFT:
+		return Vector2(-1, 0)
+	elif direction == VEC_LEFT_SOUTH:
+		return Vector2(cos(13 * PI16), sin(13 * PI16))
+	elif direction == VEC_LEFT_NORTH:
+		return Vector2(cos(-13 * PI16), sin(-13 * PI16))
+	elif direction == VEC_NORTH:
+		return Vector2(0,-1)
+	elif direction == VEC_NORTH_RIGHT:
+		return Vector2(cos(-7 * PI16), sin(-7 * PI16))
+	elif direction == VEC_NORTH_LEFT:
+		return Vector2(cos(-9 * PI16), sin(-9 * PI16))
+	elif direction == VEC_SOUTH:
+		return Vector2(0,1)
+	elif direction == VEC_SOUTH_RIGHT:
+		return Vector2(cos(5 * PI16), sin(5 * PI16))
+	elif direction == VEC_SOUTH_LEFT:
+		return Vector2(cos(-5 * PI16), sin(-5 * PI16))
+	elif direction == VEC_NORTH_RIGHT:
+		return Vector2(-0.5,0.5).normalized()
+	elif direction == VEC_SOUTH_RIGHT:
+		return Vector2(0.5,0.5).normalized()
+	elif direction == VEC_SOUTH_LEFT:
+		return Vector2(-0.5,0.5).normalized()
+	elif direction == VEC_NORTH_LEFT:
+		return Vector2(-0.5,-0.5).normalized()
+
+func rad_in_deg(var value):
+	return (value * 360.0) / (2.0 * PI)

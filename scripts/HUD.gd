@@ -9,10 +9,6 @@ var touching_moving_stick = false
 
 func _ready():
 	$Joystick.position = $TouchScreenButton2.position
-	connect("moving_stick", get_node("../Level/Player"), "set_move")
-	connect("stop_moving_stick", get_node("../Level/Player"), "stop")
-	connect("attack_button_signal", get_node("../Level/Player"), "attack_on")
-	connect("access_menu_signal", get_node(".."), "show_minimap")
 
 func _process(var delta):
 	if touching_moving_stick:

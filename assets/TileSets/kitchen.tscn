@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/TileSets/tiles_images/main_door.png" type="Texture" id=1]
 [ext_resource path="res://assets/TileSets/tiles_images/wall_up.png" type="Texture" id=2]
@@ -14,51 +14,70 @@
 [ext_resource path="res://assets/TileSets/tiles_images/furniture3.png" type="Texture" id=12]
 [ext_resource path="res://assets/TileSets/tiles_images/furniture_3.png" type="Texture" id=13]
 [ext_resource path="res://assets/TileSets/tiles_images/flaque_eau.png" type="Texture" id=14]
+[ext_resource path="res://assets/TileSets/tiles_images/meuble.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64, 32 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31.9742, 32 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 6.0929 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31.7655, 8.151 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 62.9528 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.496, 29.056 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 30.6346, 28.8109 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 22.0521, 49.1315 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 30.4117, 12.8033 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60.9353, 63.5663 )
+
+[sub_resource type="ImageTexture" id=12]
+
+flags = 7
+storage = 0
+lossy_quality = 0.7
+flags = 7
+size = Vector2( 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -110,7 +129,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_face/wall02" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="wall_down" type="Sprite" parent="." index="3"]
@@ -134,7 +153,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_down/wall_down" index="0"]
 
 position = Vector2( 0, 25.831 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="wall_side2" type="Sprite" parent="." index="4"]
@@ -156,7 +175,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_side2/wall06" index="0"]
 
 position = Vector2( 0.0852509, 24.2131 )
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="terminal" type="Sprite" parent="." index="5"]
 
@@ -194,7 +213,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_side/StaticBody2D" index="0"]
 
 position = Vector2( 6.58655, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ground" type="Sprite" parent="." index="9"]
@@ -222,7 +241,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture/StaticBody2D" index="0"]
 
 position = Vector2( 0.524475, -2.7972 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="furniture2" type="Sprite" parent="." index="11"]
 
@@ -243,7 +262,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture2/StaticBody2D" index="0"]
 
 position = Vector2( 1.57776, -2.9978 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="furniture3" type="Sprite" parent="." index="12"]
 
@@ -264,7 +283,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture3/StaticBody2D" index="0"]
 
 position = Vector2( -0.174164, -0.661903 )
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 
 [node name="table" type="Sprite" parent="." index="13"]
 
@@ -286,12 +305,54 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="table/StaticBody2D" index="0"]
 
 position = Vector2( -0.581497, -3.25452 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="flaque_eau" type="Sprite" parent="." index="14"]
 
 position = Vector2( 160, 288 )
 texture = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="meuble_buffet" type="Sprite" parent="." index="15"]
+
+position = Vector2( 384, 256 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="meuble_buffet" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="meuble_buffet/StaticBody2D" index="0"]
+
+position = Vector2( -3.34131, 0.514038 )
+shape = SubResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="collision_wall" type="Sprite" parent="." index="16"]
+
+position = Vector2( 480, 32 )
+texture = SubResource( 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collision_wall" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_wall/StaticBody2D" index="0"]
+
+shape = SubResource( 11 )
 
 

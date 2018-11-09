@@ -4,6 +4,8 @@ signal touched_from_enemi
 signal enemi_died_sig
 signal mvt_animation_finished
 
+export (float) var width_attack
+
 
 enum STATE{WALK, ANIMATION, NOTHING}
 
@@ -29,6 +31,7 @@ func _ready():
 	
 func _process(delta):
 	if state == WALK:
+		set_rotation(0)
 		move_and_slide(velocity)
 		time += 1
 		if time > 100:
@@ -39,12 +42,7 @@ func _process(delta):
 			play_animation(self.direction_name, "walk", $AnimatedSprite)
 	elif state == ANIMATION:
 		pass
-#		move_and_slide(self.velocity)
-#		self.velocity -= self.velocity * 0.1
-#		if self.velocity.abs() < Vector2(0.1,0.1):
-#			emit_signal("mvt_animation_finished")
 
-		
 func set_move(var move, var factor_speed):
 	self.velocity = move.normalized() * SPEED * factor_speed
 
@@ -59,6 +57,9 @@ func _on_View_body_entered(body):
 			self.direction_name = Tools.get_direction((self.target.old_position - get_collision_position()).normalized())
 			#on joue l'animation pour la préparation de l'attaque
 			play_animation(self.direction_name, "prepare_attack", $AnimatedSprite)
+			
+			var current_position = get_collision_position()
+			set_rotation(Tools.get_direction_value(self.direction_name).angle_to((self.target.old_position - current_position).normalized()))
 			#on désactive le process afin que l'ennemi s'arête
 			self.state = NOTHING
 
@@ -71,7 +72,7 @@ func attack_on():
 	var new_vec = (enemi_current_position - current_position).normalized()
 	
 	#on joue l"animation d'attaque
-	move_animation(self.position, self.position + old_vec * self.move_attack, get_animation(self.direction_name, "attack"))
+	move_animation(self.position, self.position + old_vec * self.move_attack, get_animation(self.direction_name, "attack"), Tools.rad_in_deg(Tools.get_direction_value(self.direction_name).angle_to(old_vec)))
 	
 	#check si çà touche
 	if object_inside_attack_area(old_vec, current_position, enemi_current_position):
@@ -80,23 +81,26 @@ func attack_on():
 		
 func object_inside_attack_area(var vector_attack, var current_position, var object_position):
 	var perpendiculaire_vector = Vector2(vector_attack.y, -vector_attack.x)
-	var largeur = 50
-	var longueur = 96
-	var b = current_position + (perpendiculaire_vector * largeur) / 2.0
-	var a = current_position - (perpendiculaire_vector * largeur) / 2.0
+	var largeur = self.width_attack
+	var longueur = self.range_attack
+		
+	var b = (perpendiculaire_vector * largeur) / 2.0
+	var a = - (perpendiculaire_vector * largeur) / 2.0
 	var c = b + vector_attack * longueur
 	var d = a + vector_attack * longueur
-#	print("a : ", a, " b: ", b, " c: ", c, " d: ", d, " position", object_position, " vector_attack*longueur", vector_attack * longueur, " perpendiculaire_vector * largeur: ", perpendiculaire_vector * largeur, " vector_attack: ", vector_attack, " perpendiculaire_vctor: ", perpendiculaire_vector)
-#	print("triangle 1 : ", Tools.point_is_inside_triangle(object_position, a, b, c) , " triangle 2: ", Tools.point_is_inside_triangle(object_position, a, d, c))
-	if Tools.point_is_inside_triangle(object_position, a, b, c) || Tools.point_is_inside_triangle(object_position, a, d, c):
-		return true
+	$attack/CollisionPolygon2D.polygon = [b, a, d, c]
+	
+	for body in $attack.get_overlapping_bodies():
+		if body.is_in_group("Players"):
+			return true
 	return false
 
-func move_animation(var init_position, new_position, var animation_name):
+func move_animation(var init_position, new_position, var animation_name, var rotation_in_degrees):
+	print("angle: ", rotation_in_degrees)
 	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, init_position)
 	$AnimationPlayer.get_animation("movement").track_set_key_value(0,1, new_position)
 	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, animation_name)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, true)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, rotation_in_degrees)
 	$AnimationPlayer.play("movement")
 
 func _on_ShootLoopTimer_timeout():
