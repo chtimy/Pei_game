@@ -14,8 +14,8 @@
 [ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=12]
 [ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=13]
 [ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=16]
 [ext_resource path="res://scenes/life_bar.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -33,7 +33,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_front",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
@@ -43,17 +43,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "walk_front",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "attack",
+"name": "prepare_attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "prepare_attack",
+"name": "attack",
 "speed": 5.0
 } ]
 
