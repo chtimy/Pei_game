@@ -4,7 +4,7 @@ signal enter_in_another_area
 signal get_object_signal
 
 var destination = Vector2()
-var direction_vec = Vector2(0.0, 0.0)
+var direction_vec = Vector2(0.0, 1.0)
 var factor_speed = 0.0
 
 func _ready():
@@ -15,7 +15,11 @@ func _ready():
 	self.connect("get_object_signal", $ObjectGetting, "print_object")
 
 func _process(delta):
-	move_and_slide(self.velocity)
+	move_and_slide(self.velocity + self.velocity_push)
+	self.remained_velocity -= 1
+	self.velocity_push *= self.damp_push
+	if self.remained_velocity == 0:
+		self.velocity_push = Vector2(0,0)
 	
 	#which direction is the player
 	if(self.velocity != Vector2(0,0)):
@@ -49,7 +53,7 @@ func increase_life(var value):
 func attack_on():
 	$attack_effects.rotation = Vector2(0,1).angle_to(self.direction_vec)
 	#on joue l"animation d'attaque
-	attack_animation(self.position, self.position + self.direction_vec * self.move_attack, get_animation(self.direction_name, "attack"), "normal")
+	attack_animation(self.position, self.position + self.direction_vec * self.move_attack * 100, get_animation(self.direction_name, "attack"), "normal")
 	$PunchSound.play()
 
 	var bodies = $View.get_overlapping_bodies()
@@ -61,24 +65,22 @@ func attack_on():
 			var angle = vec.angle_to(self.direction_vec)
 			if angle <= PI/4.0 || angle >= -PI/4.0:
 				body.decrease_life(self.hit)
-				body.move_animation(self.direction_vec, self.move_attack, get_animation(body.direction_name, "walk"), 0)
+				body.move_animation(pos_enemi, pos_enemi + self.direction_vec * self.move_attack, get_animation(body.direction_name, "walk"), 0)
 	
 func attack_animation(var init_position, new_position, var animation_name, var animation_name2):
-	$AnimationPlayer.get_animation("attack").track_set_key_value(0,0, init_position)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(0,1, new_position)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(1,0, animation_name)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(2,0, true)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(3,0, animation_name2)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(4,0, true)
-	$AnimationPlayer.get_animation("attack").track_set_key_value(4,1, false)
+	process_move_velocity((new_position - init_position).normalized(), 1000, $AnimationPlayer.get_animation("attack").length, 0.8)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(0,0, animation_name)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(1,0, true)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(2,0, animation_name2)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(3,0, true)
+	$AnimationPlayer.get_animation("attack").track_set_key_value(3,1, false)
 	$AnimationPlayer.play("attack")
 
 func move_animation(var init_position, new_position, var animation_name):
-	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, init_position)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(0,1, new_position)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, "touched_front")
-	$AnimationPlayer.get_animation("movement").track_set_key_value(1,1, animation_name)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, true)
+	process_move_velocity((new_position - init_position).normalized(), 1000, $AnimationPlayer.get_animation("attack").length, 0.5)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, "touched_front")
+	$AnimationPlayer.get_animation("movement").track_set_key_value(0,1, animation_name)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, true)
 	$AnimationPlayer.play("movement")
 	$AnimationPlayer.queue("touched")
 	
@@ -90,9 +92,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimatedSprite.playing = true
 
 func _on_WalkTimer_timeout():
-	$StepSound.play()
-
+#	$StepSound.play()
+	$WalkTimer.set_wait_time(1.0 - self.factor_speed)
+	print(1.0 - self.factor_speed)
 
 func _on_ObjectGetting_animation_finished():
 	$ObjectGetting.play("default")
+
 

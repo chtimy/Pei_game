@@ -10,7 +10,6 @@ export (float) var width_attack
 enum STATE{WALK, ANIMATION, NOTHING}
 
 var target = {"target": null, "position" : Vector2(0,0), "is_visible" : false}
-var time = 0
 var regex
 var state = WALK
 
@@ -31,23 +30,23 @@ func _ready():
 	
 func _process(delta):
 	if state == WALK:
-		set_rotation(0)
+		$AnimatedSprite.set_rotation(0)
 		move_and_slide(velocity)
-		time += 1
-		if time > 100:
-			set_move(Vector2(rand_range(-1, 1), rand_range(-1, 1)), 1)
-			time = 0
 		if(self.velocity != Vector2(0,0)):
 			self.direction_name = Tools.get_direction(self.velocity.normalized())
 			play_animation(self.direction_name, "walk", $AnimatedSprite)
 	elif state == ANIMATION:
-		pass
+		move_and_slide(self.velocity_push)
+		self.remained_velocity -= 1
+		self.velocity_push *= self.damp_push
+		if self.remained_velocity == 0:
+			self.velocity_push = Vector2(0,0)
 
 func set_move(var move, var factor_speed):
 	self.velocity = move.normalized() * SPEED * factor_speed
 
 func _on_View_body_entered(body):
-	if body.get_name() == "Player":
+	if body.is_in_group("Players"):
 		if $ShootLoopTimer.is_stopped():
 			self.target.body = body
 			self.target.old_position = body.get_collision_position()
@@ -59,9 +58,9 @@ func _on_View_body_entered(body):
 			play_animation(self.direction_name, "prepare_attack", $AnimatedSprite)
 			
 			var current_position = get_collision_position()
-			set_rotation(Tools.get_direction_value(self.direction_name).angle_to((self.target.old_position - current_position).normalized()))
+			$AnimatedSprite.set_rotation(Tools.get_direction_value(self.direction_name).angle_to((self.target.old_position - current_position).normalized()))
 			#on désactive le process afin que l'ennemi s'arête
-			self.state = NOTHING
+			self.state = ANIMATION
 
 func attack_on():
 	#play_animation(self.direction_name, "attack", $AnimatedSprite)
@@ -96,11 +95,9 @@ func object_inside_attack_area(var vector_attack, var current_position, var obje
 	return false
 
 func move_animation(var init_position, new_position, var animation_name, var rotation_in_degrees):
-	print("angle: ", rotation_in_degrees)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, init_position)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(0,1, new_position)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, animation_name)
-	$AnimationPlayer.get_animation("movement").track_set_key_value(2,0, rotation_in_degrees)
+	process_move_velocity((new_position - init_position).normalized(), 1000, $AnimationPlayer.get_animation("movement").length, 0.8)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(0,0, animation_name)
+	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, rotation_in_degrees)
 	$AnimationPlayer.play("movement")
 
 func _on_ShootLoopTimer_timeout():
@@ -135,3 +132,6 @@ func enter_in_another_area(var shape):
 	var dir = -(shape.get_node("..").position - self.position).normalized()
 	var angle = rand_range(-PI/2, PI/2)
 	set_move(dir.rotated(angle))
+	
+func _on_changement_direction_timeout():
+	set_move(Vector2(rand_range(-1, 1), rand_range(-1, 1)), 1)

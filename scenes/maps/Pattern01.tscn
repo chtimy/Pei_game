@@ -9,18 +9,18 @@ script/source = "extends \"res://scripts/map.gd\"
 
 func _init():
 	self.size = Vector2(7,8)
-	self.exit = {Vector2(0,-1) : Vector2(4.5,7),
+	self.exit = {Vector2(0,-1) : Vector2(4,7),
 			Vector2(-1,0) : Vector2(9,4.5),
 			Vector2(1,0) : Vector2(1.5,3.5),
-			Vector2(0,1) : Vector2(4.5,2)}
+			Vector2(0,1) : Vector2(5,2)}
 	self.exit_positions = [{\"position\" : Vector2(0,3), \"extend\" : [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : true, \"flip_y\" : false, \"transpose\" : false}, 
 	  					   {\"position\" : Vector2(4, 1), \"extend\" :  [Vector2(0,-1), Vector2(1,0), Vector2(1,-1)], \"layer\" : \"layer_01\", \"door\" : 7, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
-						   {\"position\" : Vector2(10, 4), \"extend\" :  [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
-						   {\"position\" : Vector2(4, 8), \"extend\" : [Vector2(1,0)], \"layer\" : \"layer_02\",\"door\" : 7, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}]
+						   {\"position\" : Vector2(7, 4), \"extend\" :  [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}, 
+						   {\"position\" : Vector2(3, 8), \"extend\" : [Vector2(1,0)], \"layer\" : \"layer_02\",\"door\" : 7, \"flip_x\" : false, \"flip_y\" : false, \"transpose\" : false}]
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D" index="0"]
+[node name="Map" type="Node2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -90,7 +90,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 131074, 12, 0, 131092, 25, 0, 196620, 11, 0, 196626, 24, 0, 524294, 28, 0, 589829, 14, 0, 589833, 13, 0, 589839, 27, 0 )
+tile_data = PoolIntArray( 131074, 12, 0, 131092, 25, 0, 196612, 18, 0, 196620, 11, 0, 196626, 24, 0, 524294, 28, 0, 589829, 14, 0, 589831, 536870929, 0, 589833, 13, 0, 589835, 17, 0, 589839, 27, 0 )
 _sections_unfolded = [ "Cell", "Z Index" ]
 
 [node name="layer_04" type="TileMap" parent="." index="3"]

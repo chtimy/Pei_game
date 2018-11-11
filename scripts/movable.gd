@@ -13,6 +13,10 @@ var life = life_max
 var direction_name = Tools.VEC_SOUTH
 var velocity = Vector2(0,0)
 
+var velocity_push = Vector2(0, 0)
+var damp_push = 1.0
+var remained_velocity = 0
+
 var animation_move_velocity
 
 func decrease_life(var value):
@@ -66,3 +70,8 @@ func get_animation(var direction, var name_animation):
 func get_collision_position():
 	var collision = self.get_node("Collision")
 	return self.position + collision.position + collision.shape.extents/2.0
+	
+func process_move_velocity(var velocity, var factor, var seconds, var damp = 1.0):
+	self.velocity_push = velocity * factor
+	self.remained_velocity = int(seconds / get_process_delta_time())
+	self.damp_push = damp

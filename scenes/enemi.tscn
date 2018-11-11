@@ -2,26 +2,26 @@
 
 [ext_resource path="res://scripts/Enemi.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_1.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_2.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_3.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_3.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_1.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/enemi_fork/attack_right/sprite_1.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/enemi_fork/attack_back/sprite_0.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/enemi_fork/attack_left/sprite_1.png" type="Texture" id=22]
 [ext_resource path="res://scenes/life_bar.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,65 +32,65 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "prepare_attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "prepare_attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "prepare_attack_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "prepare_attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "walk_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "walk_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "attack_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "attack_right",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "attack_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "prepare_attack_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "prepare_attack_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "prepare_attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "prepare_attack_left",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
@@ -110,19 +110,19 @@ length = 0.5
 loop = false
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ "walk_right", "walk_right" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/path = NodePath("AnimatedSprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -131,27 +131,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "walk_right", "walk_right" ]
+"values": [ 0.0, 0.0 ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimatedSprite")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.0, 0.0 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("AnimatedSprite")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -160,9 +148,9 @@ tracks/3/keys = {
 } ]
 }
 
-[node name="enemi" type="KinematicBody2D" groups=[
-"Enemis",
+[node name="enemi" type="KinematicBody2D" index="0" groups=[
 "Movables",
+"Enemis",
 ]]
 
 input_pickable = false
@@ -194,8 +182,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
 frames = SubResource( 2 )
-animation = "walk_right"
-frame = 5
+animation = "attack_right"
 playing = true
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -279,12 +266,21 @@ audio_bus_name = "Master"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attack" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 9.55731, 7.00537, 100.407, -29.1444, 110.396, 33.4042, 8.36819, 26.0316 )
+polygon = PoolVector2Array( 0.995789, 6.05415, 75.4358, 4.86501, 75.6736, 27.4586, 0.282288, 25.7938 )
+
+[node name="changement_direction" type="Timer" parent="." index="9"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
 
 [connection signal="body_entered" from="View" to="." method="_on_View_body_entered"]
 
 [connection signal="timeout" from="ShootLoopTimer" to="." method="_on_ShootLoopTimer_timeout"]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[connection signal="timeout" from="changement_direction" to="." method="_on_changement_direction_timeout"]
 
 
