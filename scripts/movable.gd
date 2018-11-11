@@ -68,8 +68,11 @@ func get_animation(var direction, var name_animation):
 		return name_animation + "_front"
 		
 func get_collision_position():
+	return self.position + get_collision_center()
+	
+func get_collision_center():
 	var collision = self.get_node("Collision")
-	return self.position + collision.position + collision.shape.extents/2.0
+	return collision.position + collision.shape.extents/2.0
 	
 func process_move_velocity(var velocity, var factor, var seconds, var damp = 1.0):
 	self.velocity_push = velocity * factor

@@ -30,7 +30,7 @@ func _ready():
 	
 func _process(delta):
 	if state == WALK:
-		$AnimatedSprite.set_rotation(0)
+		$AnimationPivot.set_rotation(0)
 		move_and_slide(velocity)
 		if(self.velocity != Vector2(0,0)):
 			self.direction_name = Tools.get_direction(self.velocity.normalized())
@@ -53,12 +53,12 @@ func _on_View_body_entered(body):
 			#lancement du timer pour l'attaque
 			$ShootLoopTimer.start()
 			#définition de la direction pour l'animation
-			self.direction_name = Tools.get_direction((self.target.old_position - get_collision_position()).normalized())
+			var direction_attack = (self.target.old_position - get_collision_position()).normalized()
+			self.direction_name = Tools.get_direction(direction_attack)
 			#on joue l'animation pour la préparation de l'attaque
-			play_animation(self.direction_name, "prepare_attack", $AnimatedSprite)
+			$AnimationPivot/AnimatedSprite.set_animation("prepare_attack")
 			
-			var current_position = get_collision_position()
-			$AnimatedSprite.set_rotation(Tools.get_direction_value(self.direction_name).angle_to((self.target.old_position - current_position).normalized()))
+			$AnimationPivot.set_rotation(Vector2(0,1).angle_to(direction_attack))
 			#on désactive le process afin que l'ennemi s'arête
 			self.state = ANIMATION
 
@@ -68,10 +68,10 @@ func attack_on():
 	var current_position = get_collision_position()
 	var enemi_current_position = self.target.body.get_collision_position()
 	var old_vec = (self.target.old_position - current_position).normalized()
-	var new_vec = (enemi_current_position - current_position).normalized()
+	var new_vec = (enemi_current_position - current_position).normalized()	
 	
 	#on joue l"animation d'attaque
-	move_animation(self.position, self.position + old_vec * self.move_attack, get_animation(self.direction_name, "attack"), Tools.rad_in_deg(Tools.get_direction_value(self.direction_name).angle_to(old_vec)))
+	move_animation(self.position, self.position + old_vec * self.move_attack, "attack", Tools.rad_in_deg(Tools.get_direction_value(self.direction_name).angle_to(old_vec)))
 	
 	#check si çà touche
 	if object_inside_attack_area(old_vec, current_position, enemi_current_position):
@@ -83,8 +83,8 @@ func object_inside_attack_area(var vector_attack, var current_position, var obje
 	var largeur = self.width_attack
 	var longueur = self.range_attack
 		
-	var b = (perpendiculaire_vector * largeur) / 2.0
-	var a = - (perpendiculaire_vector * largeur) / 2.0
+	var b = get_collision_center() + (perpendiculaire_vector * largeur) / 2.0
+	var a = get_collision_center() - (perpendiculaire_vector * largeur) / 2.0
 	var c = b + vector_attack * longueur
 	var d = a + vector_attack * longueur
 	$attack/CollisionPolygon2D.polygon = [b, a, d, c]
@@ -100,20 +100,6 @@ func move_animation(var init_position, new_position, var animation_name, var rot
 	$AnimationPlayer.get_animation("movement").track_set_key_value(1,0, rotation_in_degrees)
 	$AnimationPlayer.play("movement")
 
-func _on_ShootLoopTimer_timeout():
-	#quand le timer s'arrête, l'ennemi attaque
-	attack_on()
-	var bodies = $View.get_overlapping_bodies()
-	for body in bodies:
-		if body.get_name() == "Player":
-			#MAJ nouvelle position du joueur
-			self.target.old_position = body.get_collision_position()
-			#définition de la direction pour l'animation
-			self.direction_name = Tools.get_direction((self.target.old_position - get_collision_position()).normalized())
-			#lancement du timer pour l'attaque
-			$ShootLoopTimer.start()
-			break
-
 func decrease_life(var value):
 	#animation touché
 	.decrease_life(value)
@@ -123,10 +109,26 @@ func decrease_life(var value):
 		die()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if !$ShootLoopTimer.is_stopped():
-		play_animation(self.direction_name, "prepare_attack", $AnimatedSprite)
+	if anim_name =="movement":
+		var bodies = $View.get_overlapping_bodies()
+		for body in bodies:
+			if body.is_in_group("Players"):
+				#MAJ nouvelle position du joueur
+				self.target.old_position = body.get_collision_position()
+				#définition de la direction pour l'animation
+				self.direction_name = Tools.get_direction((self.target.old_position - get_collision_position()).normalized())
+				#lancement du timer pour l'attaque
+				$ShootLoopTimer.start()
+				break
+		var direction_attack = (self.target.old_position - get_collision_position()).normalized()
+		$AnimationPivot.set_rotation(Vector2(0,1).angle_to(direction_attack))
+		$AnimationPivot/AnimatedSprite.set_animation("prepare_attack")
 	else:
 		self.state = WALK
+		
+func _on_ShootLoopTimer_timeout():
+	#quand le timer s'arrête, l'ennemi attaque
+	attack_on()
 
 func enter_in_another_area(var shape):
 	var dir = -(shape.get_node("..").position - self.position).normalized()
