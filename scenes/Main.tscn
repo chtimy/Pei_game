@@ -73,6 +73,10 @@ editor/display_folded = true
 
 editor/display_folded = true
 
+[node name="Player" parent="Menu" index="3"]
+
+frame = 1
+
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 9 )
@@ -88,7 +92,7 @@ bus = "Master"
 
 [connection signal="access_menu_signal" from="HUD" to="." method="show_minimap"]
 
-[connection signal="attack_button_signal" from="HUD" to="Level/Player" method="attack_on"]
+[connection signal="attack_button_signal" from="HUD" to="Level/Player" method="prepare_attack"]
 
 [connection signal="moving_stick" from="HUD" to="Level/Player" method="set_move"]
 

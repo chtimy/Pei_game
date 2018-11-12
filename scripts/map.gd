@@ -76,6 +76,16 @@ func character_dead(var body):
 
 func finish_room():
 	$Chest.show()
+	
+func freeze():
+	for child in get_children():
+		if child.is_in_group("Enemis"):
+			child.freeze()
+			
+func unfreeze():
+	for child in get_children():
+		if child.is_in_group("Enemis"):
+			child.unfreeze()
 
 func pause():
 	pass

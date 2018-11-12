@@ -30,12 +30,12 @@ func init_word(var stage, var level):
 func exit_terminal():
 	$Password.hide()
 	$HUD.show()
-	unfreeze()
+	$Level.unfreeze()
 
 func show_terminal():
 	$HUD.hide()
 	$Password.show()
-	freeze()
+	$Level.freeze()
 
 ################GAME#################
 func start_level(var stage, var level):

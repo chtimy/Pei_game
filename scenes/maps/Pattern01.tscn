@@ -10,7 +10,7 @@ script/source = "extends \"res://scripts/map.gd\"
 func _init():
 	self.size = Vector2(7,8)
 	self.exit = {Vector2(0,-1) : Vector2(4,7),
-			Vector2(-1,0) : Vector2(9,4.5),
+			Vector2(-1,0) : Vector2(6,4.5),
 			Vector2(1,0) : Vector2(1.5,3.5),
 			Vector2(0,1) : Vector2(5,2)}
 	self.exit_positions = [{\"position\" : Vector2(0,3), \"extend\" : [Vector2(0,1)], \"layer\" : \"layer_01\", \"door\" : 8, \"flip_x\" : true, \"flip_y\" : false, \"transpose\" : false}, 
@@ -20,7 +20,7 @@ func _init():
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
