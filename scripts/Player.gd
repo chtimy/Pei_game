@@ -6,7 +6,6 @@ signal get_object_signal
 var destination = Vector2()
 var direction_vec = Vector2(0.0, 1.0)
 var factor_speed = 0.0
-
 var touched_bodies = []
 
 func _ready():
@@ -30,6 +29,7 @@ func _process(delta):
 		self.direction_name = Tools.get_direction(self.velocity.normalized())
 		play_animation(self.direction_name, "walk", $AnimatedSprite)
 		self.direction_vec = self.velocity.normalized()
+		$HalfCircle.set_rotation(Vector2(0,-1).angle_to(self.direction_vec))
 		if $WalkTimer.is_stopped():
 			$WalkTimer.start()
 	else:
@@ -86,6 +86,7 @@ func attack(var body):
 	
 func attack_animation(var init_position, new_position, var animation_name, var animation_name2):
 	process_move_velocity((new_position - init_position).normalized(), 1000, $AnimationPlayer.get_animation("attack").length, 0.8)
+	$AnimationPlayer.get_animation("attack").set_length(RECOVERY_ATTACK_TIME)
 	$AnimationPlayer.get_animation("attack").track_set_key_value(1,0, animation_name2)
 	$AnimationPlayer.get_animation("attack").track_set_key_value(0,0, animation_name)
 	$AnimationPlayer.play("attack")
@@ -108,7 +109,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_WalkTimer_timeout():
 #	$StepSound.play()
-	$WalkTimer.set_wait_time(1.0 - self.factor_speed)
+#	$WalkTimer.set_wait_time(1.0 - self.factor_speed)
+	pass
 
 func _on_ObjectGetting_animation_finished():
 	$ObjectGetting.play("default")

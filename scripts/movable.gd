@@ -5,6 +5,7 @@ export (int) var SPEED
 export (int) var life_max
 export (int) var range_attack
 export (int) var move_attack
+export (float) var RECOVERY_ATTACK_TIME
 
 signal hud_life_change_sig
 signal character_dead_signal
@@ -72,7 +73,7 @@ func get_collision_position():
 	
 func get_collision_center():
 	var collision = self.get_node("Collision")
-	return collision.position + collision.shape.extents/2.0
+	return collision.position
 	
 func process_move_velocity(var velocity, var factor, var seconds, var damp = 1.0):
 	self.velocity_push = velocity * factor

@@ -20,7 +20,7 @@ func _init():
 	self.door_position = {\"position\" : Vector2(3,1), \"extend\" : Vector2(1,0)}
 	self.terminal_position = Vector2(5,1)"
 
-[node name="Map" type="Node2D" index="0"]
+[node name="Map" type="Node2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]

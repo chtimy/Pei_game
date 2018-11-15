@@ -6,7 +6,6 @@ signal mvt_animation_finished
 
 export (float) var width_attack
 
-
 enum STATE{WALK, ANIMATION, NOTHING}
 
 var target = {"target": null, "position" : Vector2(0,0), "is_visible" : false}
@@ -21,6 +20,7 @@ func _ready():
 	self.connect("hud_life_change_sig", $TextureProgress, "set_value")
 	self.connect("character_dead_signal", get_node(".."), "character_dead")
 	
+	$ShootLoopTimer.set_wait_time(RECOVERY_ATTACK_TIME)
 	$ShootLoopTimer.set_one_shot(true)
 	
 func _process(delta):
@@ -29,7 +29,7 @@ func _process(delta):
 		move_and_slide(velocity)
 		if(self.velocity != Vector2(0,0)):
 			self.direction_name = Tools.get_direction(self.velocity.normalized())
-			play_animation(self.direction_name, "walk", $AnimatedSprite)
+			play_animation(self.direction_name, "walk", $AnimationPivot/AnimatedSprite)
 	elif state == ANIMATION:
 		move_and_slide(self.velocity_push)
 		self.remained_velocity -= 1
@@ -41,7 +41,7 @@ func set_move(var move, var factor_speed):
 	self.velocity = move.normalized() * SPEED * factor_speed
 
 func _on_View_body_entered(body):
-	if body.is_in_group("Players"):
+	if $ShootLoopTimer.is_stopped() && body.is_in_group("Players"):
 		prepare_to_attack(body)
 		
 func prepare_to_attack(var body):
@@ -54,19 +54,17 @@ func prepare_to_attack(var body):
 	self.direction_name = Tools.get_direction(direction_attack)
 	#on joue l'animation pour la préparation de l'attaque
 	$AnimationPivot/AnimatedSprite.set_animation("prepare_attack")
-	
 	$AnimationPivot.set_rotation(Vector2(0,1).angle_to(direction_attack))
 	
 	var current_position = get_collision_position()
-	var vector_attack = (self.target.old_position - current_position).normalized()
-	var perpendiculaire_vector = Vector2(vector_attack.y, -vector_attack.x)
+	var perpendiculaire_vector = Vector2(direction_attack.y, -direction_attack.x)
 	var largeur = self.width_attack
 	var longueur = self.range_attack
 		
 	var b = get_collision_center() + (perpendiculaire_vector * largeur) / 2.0
 	var a = get_collision_center() - (perpendiculaire_vector * largeur) / 2.0
-	var c = b + vector_attack * longueur
-	var d = a + vector_attack * longueur
+	var c = b + direction_attack * longueur
+	var d = a + direction_attack * longueur
 	$attack/CollisionPolygon2D.polygon = [b, a, d, c]
 	
 	#on désactive le process afin que l'ennemi s'arête

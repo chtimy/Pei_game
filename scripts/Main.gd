@@ -80,7 +80,7 @@ func stop_level(var win):
 
 func valid_password():
 	exit_terminal()
-	unfreeze()
+	$Level.unfreeze()
 	$Level/Map.unlock_door()
 
 func change_player_position(var position, var current_map_id):
