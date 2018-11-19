@@ -1,52 +1,62 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/object/lock.png" type="Texture" id=2]
-[ext_resource path="res://assets/object/unlock.png" type="Texture" id=3]
-[ext_resource path="res://assets/object/heart.png" type="Texture" id=4]
+[ext_resource path="res://assets/object/heart.png" type="Texture" id=2]
+[ext_resource path="res://assets/object/lock.png" type="Texture" id=3]
+[ext_resource path="res://assets/object/unlock.png" type="Texture" id=4]
 [ext_resource path="res://scenes/life_bar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=6]
 [ext_resource path="res://assets/sounds/punch.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/foot_step.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/touched.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/characters/half_circle.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_2.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=22]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=23]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=24]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=25]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=26]
-[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=27]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=28]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=29]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=30]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=31]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_4.png" type="Texture" id=32]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_5.png" type="Texture" id=33]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_6.png" type="Texture" id=34]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_7.png" type="Texture" id=35]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=36]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=37]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=38]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=39]
-[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=40]
-[ext_resource path="res://assets/characters/effects/sprite_0.png" type="Texture" id=41]
-[ext_resource path="res://assets/characters/effects/sprite_1.png" type="Texture" id=42]
-[ext_resource path="res://assets/characters/effects/sprite_2.png" type="Texture" id=43]
-[ext_resource path="res://assets/characters/effects/sprite_3.png" type="Texture" id=44]
-[ext_resource path="res://assets/characters/effects/sprite_4.png" type="Texture" id=45]
-[ext_resource path="res://assets/characters/effects/sprite_5.png" type="Texture" id=46]
-[ext_resource path="res://assets/characters/effects/sprite_6.png" type="Texture" id=47]
+[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_4.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_5.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_6.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_7.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_2.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_4.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_5.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_6.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_7.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=34]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=35]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_2.png" type="Texture" id=36]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_3.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_4.png" type="Texture" id=38]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_5.png" type="Texture" id=39]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_6.png" type="Texture" id=40]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_7.png" type="Texture" id=41]
+[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=42]
+[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=43]
+[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=44]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=45]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=46]
+[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=47]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=48]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=49]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=50]
+[ext_resource path="res://assets/characters/effects/sprite_0.png" type="Texture" id=51]
+[ext_resource path="res://assets/characters/effects/sprite_1.png" type="Texture" id=52]
+[ext_resource path="res://assets/characters/effects/sprite_2.png" type="Texture" id=53]
+[ext_resource path="res://assets/characters/effects/sprite_3.png" type="Texture" id=54]
+[ext_resource path="res://assets/characters/effects/sprite_4.png" type="Texture" id=55]
+[ext_resource path="res://assets/characters/effects/sprite_5.png" type="Texture" id=56]
+[ext_resource path="res://assets/characters/effects/sprite_6.png" type="Texture" id=57]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -56,14 +66,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "letter",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "heart",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "letter",
 "speed": 2.0
 } ]
 
@@ -85,96 +95,96 @@ extents = Vector2( 9.70213, 9.14191 )
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "attack2_back",
+"name": "wait_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "touched_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": false,
-"name": "attack_front",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "attack2_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "attack_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "attack2_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "attack_right",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": true,
-"name": "attack2_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "wait_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 27 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "wait_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "attack_front",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 40 ), ExtResource( 40 ) ],
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
-"name": "wait_right",
+"name": "walk_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "attack_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "attack2_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 45 ) ],
+"loop": true,
+"name": "attack_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 46 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ) ],
+"loop": true,
+"name": "touched_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 48 ) ],
+"loop": true,
+"name": "attack2_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 49 ) ],
+"loop": true,
+"name": "attack2_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 50 ) ],
+"loop": true,
+"name": "attack2_right",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": false,
 "name": "normal",
 "speed": 15.0
@@ -295,8 +305,8 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D" index="0" groups=[
-"Players",
 "Movables",
+"Players",
 ]]
 
 input_pickable = false
@@ -416,7 +426,6 @@ __meta__ = {
 
 stream = ExtResource( 7 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -426,7 +435,6 @@ bus = "Master"
 visible = false
 stream = ExtResource( 8 )
 volume_db = -10.0
-pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -437,7 +445,6 @@ area_mask = 1
 
 stream = ExtResource( 9 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -453,6 +460,7 @@ _sections_unfolded = [ "Transform" ]
 
 frames = SubResource( 5 )
 animation = "wait_front"
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
