@@ -3,12 +3,12 @@
 [ext_resource path="res://scripts/Score.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/PixelSplitter-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/cat/walk/left/walk_left_01.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/cat/walk/left/walk_left_02.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_01.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/cat/walk/left/walk_left_02.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=6]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_right_01.png" type="Texture" id=7]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_right_02.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -74,12 +74,17 @@ _sections_unfolded = [ "shader_param" ]
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "wait_right",
+"name": "walk_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
@@ -89,9 +94,14 @@ animations = [ {
 "name": "walk_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "wait_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
@@ -101,17 +111,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "wait_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk_back",
+"name": "wait_right",
 "speed": 5.0
 } ]
 
@@ -352,7 +352,6 @@ material = SubResource( 6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 7 )
 animation = "walk_right"
-frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform" ]
 

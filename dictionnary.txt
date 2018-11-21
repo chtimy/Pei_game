@@ -1,12 +1,12 @@
-﻿1 4
-1 6
+﻿1 7
+1 6 0
 fork:fourchette
 knife:couteau
 glass:verre
 plate:assiette
 spoon:cuillère
 kitchen:cuisine
-2 7
+2 7 2
 oven:four
 colander:passoire
 bowl:bol
@@ -14,7 +14,7 @@ napkin:serviette
 chopsticks:baguettes
 napkin:serviette
 dishes:vaisselle
-3 8
+3 8 5
 micro-wave:micro-onde
 coffee maker:machine à café
 timer:minuteur
@@ -23,9 +23,15 @@ frying pan:poêle
 spatula:spatule
 fridge:frigo
 sink:évier
-4 5
+4 5 8
 chopping board:planche à couper
 apron:tablier
 corkscrew:tire-bouchon
 toaster:grille-pain
 cooker:cuiseur
+5 1 11
+fjksdg:gjhfg
+6 1 14
+kfng:fsjdg
+7 1 17
+ksdjgf:fjsdjg

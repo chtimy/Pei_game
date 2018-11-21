@@ -24,13 +24,13 @@ func init_game():
 		States.level = 1
 		save_game()
 		
-func show_stages(var stage_id= -1, var level_id = -1):
+func show_stages(var stage_id = -1, var level_id = -1):
 	if self.game_scene.is_inside_tree():
 		remove_child(self.game_scene)
 	self.menu_scene.hide()
 	self.stages_scene.show()
 	if stage_id != -1 && level_id != -1:
-		self.stages_scene.unlock_level(stage_id, level_id)
+		self.stages_scene.complete_level(stage_id, level_id)
 	
 func options_game():
 	pass
@@ -54,6 +54,18 @@ func save_game():
 		get_tree().quit()
 	file.store_32(States.stage)
 	file.store_32(States.level)
+	file.store_32(States.used_words.size())
+	for stage_id in range(States.used_words.size()):
+		file.store_32(States.used_words[stage_id].size())
+		for level_id in range(States.used_words[stage_id].size()):
+			file.store_32(States.used_words[stage_id][level_id].size())
+			print(States.used_words)
+			for word_id in range(States.used_words[stage_id][level_id].size()):
+				file.store_string(States.used_words[stage_id][level_id][word_id].name)
+				file.store_string(":")
+				file.store_string(States.used_words[stage_id][level_id][word_id].translation)
+				file.store_string(":")
+				
 	file.close()
 	
 func load_game():
@@ -65,8 +77,17 @@ func load_game():
 		
 	States.stage = file.get_32()
 	States.level = file.get_32()
-	if States.stage == 0 || States.level == 0:
-		file.close()
-		return false
+	var size_used_words_stages = file.get_32()
+	for stage_id in range(size_used_words_stages):
+		var size_used_words_levels = file.get_32()
+		for level_id in range(size_used_words_levels):
+			var nb_words = file.get_32() * 2
+			var line = file.get_line().split(":")
+			print("line : ", line)
+			for word_id in range(0, nb_words, 2):
+				var word = {"name" : line[word_id], "translation" : line[word_id+1]}
+				States.finish_word(word, stage_id+1, level_id+1)
 	file.close()
+	if States.stage == 0 || States.level == 0:
+		return false
 	return true

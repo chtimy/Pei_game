@@ -55,9 +55,8 @@ func start_level(var stage, var level):
 	$Level/Player.set_position($Level/Map/Player_initial_position.position)
 	
 func next_level():
-	States.level += 1
 	if (self.current_stage == States.stage && self.current_level >= States.level-1) || self.current_stage > States.stage:
-		emit_signal("show_stages_signal", self.current_stage, self.current_level+1)
+		emit_signal("show_stages_signal", self.current_stage, self.current_level)
 	else:
 		emit_signal("show_stages_signal")
 	
@@ -68,11 +67,7 @@ func stop_level(var win):
 	$HUD.hide()
 	if win:
 		$Score/Score.win(found_word)
-
-		var index = States.words[States.stage-1].find(found_word)
-		if index != -1:
-			States.words[States.stage-1].remove(index)
-			States.used_words[States.stage-1].push_back(found_word)
+		States.finish_word(found_word, States.stage, States.level)
 		emit_signal("save_game_signal")
 	else:
 		$Score/Score.loose()

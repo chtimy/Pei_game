@@ -3,6 +3,8 @@ extends "res://scripts/movable.gd"
 signal enter_in_another_area
 signal get_object_signal
 
+export (float) var RUN_SEUIL
+
 var destination = Vector2()
 var direction_vec = Vector2(0.0, 1.0)
 var factor_speed = 0.0
@@ -25,9 +27,12 @@ func _process(delta):
 		self.velocity_push = Vector2(0,0)
 	
 	#which direction is the player
-	if(self.velocity != Vector2(0,0)):
+	if self.velocity != Vector2(0,0):
 		self.direction_name = Tools.get_direction(self.velocity.normalized())
-		play_animation(self.direction_name, "walk", $AnimatedSprite)
+		if self.velocity.length() > RUN_SEUIL:
+			play_animation(self.direction_name, "run", $AnimatedSprite)
+		else:
+			play_animation(self.direction_name, "walk", $AnimatedSprite)
 		self.direction_vec = self.velocity.normalized()
 		$HalfCircle.set_rotation(Vector2(0,-1).angle_to(self.direction_vec))
 		if $WalkTimer.is_stopped():

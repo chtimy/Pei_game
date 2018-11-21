@@ -58,6 +58,7 @@ scale = Vector2( 1.2, 1.2 )
 z_index = 4
 _sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index", "collision" ]
 SPEED = 100
+RECOVERY_ATTACK_TIME = null
 
 [node name="HUD" parent="." index="1" instance=ExtResource( 5 )]
 
@@ -75,7 +76,7 @@ editor/display_folded = true
 
 [node name="Player" parent="Menu" index="3"]
 
-frame = 1
+frame = 0
 
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 

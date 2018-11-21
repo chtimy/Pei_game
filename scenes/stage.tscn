@@ -1,49 +1,53 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scripts/stage.gd" type="Script" id=1]
 [ext_resource path="res://assets/object/house.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=3]
 [ext_resource path="res://assets/characters/cat/walk/left/walk_left_01.png" type="Texture" id=4]
 [ext_resource path="res://assets/characters/cat/walk/left/walk_left_02.png" type="Texture" id=5]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_right_01.png" type="Texture" id=6]
 [ext_resource path="res://assets/characters/cat/walk/right/walk_right_02.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/cat/wait/wait_left.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/cat/wait/wait_right.png" type="Texture" id=8]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=17]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=18]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=19]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=20]
-[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=21]
-[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=22]
-[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=23]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=24]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=25]
-[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=26]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=27]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=28]
-[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=29]
-[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=30]
-[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=31]
-[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=32]
-[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=33]
-[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=34]
-[ext_resource path="res://assets/stages/point.png" type="Texture" id=35]
-[ext_resource path="res://assets/stages/point_disabled.png" type="Texture" id=36]
-[ext_resource path="res://assets/stages/particle.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/pei/wait/wait_front/sprite_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/pei/attack/attack_right/attack_right.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_0.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_1.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/pei/touched/touched_front.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_0.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/pei/attack/attack_back/sprite_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/pei/attack/attack_left/sprite_0.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/pei/attack/attack_front/sprite_1.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/pei/attack/sprite_0.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_0.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/pei/walk/walk_back/sprite_1.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_0.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_1.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_2.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/pei/walk/walk_left/sprite_3.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_0.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_1.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_2.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/pei/walk/walk_right/sprite_3.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/pei/wait/wait_back/sprite_0.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/pei/wait/wait_left/sprite_0.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/pei/wait/wait_right/sprite_0.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_0.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/pei/walk/walk_front/sprite_1.png" type="Texture" id=34]
+[ext_resource path="res://scenes/level_button.tscn" type="PackedScene" id=35]
+[ext_resource path="res://assets/stages/particle.png" type="Texture" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "wait_right",
+"name": "wait_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk_back",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
@@ -53,32 +57,27 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
 "name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "wait_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "wait_front",
+"name": "wait_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_back",
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_front",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -88,91 +87,91 @@ _sections_unfolded = [ "Resource" ]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "wait_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "walk_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "wait_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "wait_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ) ],
-"loop": true,
 "name": "wait_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "attack_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "walk_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 27 ) ],
-"loop": true,
-"name": "attack2_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": true,
-"name": "attack2_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 29 ) ],
-"loop": true,
-"name": "touched_front",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ) ],
-"loop": true,
-"name": "attack_back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "attack2_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 32 ) ],
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "attack2_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "attack_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 33 ) ],
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "touched_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "attack2_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "attack_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "attack2_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "attack_front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "attack_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 34 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
-"name": "attack2_front",
+"name": "walk_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "wait_back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "wait_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "wait_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_front",
 "speed": 5.0
 } ]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Control
 
@@ -209,18 +208,18 @@ func _ready():
 #		print(\"i : \" , i, \"from : \", from + dot*i, \" to : \", from + dot*(i+1))
 #		draw_line(from + dot*i, from + dot*(i+1), color, width)"
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 
 offsets = PoolRealArray( 0, 0.514139, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=6]
+[sub_resource type="GradientTexture" id=5]
 
 flags = 4
-gradient = SubResource( 5 )
+gradient = SubResource( 4 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 
 render_priority = 0
 trail_divisor = 1
@@ -250,7 +249,7 @@ angle = 0.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 0.0
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 5 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -260,7 +259,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Animation", "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Trail" ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 length = 2.0
 loop = false
@@ -314,7 +313,7 @@ tracks/3/keys = {
 "values": [ "wait_right", "wait_right" ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 resource_name = "unlock_level"
 length = 1.0
@@ -395,6 +394,7 @@ color = Color( 0.183594, 0.183594, 0.183594, 1 )
 
 [node name="image" type="Sprite" parent="." index="1"]
 
+editor/display_folded = true
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
@@ -495,188 +495,73 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 4 )
+script = SubResource( 3 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Visibility" ]
 size_dot_px = 5
 width_line = 2.0
 
-[node name="Sprite" type="TextureButton" parent="Stage_1" index="0"]
+[node name="Sprite" parent="Stage_1" index="0" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 41.0
-margin_top = 255.0
-margin_right = 109.0
-margin_bottom = 322.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
-expand = true
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Textures" ]
+margin_left = 40.0
+margin_top = 249.0
+margin_right = 108.0
+margin_bottom = 316.0
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite4" type="TextureButton" parent="Stage_1" index="1"]
+[node name="Sprite2" parent="Stage_1" index="1" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 46.0
+margin_left = 45.0
 margin_top = 318.0
-margin_right = 114.0
+margin_right = 113.0
 margin_bottom = 385.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
-_sections_unfolded = [ "Rect", "Region", "Textures", "Transform" ]
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite3" type="TextureButton" parent="Stage_1" index="2"]
+[node name="Sprite3" parent="Stage_1" index="2" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 89.0
+margin_left = 88.0
 margin_top = 344.0
-margin_right = 157.0
+margin_right = 156.0
 margin_bottom = 411.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite2" type="TextureButton" parent="Stage_1" index="3"]
+[node name="Sprite4" parent="Stage_1" index="3" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 157.0
-margin_top = 321.0
-margin_right = 225.0
-margin_bottom = 388.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
+margin_left = 156.0
+margin_top = 320.0
+margin_right = 224.0
+margin_bottom = 387.0
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite5" type="TextureButton" parent="Stage_1" index="4"]
+[node name="Sprite5" parent="Stage_1" index="4" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 212.0
+margin_left = 211.0
 margin_top = 340.0
-margin_right = 280.0
+margin_right = 279.0
 margin_bottom = 407.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite7" type="TextureButton" parent="Stage_1" index="5"]
+[node name="Sprite6" parent="Stage_1" index="5" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 243.0
-margin_top = 382.0
-margin_right = 311.0
-margin_bottom = 449.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
+margin_left = 241.0
+margin_top = 380.0
+margin_right = 309.0
+margin_bottom = 447.0
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Sprite6" type="TextureButton" parent="Stage_1" index="6"]
+[node name="Sprite7" parent="Stage_1" index="6" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 271.0
+margin_left = 269.0
 margin_top = 315.0
-margin_right = 339.0
+margin_right = 337.0
 margin_bottom = 382.0
-rect_scale = Vector2( 0.282705, 0.282705 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 35 )
-texture_disabled = ExtResource( 36 )
+rect_scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
 
@@ -695,8 +580,8 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 7 )
-texture = ExtResource( 37 )
+process_material = SubResource( 6 )
+texture = ExtResource( 36 )
 normal_map = null
 h_frames = 1
 v_frames = 1
@@ -709,8 +594,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/move = SubResource( 8 )
-anims/unlock_level = SubResource( 9 )
+anims/move = SubResource( 7 )
+anims/unlock_level = SubResource( 8 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
