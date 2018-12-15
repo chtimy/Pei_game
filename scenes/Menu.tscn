@@ -119,7 +119,6 @@ scale = Vector2( 8, 8 )
 z_index = 2
 frames = SubResource( 2 )
 animation = "Cat"
-frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

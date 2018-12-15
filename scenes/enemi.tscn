@@ -2,19 +2,19 @@
 
 [ext_resource path="res://scripts/Enemi.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/pei/shadow.png" type="Texture" id=2]
-[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=3]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=4]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right1.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right2.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right3.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right4.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right5.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/enemi_fork/walk_right/walk_right6.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left1.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left2.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left3.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left4.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left5.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/enemi_fork/walk_left/walk_left6.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_0.png" type="Texture" id=15]
 [ext_resource path="res://assets/characters/enemi_fork/attack_front/sprite_1.png" type="Texture" id=16]
 [ext_resource path="res://scenes/life_bar.tscn" type="PackedScene" id=17]
 
@@ -26,29 +26,29 @@ extents = Vector2( 10, 10 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "prepare_attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk_front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_back",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "walk_back",
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "prepare_attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ) ],
@@ -108,8 +108,8 @@ tracks/2/keys = {
 }
 
 [node name="enemi" type="KinematicBody2D" groups=[
-"Enemis",
 "Movables",
+"Enemis",
 ]]
 
 input_pickable = false
@@ -148,7 +148,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 0, -16.5319 )
 frames = SubResource( 2 )
 animation = "walk_front"
-frame = 4
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform" ]
 

@@ -1,6 +1,5 @@
 Refaire le dictionnaire
 Finir les animations d'attaque de Pei
-varier la vitesse de marche d'animation en fct de la vitesse ainsi que le son
 animation porte principales ouvrent
 faire des patterns de carte
 changer logo minimap menu
@@ -8,6 +7,4 @@ améliorer l'animation du walk du chat
 mieux gérer les inputs
 mettre des bornes aux déplacements de la minimap
 l'attaque de l'ennemi est pas top lorsqu'on l'attaque
-inclure dans les slots de l'avancée de chaque niveau
-mettre freeze les ennemis lors du treminal
 complete level bug lorsque niveau 2

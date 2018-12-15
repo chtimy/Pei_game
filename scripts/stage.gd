@@ -52,6 +52,8 @@ func _ready():
 func choose_level(var level_button, var stage_id, var level_id):
 	if($image/Player/Position2D.global_position.distance_to(level_button.rect_position + level_button.rect_size*level_button.rect_scale/2.0) < 1):
 		emit_signal("choose_level_signal", stage_id, level_id)
+		States.level = level_id
+		States.stage = stage_id
 	else:
 		var destination = level_id
 		var from = self.current_level_id
@@ -101,8 +103,6 @@ func unlock_level(var stage_id, var level_id, var off_animation = false):
 	var stage = Tools.find_child_by_name(get_children(), name)
 	var level = stage.get_child(level_id-1)
 	if off_animation:
-		print(load("res://assets/stages/point.png"))
-		print(stage_id, " ",level_id)
 		level.set_disabled(false)
 	else:
 		unlock_level_animation(level)
@@ -120,6 +120,8 @@ func unlock_level_graphics():
 	
 func complete_level(var stage_id, var level_id, var off_animation = false):
 	var value = float(States.used_words[stage_id-1][level_id-1].size()) / (States.words[stage_id-1][level_id-1].size() + States.used_words[stage_id-1][level_id-1].size()) * 100
+	print(States.words[stage_id-1][level_id-1].size())
+	print(States.used_words[stage_id-1][level_id-1].size())
 	print ("value : " , value)
 	var name = "Stage_" + String(stage_id)
 	var stage = Tools.find_child_by_name(get_children(), name)

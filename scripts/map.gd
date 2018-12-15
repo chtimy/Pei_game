@@ -80,6 +80,7 @@ func finish_room():
 func freeze():
 	for child in get_children():
 		if child.is_in_group("Enemis"):
+			print("freeze : ",child)
 			child.freeze()
 			
 func unfreeze():

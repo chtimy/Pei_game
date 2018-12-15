@@ -122,3 +122,13 @@ func decrease_life(var value):
 	emit_signal("hud_life_change_sig", (float(life)/life_max) * 100)
 	if self.life == 0:
 		die()
+		
+func freeze():
+	.freeze()
+	if !$ShootLoopTimer.is_stopped():
+		$ShootLoopTimer.set_paused(true)
+		
+func unfreeze():
+	.unfreeze()
+	if $ShootLoopTimer.is_paused():
+		$ShootLoopTimer.set_paused(false)

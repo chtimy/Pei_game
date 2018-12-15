@@ -67,6 +67,7 @@ func stop_level(var win):
 	$HUD.hide()
 	if win:
 		$Score/Score.win(found_word)
+		print("finish : ", found_word)
 		States.finish_word(found_word, States.stage, States.level)
 		emit_signal("save_game_signal")
 	else:

@@ -138,7 +138,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[node name="Sprite" type="TextureButton" index="0"]
+[node name="Sprite" type="TextureButton"]
 
 anchor_left = 0.0
 anchor_top = 0.0
